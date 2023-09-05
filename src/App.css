@@ -39,11 +39,18 @@
 }
 
 .space {
-  margin: 20px;
+  margin: 20px auto;
   max-width: 50%;
   border: 1px solid gray;
   padding: 20px;
   border-radius: 10px;
+}
+
+.logo-text {
+  font-weight: bold;
+  color: #333;
+  font-size: 30px;
+  margin-right: 40px;
 }
 
 nav {

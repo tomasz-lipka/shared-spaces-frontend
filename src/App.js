@@ -12,10 +12,11 @@ function App() {
     { spaceName: 'space 3', id: 3 },
   ]);
   return (
-    <div>
+    <div className="App">
       <nav className="nav">
+        <span className="logo-text">Shared Spaces</span>
         <Link to="/" className="nav-item">Home</Link>
-        <Link to="/edit-pwd" className="nav-item">Edit password</Link>
+        <Link to="/edit-pwd" className="nav-item">Change password</Link>
         <Link to="/logout" className="nav-item">Logout</Link>
       </nav>
       <Routes>
