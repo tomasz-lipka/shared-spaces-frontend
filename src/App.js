@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import Nav from "./components/Nav";
+import { Routes, Route, Link } from "react-router-dom";
 import Spaces from "./components/Spaces";
 import EditPwd from "./components/EditPwd";
 
@@ -12,13 +12,17 @@ function App() {
     { spaceName: 'space 3', id: 3 },
   ]);
   return (
-    <>
-      <div>
-        <Nav />
-      </div>
-      <Spaces spaces={spaces} />
-      <EditPwd />
-    </>
+    <div>
+      <nav className="nav">
+        <Link to="/" className="nav-item">Home</Link>
+        <Link to="/edit-pwd" className="nav-item">Edit password</Link>
+        <Link to="/logout" className="nav-item">Logout</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Spaces spaces={spaces} />}></Route>
+        <Route path="/edit-pwd" element={<EditPwd />}></Route>
+      </Routes>
+    </div>
   );
 }
 
