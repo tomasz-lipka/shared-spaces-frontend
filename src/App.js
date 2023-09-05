@@ -7,11 +7,11 @@ function App() {
   return (
     <>
       <div className="App">
-        <Nav/>
+        <Nav />
       </div>
-      <Space user="Tom" date="1.1.2023" text="Lorem ipsum Lorem ipsum Lorem ipsum"/>
-      <Space user="Tom" date="1.1.2023" text="Lorem ipsum Lorem ipsum Lorem ipsum"/>
-      <Space user="Tom" date="1.1.2023" text="Lorem ipsum Lorem ipsum Lorem ipsum"/>
+      <Space spaceName="Space 1" />
+      <Space spaceName="Space 2" />
+      <Space spaceName="Space 3" />
     </>
   );
 }
