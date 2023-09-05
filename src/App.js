@@ -1,18 +1,22 @@
+import React from "react";
 import './App.css';
 import Nav from "./components/Nav";
-import Space from "./components/Space";
+import Spaces from "./components/Spaces";
 import EditPwd from "./components/EditPwd";
 
 
 function App() {
+  const [spaces] = React.useState([
+    { spaceName: 'space 1', id: 1 },
+    { spaceName: 'space 2', id: 2 },
+    { spaceName: 'space 3', id: 3 },
+  ]);
   return (
     <>
-      <div className="App">
+      <div>
         <Nav />
       </div>
-      <Space spaceName="Space 1" />
-      <Space spaceName="Space 2" />
-      <Space spaceName="Space 3" />
+      <Spaces spaces={spaces} />
       <EditPwd />
     </>
   );
