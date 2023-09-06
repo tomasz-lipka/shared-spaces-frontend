@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Spaces from "./Spaces";
 import EditPwd from "./EditPwd";
 import { Routes, Route, Link } from "react-router-dom";
+import config from '../config';
 
 function Main() {
   const [data, setData] = useState([]);
-  const url = 'https://tomasz-lipka-scaling-palm-tree-x9p56pvw9wr2jp7-5000.app.github.dev/spaces';
 
   React.useEffect(() => {
-    fetch(url, {
+    fetch(config.apiUrl + '/spaces', {
       method: 'GET',
       headers: {
         authorization: `Bearer ${sessionStorage.getItem("access_token")}`,

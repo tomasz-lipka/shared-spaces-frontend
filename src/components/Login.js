@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import config from '../config';
 
 function Login({ setAuthenticated }) {
 
@@ -7,7 +8,7 @@ function Login({ setAuthenticated }) {
   const [errorMessage, setError] = useState('');
 
   const handleLogin = async () => {
-    const response = await fetch('https://tomasz-lipka-scaling-palm-tree-x9p56pvw9wr2jp7-5000.app.github.dev/login', {
+    const response = await fetch(config.apiUrl + '/login', {
       method: 'POST',
       body: JSON.stringify({ login, password }),
       headers: {
