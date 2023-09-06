@@ -4,8 +4,13 @@ import EditPwd from "./EditPwd";
 import { Routes, Route, Link } from "react-router-dom";
 import config from '../config';
 
-function Main() {
+function Main({ setAuthenticated }) {
   const [data, setData] = useState([]);
+
+  function handleLogout() {
+    sessionStorage.removeItem("access_token");
+    setAuthenticated(false);
+  }
 
   React.useEffect(() => {
     fetch(config.apiUrl + '/spaces', {
@@ -25,7 +30,7 @@ function Main() {
         <span className="logo-text">Shared Spaces</span>
         <Link to="/" className="nav-item">Home</Link>
         <Link to="/edit-pwd" className="nav-item">Change password</Link>
-        <Link to="/logout" className="nav-item">Logout</Link>
+        <Link to="/" className="nav-item" onClick={handleLogout}>Logout</Link>
       </nav>
 
       <Routes>

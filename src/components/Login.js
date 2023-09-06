@@ -18,7 +18,7 @@ function Login({ setAuthenticated }) {
     if (response.ok) {
       const data = await response.json();
       sessionStorage.setItem("access_token", data.access_token);
-      setAuthenticated(true)
+      setAuthenticated(true);
     } else {
       const errorMessage = await response.text();
       setError(errorMessage); <h2>await response.text()</h2>
