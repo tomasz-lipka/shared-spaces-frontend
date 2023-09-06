@@ -6,8 +6,10 @@ import config from '../config';
 
 function Main({ setAuthenticated }) {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   function handleLogout() {
+    setLoading(true);
     sessionStorage.removeItem("access_token");
     setAuthenticated(false);
   }
@@ -30,7 +32,7 @@ function Main({ setAuthenticated }) {
         <span className="logo-text">Shared Spaces</span>
         <Link to="/" className="nav-item">Home</Link>
         <Link to="/edit-pwd" className="nav-item">Change password</Link>
-        <Link to="/" className="nav-item" onClick={handleLogout}>Logout</Link>
+        <Link to="/" className="nav-item" onClick={handleLogout}>{loading ? 'Logging out...' : 'Logout'}</Link>
       </nav>
 
       <Routes>

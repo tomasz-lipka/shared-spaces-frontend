@@ -3,11 +3,13 @@ import config from '../config';
 
 function Login({ setAuthenticated }) {
 
-  const [login, setLogin] = useState();
-  const [password, setPassword] = useState();
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setError] = useState('');
 
   const handleLogin = async () => {
+    setLoading(true);
     const response = await fetch(config.apiUrl + '/login', {
       method: 'POST',
       body: JSON.stringify({ login, password }),
@@ -22,6 +24,7 @@ function Login({ setAuthenticated }) {
     } else {
       const errorMessage = await response.text();
       setError(errorMessage); <h2>await response.text()</h2>
+      setLoading(false);
     }
   };
 
@@ -46,7 +49,7 @@ function Login({ setAuthenticated }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin} disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
       <p>{errorMessage}</p>
     </div>
   );

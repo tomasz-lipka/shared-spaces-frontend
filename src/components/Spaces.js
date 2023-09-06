@@ -5,7 +5,7 @@ function Spaces({ props }) {
             <h3>My spaces</h3>
             {props.map((value) => {
                 return (
-                    <div className="space">
+                    <div className="space" key={value.space.id}>
                         <p>{value.space.name}</p>
                     </div>
                 );
