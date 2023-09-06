@@ -17,10 +17,7 @@ function Main() {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        setData(data)
-        console.log(data);
-      });
+      .then((data) => setData(data));
   }, []);
 
 
@@ -32,7 +29,7 @@ function Main() {
         <Link to="/edit-pwd" className="nav-item">Change password</Link>
         <Link to="/logout" className="nav-item">Logout</Link>
       </nav>
-      
+
       <Routes>
         <Route path="/" element={<Spaces props={data} />}></Route>
         <Route path="/edit-pwd" element={<EditPwd />}></Route>
