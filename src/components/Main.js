@@ -3,7 +3,7 @@ import Spaces from "./Spaces";
 import EditPwd from "./EditPwd";
 import { Routes, Route, Link } from "react-router-dom";
 
-function Main({ token }) {
+function Main() {
   const [data, setData] = React.useState([]);
 
   const url = 'https://tomasz-lipka-scaling-palm-tree-x9p56pvw9wr2jp7-5000.app.github.dev/spaces';
@@ -12,7 +12,7 @@ function Main({ token }) {
     fetch(url, {
       method: 'GET',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
         Accept: 'application/json',
       },
     })
@@ -21,7 +21,7 @@ function Main({ token }) {
         setData(data)
         console.log(data);
       });
-  }, [token]);
+  }, []);
 
 
   return (
@@ -32,6 +32,7 @@ function Main({ token }) {
         <Link to="/edit-pwd" className="nav-item">Change password</Link>
         <Link to="/logout" className="nav-item">Logout</Link>
       </nav>
+      
       <Routes>
         <Route path="/" element={<Spaces props={data} />}></Route>
         <Route path="/edit-pwd" element={<EditPwd />}></Route>

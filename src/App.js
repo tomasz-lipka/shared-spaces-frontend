@@ -5,21 +5,12 @@ import Main from "./components/Main";
 
 
 function App() {
-  const [token, setToken] = React.useState();
+  const [authenticated, setAuthenticated] = React.useState(false);
 
-
-  const updateToken = (token) => {
-    setToken(token);
-  };
-
-  if (!token) {
-    return <Login
-      updateParentState={updateToken}
-    />
+  if (!authenticated && !sessionStorage.getItem("access_token")) {
+    return <Login setAuthenticated = {setAuthenticated}/>
   }
-  return <Main token={token} />
-
-
+  return <Main />
 }
 
 export default App;
