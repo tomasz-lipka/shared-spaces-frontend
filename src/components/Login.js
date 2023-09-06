@@ -7,7 +7,6 @@ function Login({ setAuthenticated }) {
   const [errorMessage, setError] = useState('');
 
   const handleLogin = async () => {
-
     const response = await fetch('https://tomasz-lipka-scaling-palm-tree-x9p56pvw9wr2jp7-5000.app.github.dev/login', {
       method: 'POST',
       body: JSON.stringify({ login, password }),
