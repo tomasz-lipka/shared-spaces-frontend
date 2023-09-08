@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import config from '../config';
 
 function Login({ setAuthenticated }) {
-
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -19,12 +18,18 @@ function Login({ setAuthenticated }) {
     });
     if (response.ok) {
       const data = await response.json();
-      sessionStorage.setItem("access_token", data.access_token);
+      sessionStorage.setItem('access_token', data.access_token);
       setAuthenticated(true);
     } else {
       const errorMessage = await response.text();
       setError(errorMessage);
       setLoading(false);
+    }
+  };
+
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      handleLogin();
     }
   };
 
@@ -47,12 +52,15 @@ function Login({ setAuthenticated }) {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyUp={handleKeyUp} // Handle Enter key press
         />
       </div>
-      <button onClick={handleLogin} disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
+      <button onClick={handleLogin} disabled={loading}>
+        {loading ? 'Logging in...' : 'Login'}
+      </button>
       <p>{errorMessage}</p>
     </div>
   );
-};
+}
 
 export default Login;
