@@ -64,3 +64,13 @@ nav a {
   font-size: 20px;
   margin-right: 20px;
 }
+
+.left-div {
+  width: 25%;
+  float: left;
+}
+
+.right-div {
+  width: 75%;
+  float: right;
+}

@@ -70,6 +70,9 @@ function Auth({ setAuthenticated }) {
 
   return (
     <div className="App">
+      <h1><u>Shared Spaces</u></h1>
+      <br></br>
+
       <h2>Login</h2>
       <div>
         <label>Login: </label>
@@ -126,7 +129,7 @@ function Auth({ setAuthenticated }) {
       </div>
       <button onClick={handleRegister}>Register</button>
       <p>{registerErrMsg}</p>
-    </div>
+    </div >
   );
 }
 
