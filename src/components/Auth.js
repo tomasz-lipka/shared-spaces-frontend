@@ -11,7 +11,7 @@ function Auth({ setAuthenticated }) {
   const [registerPwd, setRegisterPwd] = useState('');
   const [confirmPwd, setConfirmPwd] = useState('');
   const [registerErrMsg, setRegisterErrMsg] = useState('');
- 
+
 
   const handleLogin = async () => {
     setLoading(true);
@@ -68,7 +68,7 @@ function Auth({ setAuthenticated }) {
     <div className="App">
       <h2>Login</h2>
       <div>
-        <label htmlFor="login">Login: </label>
+        <label>Login: </label>
         <input
           type="text"
           value={login}
@@ -76,7 +76,7 @@ function Auth({ setAuthenticated }) {
         />
       </div>
       <div>
-        <label htmlFor="password">Password: </label>
+        <label>Password: </label>
         <input
           type="password"
           value={pwd}
@@ -95,7 +95,7 @@ function Auth({ setAuthenticated }) {
 
       <h2>Register</h2>
       <div>
-        <label htmlFor="login">Login: </label>
+        <label>Login: </label>
         <input
           type="text"
           value={registerLogin}
@@ -103,7 +103,7 @@ function Auth({ setAuthenticated }) {
         />
       </div>
       <div>
-        <label htmlFor="password">Password: </label>
+        <label>Password: </label>
         <input
           type="password"
           value={registerPwd}
@@ -112,7 +112,7 @@ function Auth({ setAuthenticated }) {
         />
       </div>
       <div>
-        <label htmlFor="confirmPassword">Confirm password: </label>
+        <label>Confirm password: </label>
         <input
           type="password"
           value={confirmPwd}
