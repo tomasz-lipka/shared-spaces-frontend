@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import config from '../config';
 
-function Login({ setAuthenticated }) {
+function Auth({ setAuthenticated }) {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -63,4 +63,4 @@ function Login({ setAuthenticated }) {
   );
 }
 
-export default Login;
+export default Auth;
