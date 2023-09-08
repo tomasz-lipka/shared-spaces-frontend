@@ -14,6 +14,8 @@ function Auth({ setAuthenticated }) {
 
 
   const handleLogin = async () => {
+    setErrMsg('')
+    setRegisterErrMsg('')
     setLoading(true);
 
     const response = await fetch(config.apiUrl + '/login', {
@@ -38,6 +40,8 @@ function Auth({ setAuthenticated }) {
   };
 
   const handleRegister = async () => {
+    setErrMsg('')
+    setRegisterErrMsg('')
     const response = await fetch(config.apiUrl + '/register', {
       method: 'POST',
       body: `{
