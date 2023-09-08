@@ -8,6 +8,7 @@ function Spaces() {
     const [spaces, setSpaces] = useState([]);
 
     const createSpace = async () => {
+        setMsg('')
         setLoading(true);
         const response = await fetch(config.apiUrl + '/spaces', {
             method: 'POST',
