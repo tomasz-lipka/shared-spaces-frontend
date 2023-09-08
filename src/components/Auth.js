@@ -3,15 +3,19 @@ import config from '../config';
 
 function Auth({ setAuthenticated }) {
   const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const [pwd, setPwd] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setError] = useState('');
 
   const handleLogin = async () => {
     setLoading(true);
+
     const response = await fetch(config.apiUrl + '/login', {
       method: 'POST',
-      body: JSON.stringify({ login, password }),
+      body: `{
+        "login": "${login}",
+        "password": "${pwd}"
+      }`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -40,7 +44,6 @@ function Auth({ setAuthenticated }) {
         <label htmlFor="login">Login: </label>
         <input
           type="text"
-          id="login"
           value={login}
           onChange={(e) => setLogin(e.target.value)}
         />
@@ -49,9 +52,8 @@ function Auth({ setAuthenticated }) {
         <label htmlFor="password">Password: </label>
         <input
           type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={pwd}
+          onChange={(e) => setPwd(e.target.value)}
           onKeyUp={handleKeyUp} // Handle Enter key press
         />
       </div>
