@@ -5,7 +5,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import config from '../config';
 
 function Main({ setAuthenticated }) {
-  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
 
@@ -23,18 +22,6 @@ function Main({ setAuthenticated }) {
     }
   };
 
-  React.useEffect(() => {
-    fetch(config.apiUrl + '/spaces', {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-        Accept: 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  }, []);
-
   return (
     <div className="App">
       <nav className="nav">
@@ -45,7 +32,7 @@ function Main({ setAuthenticated }) {
       </nav>
 
       <Routes>
-        <Route path="/" element={<Spaces props={data} />}></Route>
+        <Route path="/" element={<Spaces />}></Route>
         <Route path="/edit-pwd" element={<EditPwd />}></Route>
       </Routes>
     </div>

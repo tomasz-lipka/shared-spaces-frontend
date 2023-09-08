@@ -5,17 +5,17 @@ function Auth({ setAuthenticated }) {
   const [login, setLogin] = useState('');
   const [pwd, setPwd] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errMsg, setErrMsg] = useState('');
+  const [msg, setMsg] = useState('');
 
   const [registerLogin, setRegisterLogin] = useState('');
   const [registerPwd, setRegisterPwd] = useState('');
   const [confirmPwd, setConfirmPwd] = useState('');
-  const [registerErrMsg, setRegisterErrMsg] = useState('');
+  const [registerMsg, setRegisterMsg] = useState('');
 
 
   const handleLogin = async () => {
-    setErrMsg('')
-    setRegisterErrMsg('')
+    setMsg('')
+    setRegisterMsg('')
     setLoading(true);
 
     const response = await fetch(config.apiUrl + '/login', {
@@ -34,14 +34,14 @@ function Auth({ setAuthenticated }) {
       setAuthenticated(true);
     } else {
       const errorMessage = await response.text();
-      setErrMsg(errorMessage);
+      setMsg(errorMessage);
       setLoading(false);
     }
   };
 
   const handleRegister = async () => {
-    setErrMsg('')
-    setRegisterErrMsg('')
+    setMsg('')
+    setRegisterMsg('')
     const response = await fetch(config.apiUrl + '/register', {
       method: 'POST',
       body: `{
@@ -55,10 +55,10 @@ function Auth({ setAuthenticated }) {
     });
     if (response.ok) {
       const msg = await response.text();
-      alert(msg)
+      setRegisterMsg(msg)
     } else {
       const errorMessage = await response.text();
-      setRegisterErrMsg(errorMessage);
+      setRegisterMsg(errorMessage);
     }
   };
 
@@ -94,7 +94,7 @@ function Auth({ setAuthenticated }) {
       <button onClick={handleLogin} disabled={loading}>
         {loading ? 'Logging in...' : 'Login'}
       </button>
-      <p>{errMsg}</p>
+      <p>{msg}</p>
 
       <br></br>
       <h3>or</h3>
@@ -128,7 +128,7 @@ function Auth({ setAuthenticated }) {
         />
       </div>
       <button onClick={handleRegister}>Register</button>
-      <p>{registerErrMsg}</p>
+      <p>{registerMsg}</p>
     </div >
   );
 }
