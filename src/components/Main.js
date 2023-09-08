@@ -8,11 +8,20 @@ function Main({ setAuthenticated }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  function handleLogout() {
+
+  const handleLogout = async () => {
     setLoading(true);
-    sessionStorage.removeItem("access_token");
-    setAuthenticated(false);
-  }
+    const response = await fetch(config.apiUrl + '/logout', {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${sessionStorage.getItem("access_token")}`
+      },
+    });
+    if (response.ok) {
+      sessionStorage.removeItem("access_token");
+      setAuthenticated(false);
+    }
+  };
 
   React.useEffect(() => {
     fetch(config.apiUrl + '/spaces', {

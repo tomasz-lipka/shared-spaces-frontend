@@ -23,7 +23,7 @@ function Login({ setAuthenticated }) {
       setAuthenticated(true);
     } else {
       const errorMessage = await response.text();
-      setError(errorMessage); <h2>await response.text()</h2>
+      setError(errorMessage);
       setLoading(false);
     }
   };
