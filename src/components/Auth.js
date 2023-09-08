@@ -5,7 +5,13 @@ function Auth({ setAuthenticated }) {
   const [login, setLogin] = useState('');
   const [pwd, setPwd] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setError] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+
+  const [registerLogin, setRegisterLogin] = useState('');
+  const [registerPwd, setRegisterPwd] = useState('');
+  const [confirmPwd, setConfirmPwd] = useState('');
+  const [registerErrMsg, setRegisterErrMsg] = useState('');
+ 
 
   const handleLogin = async () => {
     setLoading(true);
@@ -26,8 +32,29 @@ function Auth({ setAuthenticated }) {
       setAuthenticated(true);
     } else {
       const errorMessage = await response.text();
-      setError(errorMessage);
+      setErrMsg(errorMessage);
       setLoading(false);
+    }
+  };
+
+  const handleRegister = async () => {
+    const response = await fetch(config.apiUrl + '/register', {
+      method: 'POST',
+      body: `{
+        "login": "${registerLogin}",
+        "password": "${registerPwd}",
+        "confirm-password": "${confirmPwd}"
+      }`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (response.ok) {
+      const msg = await response.text();
+      alert(msg)
+    } else {
+      const errorMessage = await response.text();
+      setRegisterErrMsg(errorMessage);
     }
   };
 
@@ -54,13 +81,47 @@ function Auth({ setAuthenticated }) {
           type="password"
           value={pwd}
           onChange={(e) => setPwd(e.target.value)}
-          onKeyUp={handleKeyUp} // Handle Enter key press
+          onKeyUp={handleKeyUp}
         />
       </div>
       <button onClick={handleLogin} disabled={loading}>
         {loading ? 'Logging in...' : 'Login'}
       </button>
-      <p>{errorMessage}</p>
+      <p>{errMsg}</p>
+
+      <br></br>
+      <h3>or</h3>
+      <br></br>
+
+      <h2>Register</h2>
+      <div>
+        <label htmlFor="login">Login: </label>
+        <input
+          type="text"
+          value={registerLogin}
+          onChange={(e) => setRegisterLogin(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="password">Password: </label>
+        <input
+          type="password"
+          value={registerPwd}
+          onChange={(e) => setRegisterPwd(e.target.value)}
+          onKeyUp={handleKeyUp}
+        />
+      </div>
+      <div>
+        <label htmlFor="confirmPassword">Confirm password: </label>
+        <input
+          type="password"
+          value={confirmPwd}
+          onChange={(e) => setConfirmPwd(e.target.value)}
+          onKeyUp={handleKeyUp}
+        />
+      </div>
+      <button onClick={handleRegister}>Register</button>
+      <p>{registerErrMsg}</p>
     </div>
   );
 }
