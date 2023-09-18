@@ -35,7 +35,7 @@ function Main({ setAuthenticated }) {
       <Routes>
         <Route path="/" element={<Spaces />}></Route>
         <Route path="/edit-pwd" element={<EditPwd />}></Route>
-        <Route path="/space" element={<Space />}></Route>
+        <Route path="/space/:id" element={<Space />}></Route>
       </Routes>
     </div>
   );

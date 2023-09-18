@@ -50,7 +50,6 @@ function Spaces() {
     }, []);
 
     const navigate = useNavigate()
-
     return (
         <div>
             <div className="left-div">
@@ -71,10 +70,11 @@ function Spaces() {
             <div className="right-div">
                 <h3>My spaces</h3>
                 {spaces.map((value) => {
+                    let id = value.space.id
                     return (
                         <div className="space" key={value.space.id}>
                             <p>{value.space.name}</p>
-                            <button onClick={() => navigate('space')}>View</button>
+                            <button onClick={() => navigate(`/space/${id}`)}>View</button>
                         </div>
                     );
                 })}
