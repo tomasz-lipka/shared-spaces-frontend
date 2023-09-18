@@ -42,8 +42,18 @@
   margin: 20px auto;
   max-width: 50%;
   border: 1px solid gray;
+  background-color: cadetblue;
   padding: 20px;
   border-radius: 10px;
+}
+
+.share {
+  margin: 10px auto;
+  max-width: 70%;
+  border: 1px solid gray;
+  background-color: antiquewhite;
+  padding: 5px;
+  border-radius: 0px;
 }
 
 .logo-text {

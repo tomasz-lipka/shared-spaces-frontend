@@ -54,9 +54,9 @@ function Spaces() {
         <div>
             <div className="left-div">
                 <div>
-                    <h3>New space</h3>
-                    <label>Name: </label>
+                    <h4>New space</h4>
                     <input
+                        placeholder="Enter the name..."
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
