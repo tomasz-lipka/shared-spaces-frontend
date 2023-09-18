@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
 function Spaces() {
@@ -48,6 +49,8 @@ function Spaces() {
         fetchSpaces();
     }, []);
 
+    const navigate = useNavigate()
+
     return (
         <div>
             <div className="left-div">
@@ -71,6 +74,7 @@ function Spaces() {
                     return (
                         <div className="space" key={value.space.id}>
                             <p>{value.space.name}</p>
+                            <button onClick={() => navigate('space')}>View</button>
                         </div>
                     );
                 })}
