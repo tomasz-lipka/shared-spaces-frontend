@@ -92,4 +92,5 @@ nav a {
 
 .right-div-flex {
   flex: 3;
+  text-align: left;
 }
