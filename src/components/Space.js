@@ -7,11 +7,13 @@ function Space() {
     const navigate = useNavigate()
     const [space, setSpace] = useState('');
     const [text, setText] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [createLoading, setCreateLoading] = useState(false);
+    const [fetchLoading, setFetchLoading] = useState(false);
     const [msg, setMsg] = useState('');
     const [shares, setShares] = useState([]);
 
     const fetchSpace = async () => {
+        setFetchLoading(true)
         const response = await fetch(config.apiUrl + '/spaces/' + id, {
             method: 'GET',
             headers: {
@@ -21,6 +23,7 @@ function Space() {
         if (response.ok) {
             const data = await response.json();
             setSpace(data);
+            setFetchLoading(false)
         }
     };
 
@@ -31,7 +34,7 @@ function Space() {
         // bodyContent.append("file", "/workspaces/shared-spaces/project/test/test-image.jpg");
 
         setMsg('')
-        setLoading(true);
+        setCreateLoading(true);
         const response = await fetch(config.apiUrl + '/spaces/' + id + '/shares', {
             method: 'POST',
             body: bodyContent,
@@ -45,7 +48,7 @@ function Space() {
         } else {
             const errorMessage = await response.text();
             setMsg(errorMessage);
-            setLoading(false);
+            setCreateLoading(false);
         }
     }
 
@@ -59,7 +62,7 @@ function Space() {
         if (response.ok) {
             const data = await response.json();
             setShares(data);
-            setLoading(false);
+            setCreateLoading(false);
         }
     };
 
@@ -84,13 +87,14 @@ function Space() {
                     />
                 </div>
                 <button onClick={createShare}>
-                    {loading ? 'Creating...' : 'Create share'}
+                    {createLoading ? 'Creating...' : 'Create share'}
                 </button>
                 <p>{msg}</p>
                 <hr />
             </div>
             <div className="right-div">
                 <h3>Space: {space.name}</h3>
+                <p>{fetchLoading ? 'Loading...' : ''}</p>
                 {shares.map((value) => {
                     return (
                         <div className="share" key={value.id}>
