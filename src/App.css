@@ -40,7 +40,7 @@
 
 .space {
   margin: 20px auto;
-  max-width: 50%;
+  max-width: 70%;
   border: 1px solid gray;
   background-color: cadetblue;
   padding: 20px;
@@ -48,6 +48,7 @@
 }
 
 .share {
+  display: flex;
   margin: 10px auto;
   max-width: 70%;
   border: 1px solid gray;
@@ -83,4 +84,12 @@ nav a {
 .right-div {
   width: 75%;
   float: right;
+}
+
+.left-div-flex {
+  flex: 1;
+}
+
+.right-div-flex {
+  flex: 3;
 }

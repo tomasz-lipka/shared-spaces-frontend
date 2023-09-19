@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import config from '../config';
+import { format } from "date-fns";
 
 function Space() {
     const { id } = useParams();
@@ -96,10 +97,16 @@ function Space() {
                 <h3>Space: {space.name}</h3>
                 <p>{fetchLoading ? 'Loading...' : ''}</p>
                 {shares.map((value) => {
+                    const formattedTimestamp = format(new Date(value.timestamp), "dd/MM/yyyy HH:mm");
                     return (
                         <div className="share" key={value.id}>
-                            <p>{value.text}</p>
-                            <p>{value.user.login}</p>
+                            <div className="left-div-flex">
+                                <p><b>{value.user.login}</b></p>
+                                <p>{formattedTimestamp}</p>
+                            </div>
+                            <div className="right-div-flex">
+                                <p>{value.text}</p>
+                            </div>
                         </div>
                     );
                 })}
