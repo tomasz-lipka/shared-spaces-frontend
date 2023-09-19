@@ -29,7 +29,7 @@ function Main({ setAuthenticated }) {
         <span className="logo-text">Shared Spaces</span>
         <Link to="/" className="nav-item">Home</Link>
         <Link to="/edit-pwd" className="nav-item">Change password</Link>
-        <Link to="/" className="nav-item" onClick={handleLogout}>{loading ? 'Logging out...' : 'Logout'}</Link>
+        <Link to="/" className="nav-item" onClick={handleLogout}>{loading ? 'Logging out...' : 'Logout (' + sessionStorage.getItem("currentUser") + ')'}</Link>
       </nav>
 
       <Routes>
