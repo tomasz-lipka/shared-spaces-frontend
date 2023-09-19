@@ -7,10 +7,10 @@ import Main from "./components/Main";
 function App() {
   const [authenticated, setAuthenticated] = React.useState(false);
 
-  if (!authenticated && !sessionStorage.getItem("access_token")) {
+  if (!sessionStorage.getItem("access_token")) {
     return <Auth setAuthenticated={setAuthenticated} />
   }
-  return <Main setAuthenticated={setAuthenticated} />
+  return <Main />
 }
 
 export default App;

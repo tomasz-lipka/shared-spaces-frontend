@@ -5,7 +5,7 @@ import Space from "./Space";
 import { Routes, Route, Link } from "react-router-dom";
 import config from '../config';
 
-function Main({ setAuthenticated }) {
+function Main() {
   const [loading, setLoading] = useState(false);
 
 
@@ -19,7 +19,7 @@ function Main({ setAuthenticated }) {
     });
     if (response.ok) {
       sessionStorage.removeItem("access_token");
-      setAuthenticated(false);
+      window.location.reload(false);
     }
   };
 
