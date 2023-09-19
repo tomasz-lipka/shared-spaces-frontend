@@ -42,7 +42,6 @@ function Space() {
         });
         if (response.ok) {
             fetchShares();
-            setLoading(false);
         } else {
             const errorMessage = await response.text();
             setMsg(errorMessage);
@@ -60,6 +59,7 @@ function Space() {
         if (response.ok) {
             const data = await response.json();
             setShares(data);
+            setLoading(false);
         }
     };
 
@@ -90,11 +90,12 @@ function Space() {
                 <hr />
             </div>
             <div className="right-div">
-                <h3>Space {space.name}</h3>
+                <h3>Space: {space.name}</h3>
                 {shares.map((value) => {
                     return (
                         <div className="share" key={value.id}>
                             <p>{value.text}</p>
+                            <p>{value.user.login}</p>
                         </div>
                     );
                 })}
