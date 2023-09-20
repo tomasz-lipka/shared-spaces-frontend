@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import config from '../config';
+import Member from "./Member"
 
 function Members() {
 
@@ -13,6 +14,7 @@ function Members() {
     const navigate = useNavigate()
     const [msg, setMsg] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
+    const [isCurrentUser, setIsCurrentUser] = useState(false);
 
     const fetchSpace = async () => {
         const response = await fetch(config.apiUrl + '/spaces/' + id, {
@@ -28,6 +30,7 @@ function Members() {
     };
 
     const fetchMembers = async () => {
+
         setLoadingMembers(true)
         const response = await fetch(config.apiUrl + '/spaces/' + id + '/members', {
             method: 'GET',
@@ -39,7 +42,11 @@ function Members() {
             const data = await response.json();
             setMembers(data);
             setLoadingMembers(false)
+            setCurrentUserAdmin(data)
+            // setIsCurrentUserFun(data)
         }
+
+
     };
 
     const addMember = async () => {
@@ -64,18 +71,19 @@ function Members() {
         }
     };
 
-    const setCurrentUserAdminStatus = () => {
-        members.forEach((value) => {
-            if (value.user.login === sessionStorage.getItem("currentUser")) {
+    const setCurrentUserAdmin = (data) => {
+        data.map((value) => {
+            if (value.user.login === sessionStorage.getItem("currentUser") && value.is_admin) {
                 setIsAdmin(true);
             }
         });
     };
 
+
     useEffect(() => {
         fetchSpace();
         fetchMembers();
-        setCurrentUserAdminStatus()
+
     }, []);
 
     return (
@@ -104,13 +112,7 @@ function Members() {
                 <h3>{space.name} {'>'} members</h3>
                 <p>{loadingMembers ? 'Loading...' : '\u00A0'}</p>
                 {members.map((value) => {
-
-                    return (
-                        <div className="member" key={value.user.id}>
-                            <p>{value.user.login}</p>
-                            <p>{value.is_admin ? 'is admin' : 'no admin'}</p>
-                        </div>
-                    )
+                    return <Member value={value}  fetchMembers={fetchMembers} id={id} isCurrentUserAdmin={isAdmin} />
                 })}
             </div>
         </div >
