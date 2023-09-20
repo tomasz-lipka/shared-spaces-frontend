@@ -13,6 +13,7 @@ function Space() {
     const [msg, setMsg] = useState('');
     const [deleteMsg, setDeleteMsg] = useState('');
     const [shares, setShares] = useState([]);
+    const [name, setName] = useState('');
 
     const fetchSpace = async () => {
         const response = await fetch(config.apiUrl + '/spaces/' + id, {
@@ -83,6 +84,24 @@ function Space() {
             setDeleteMsg(errorMessage);
         }
     };
+    const renameSpace = async () => {
+        const response = await fetch(config.apiUrl + '/spaces/' + id , {
+            method: 'PUT',
+            body: JSON.stringify({
+                "new-name": name
+              }),
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
+            },
+            
+        });
+        if (response.ok) {
+            await response;
+
+            fetchSpace();
+        } 
+    };
 
 
     useEffect(() => {
@@ -116,8 +135,29 @@ function Space() {
                 <hr />
                 <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}/members`); }}>Members</a>
                 <hr />
+                <div>
+                    <h4>Rename space</h4>
+                    <input
+                        placeholder="Enter new name..."
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <button onClick={renameSpace} >
+
+ 
+
+                    Rename
+                </button>
+                </div>
+                
+                <hr />
                 <button onClick={deleteSpace} >Delete this space</button>
                 <p>{deleteMsg}</p>
+                <hr />
+
+                
+
             </div>
             <div className="right-div">
                 <h3>{space.name}</h3>
