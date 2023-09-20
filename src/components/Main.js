@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Spaces from "./Spaces";
 import EditPwd from "./EditPwd";
 import Space from "./Space";
+import Members from "./Members";
 import { Routes, Route, Link } from "react-router-dom";
 import config from '../config';
 
@@ -36,6 +37,7 @@ function Main() {
         <Route path="/" element={<Spaces />}></Route>
         <Route path="/edit-pwd" element={<EditPwd />}></Route>
         <Route path="/space/:id" element={<Space />}></Route>
+        <Route path="/space/:id/members" element={<Members />}></Route>
       </Routes>
     </div>
   );

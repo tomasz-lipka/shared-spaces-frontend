@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import config from '../config';
 import Share from "./Share"
 
@@ -76,7 +76,7 @@ function Space() {
     return (
         <div>
             <div className="left-div">
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>Go back</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'}Go back</a>
                 <hr />
                 <div>
                     <h4>New share</h4>
@@ -93,11 +93,11 @@ function Space() {
                 </button>
                 <p>{msg}</p>
                 <hr />
-
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}/members`); }}>Members</a>
 
             </div>
             <div className="right-div">
-                <h3>Space: {space.name}</h3>
+                <h3>{space.name}</h3>
                 <p>{fetchLoading ? 'Loading...' : '\u00A0'}</p>
                 {shares.map((value) => {
                     return <Share value={value} fetchShares={fetchShares} fetchLoading={fetchLoading} />
