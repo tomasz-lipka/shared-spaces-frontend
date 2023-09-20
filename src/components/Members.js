@@ -14,7 +14,6 @@ function Members() {
     const navigate = useNavigate()
     const [msg, setMsg] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
-    const [isCurrentUser, setIsCurrentUser] = useState(false);
 
     const fetchSpace = async () => {
         const response = await fetch(config.apiUrl + '/spaces/' + id, {
@@ -30,7 +29,7 @@ function Members() {
     };
 
     const fetchMembers = async () => {
-
+        setMsg('')
         setLoadingMembers(true)
         const response = await fetch(config.apiUrl + '/spaces/' + id + '/members', {
             method: 'GET',
@@ -42,7 +41,7 @@ function Members() {
             const data = await response.json();
             setMembers(data);
             setLoadingMembers(false)
-            setCurrentUserAdmin(data)
+            // setCurrentUserAdmin(data)
             // setIsCurrentUserFun(data)
         }
 
@@ -81,13 +80,14 @@ function Members() {
 
 
     useEffect(() => {
+        
         fetchSpace();
         fetchMembers();
 
     }, []);
 
     return (
-        <div>
+        <div >
             <div className="left-div">
                 <br />
                 <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'}Go back</a>
@@ -112,7 +112,9 @@ function Members() {
                 <h3>{space.name} {'>'} members</h3>
                 <p>{loadingMembers ? 'Loading...' : '\u00A0'}</p>
                 {members.map((value) => {
-                    return <Member value={value}  fetchMembers={fetchMembers} id={id} isCurrentUserAdmin={isAdmin} />
+                    return <Member value={value}  fetchMembers={fetchMembers} id={id} 
+                    hasPermission={value.user.login === sessionStorage.getItem("currentUser") && value.is_admin}
+                     />
                 })}
             </div>
         </div >
