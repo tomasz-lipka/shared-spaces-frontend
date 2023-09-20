@@ -9,7 +9,6 @@ function Share({ value, fetchShares }) {
 
 
     const deleteShare = async (shareId) => {
-        // setDeleteLoading(true)
         const response = await fetch(config.apiUrl + '/shares/' + shareId, {
             method: 'DELETE',
             headers: {

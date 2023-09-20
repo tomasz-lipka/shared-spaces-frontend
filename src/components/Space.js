@@ -9,8 +9,7 @@ function Space() {
     const [space, setSpace] = useState('');
     const [text, setText] = useState('');
     const [createLoading, setCreateLoading] = useState(false);
-    const [fetchLoading, setFetchLoading] = useState(true);
-    const [deleteLoading, setDeleteLoading] = useState(false);
+    const [fetchLoading, setFetchLoading] = useState(false);
     const [msg, setMsg] = useState('');
     const [shares, setShares] = useState([]);
 
@@ -52,6 +51,7 @@ function Space() {
     }
 
     const fetchShares = async () => {
+        setFetchLoading(true)
         const response = await fetch(config.apiUrl + '/spaces/' + id + '/shares', {
             method: 'GET',
             headers: {
@@ -62,24 +62,16 @@ function Space() {
             const data = await response.json();
             setShares(data);
             setCreateLoading(false);
+            setFetchLoading(false)
         }
     };
 
-   
-    const setFetchLoadingFalse = () => {
-        setFetchLoading(false)
-    }
 
     useEffect(() => {
         fetchSpace();
         fetchShares();
-        // setFetchLoading(false)
     }, []);
 
-    // useEffect(() => {
-    //     setDeleteLoading(false);
-
-    // });
 
     return (
         <div>
@@ -104,8 +96,7 @@ function Space() {
             </div>
             <div className="right-div">
                 <h3>Space: {space.name}</h3>
-                <p>{fetchLoading ? 'Loading...' : ''}</p>
-                <p>{deleteLoading ? 'Deleting...' : ''}</p>
+                <p>{fetchLoading ? 'Loading...' : '\u00A0'}</p>
                 {shares.map((value) => {
                     return <Share value={value} fetchShares={fetchShares} />
                 })}
