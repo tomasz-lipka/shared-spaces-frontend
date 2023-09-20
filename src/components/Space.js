@@ -76,6 +76,7 @@ function Space() {
     return (
         <div>
             <div className="left-div">
+                <br />
                 <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'}Go back</a>
                 <hr />
                 <div>
