@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import config from '../config';
 
 
-function Share({ value, fetchShares }) {
+function Share({ value, fetchShares, fetchLoading }) {
 
     const formattedTimestamp = format(new Date(value.timestamp), "dd/MM/yyyy HH:mm");
     const showButton = sessionStorage.getItem("currentUser") === value.user.login;
@@ -30,7 +30,7 @@ function Share({ value, fetchShares }) {
             <div className="right-div-flex">
                 {showButton && (
                     <button
-                        onClick={() => deleteShare(value.id)}>Delete</button>
+                        onClick={() => deleteShare(value.id)} disabled={fetchLoading}>Delete</button>
                 )}
                 <p>{value.text}</p>
             </div>

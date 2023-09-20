@@ -62,7 +62,7 @@ function Spaces() {
                         onChange={(e) => setName(e.target.value)}
                     />
                 </div>
-                <button onClick={createSpace}>
+                <button onClick={createSpace} disabled={loading}>
                     {loading ? 'Creating...' : 'Create space'}
                 </button>
                 <p>{msg}</p>

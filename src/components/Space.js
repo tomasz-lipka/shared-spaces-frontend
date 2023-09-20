@@ -88,7 +88,7 @@ function Space() {
                         onChange={(e) => setText(e.target.value)}
                     />
                 </div>
-                <button onClick={createShare}>
+                <button onClick={createShare} disabled={createLoading}>
                     {createLoading ? 'Creating...' : 'Create share'}
                 </button>
                 <p>{msg}</p>
@@ -98,7 +98,7 @@ function Space() {
                 <h3>Space: {space.name}</h3>
                 <p>{fetchLoading ? 'Loading...' : '\u00A0'}</p>
                 {shares.map((value) => {
-                    return <Share value={value} fetchShares={fetchShares} />
+                    return <Share value={value} fetchShares={fetchShares} fetchLoading={fetchLoading} />
                 })}
             </div>
         </div>
