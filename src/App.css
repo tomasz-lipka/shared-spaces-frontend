@@ -94,3 +94,12 @@ nav a {
   flex: 3;
   text-align: left;
 }
+
+.member {
+  margin: 10px auto;
+  max-width: 70%;
+  border: 1px solid gray;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  border-radius: 10px;
+}
