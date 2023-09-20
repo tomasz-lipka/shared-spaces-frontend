@@ -76,7 +76,7 @@ function Space() {
     return (
         <div>
             <div className="left-div">
-                <button onClick={() => navigate(-1)}>Go back</button>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>Go back</a>
                 <hr />
                 <div>
                     <h4>New share</h4>
@@ -93,6 +93,8 @@ function Space() {
                 </button>
                 <p>{msg}</p>
                 <hr />
+
+
             </div>
             <div className="right-div">
                 <h3>Space: {space.name}</h3>

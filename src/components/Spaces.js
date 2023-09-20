@@ -72,10 +72,11 @@ function Spaces() {
                 {spaces.map((value) => {
                     let id = value.space.id
                     return (
-                        <div className="space" key={value.space.id}>
-                            <p>{value.space.name}</p>
-                            <button onClick={() => navigate(`/space/${id}`)}>View</button>
-                        </div>
+                        <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}`); }} className="link-like">
+                            <div className="space" key={value.space.id}>
+                                <p>{value.space.name}</p>
+                            </div>
+                        </a>
                     );
                 })}
             </div>
