@@ -73,10 +73,10 @@ function Member({ value, fetchMembers, id, hasPermission }) {
                 </div>
                 <div className='div-flex'>
                     <button onClick={() => deleteMember(value.user.id)}
-                        disabled={
-                            loadingDelete || !hasPermission 
-                            // || isCurrentUser(value)
-                        }
+                        // disabled={
+                        //     loadingDelete || !hasPermission 
+                        //     // || isCurrentUser(value)
+                        // }
                     >Delete</button>
                 </div>
             </div>

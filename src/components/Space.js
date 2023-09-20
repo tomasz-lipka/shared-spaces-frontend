@@ -11,6 +11,7 @@ function Space() {
     const [createLoading, setCreateLoading] = useState(false);
     const [fetchLoading, setFetchLoading] = useState(false);
     const [msg, setMsg] = useState('');
+    const [deleteMsg, setDeleteMsg] = useState('');
     const [shares, setShares] = useState([]);
 
     const fetchSpace = async () => {
@@ -66,8 +67,27 @@ function Space() {
         }
     };
 
+    const deleteSpace = async () => {
+        const response = await fetch(config.apiUrl + '/spaces/' + id , {
+            method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
+            },
+        });
+        if (response.ok) {
+            await response;
+            alert('Space deleted')
+            navigate(-1);
+        } else {
+            const errorMessage = await response.text();
+            setDeleteMsg(errorMessage);
+        }
+    };
+
 
     useEffect(() => {
+        setMsg('')
+        setDeleteMsg('')
         fetchSpace();
         fetchShares();
     }, []);
@@ -95,7 +115,9 @@ function Space() {
                 <p>{msg}</p>
                 <hr />
                 <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}/members`); }}>Members</a>
-
+                <hr />
+                <button onClick={deleteSpace} >Delete this space</button>
+                <p>{deleteMsg}</p>
             </div>
             <div className="right-div">
                 <h3>{space.name}</h3>
