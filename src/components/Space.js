@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import config from '../config';
-import { format } from "date-fns";
+import Share from "./Share"
 
 function Space() {
     const { id } = useParams();
@@ -28,7 +28,6 @@ function Space() {
     };
 
     const createShare = async () => {
-
         let bodyContent = new FormData();
         bodyContent.append("text", text);
         // bodyContent.append("file", "/workspaces/shared-spaces/project/test/test-image.jpg");
@@ -66,20 +65,7 @@ function Space() {
         }
     };
 
-    const deleteShare = async (shareId) => {
-        setDeleteLoading(true)
-        const response = await fetch(config.apiUrl + '/shares/' + shareId, {
-            method: 'DELETE',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
-        if (response.ok) {
-            await response;
-            fetchShares();
-        }
-    };
-
+   
     const setFetchLoadingFalse = () => {
         setFetchLoading(false)
     }
@@ -121,23 +107,7 @@ function Space() {
                 <p>{fetchLoading ? 'Loading...' : ''}</p>
                 <p>{deleteLoading ? 'Deleting...' : ''}</p>
                 {shares.map((value) => {
-                    const formattedTimestamp = format(new Date(value.timestamp), "dd/MM/yyyy HH:mm");
-                    const showButton = sessionStorage.getItem("currentUser") === value.user.login;
-                    return (
-                        <div className="share" key={value.id}>
-                            <div className="left-div-flex">
-                                <p><b>{value.user.login}</b></p>
-                                <p>{formattedTimestamp}</p>
-                            </div>
-                            <div className="right-div-flex">
-                                {showButton && (
-                                    <button
-                                        onClick={() => deleteShare(value.id)}>Delete</button>
-                                )}
-                                <p>{value.text}</p>
-                            </div>
-                        </div>
-                    );
+                    return <Share value={value} fetchShares={fetchShares} />
                 })}
             </div>
         </div>
