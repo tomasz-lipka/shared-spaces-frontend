@@ -69,7 +69,7 @@ function Space() {
     };
 
     const deleteSpace = async () => {
-        const response = await fetch(config.apiUrl + '/spaces/' + id , {
+        const response = await fetch(config.apiUrl + '/spaces/' + id, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`
@@ -84,25 +84,24 @@ function Space() {
             setDeleteMsg(errorMessage);
         }
     };
+
     const renameSpace = async () => {
-        const response = await fetch(config.apiUrl + '/spaces/' + id , {
+        const response = await fetch(config.apiUrl + '/spaces/' + id, {
             method: 'PUT',
             body: JSON.stringify({
                 "new-name": name
-              }),
+            }),
             headers: {
                 'Content-Type': 'application/json',
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`
             },
-            
         });
         if (response.ok) {
             await response;
 
             fetchSpace();
-        } 
+        }
     };
-
 
     useEffect(() => {
         setMsg('')
@@ -110,7 +109,6 @@ function Space() {
         fetchSpace();
         fetchShares();
     }, []);
-
 
     return (
         <div>
@@ -144,26 +142,19 @@ function Space() {
                         onChange={(e) => setName(e.target.value)}
                     />
                     <button onClick={renameSpace} >
-
- 
-
-                    Rename
-                </button>
+                        Rename
+                    </button>
                 </div>
-                
                 <hr />
                 <button onClick={deleteSpace} >Delete this space</button>
                 <p>{deleteMsg}</p>
                 <hr />
-
-                
-
             </div>
             <div className="right-div">
                 <h3>{space.name}</h3>
                 <p>{fetchLoading ? 'Loading...' : '\u00A0'}</p>
                 {shares.map((value) => {
-                    return <Share value={value} fetchShares={fetchShares} fetchLoading={fetchLoading} />
+                    return <Share value={value} fetchShares={fetchShares} fetchLoading={fetchLoading} key={value.id} />
                 })}
             </div>
         </div>

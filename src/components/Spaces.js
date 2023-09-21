@@ -72,8 +72,8 @@ function Spaces() {
                 {spaces.map((value) => {
                     let id = value.space.id
                     return (
-                        <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}`); }} className="link-like">
-                            <div className="space" key={value.space.id}>
+                        <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}`); }} className="link-like" key={value.space.id}>
+                            <div className="space">
                                 <p>{value.space.name}</p>
                             </div>
                         </a>

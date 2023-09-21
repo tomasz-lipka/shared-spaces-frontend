@@ -80,7 +80,7 @@ function Members() {
 
 
     useEffect(() => {
-        
+
         fetchSpace();
         fetchMembers();
 
@@ -112,9 +112,9 @@ function Members() {
                 <h3>{space.name} {'>'} members</h3>
                 <p>{loadingMembers ? 'Loading...' : '\u00A0'}</p>
                 {members.map((value) => {
-                    return <Member value={value}  fetchMembers={fetchMembers} id={id} 
-                    hasPermission={value.user.login === sessionStorage.getItem("currentUser") && value.is_admin}
-                     />
+                    return <Member value={value} fetchMembers={fetchMembers} id={id}
+                        hasPermission={value.user.login === sessionStorage.getItem("currentUser") && value.is_admin}
+                        key={value.user.id} />
                 })}
             </div>
         </div >
