@@ -1,48 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import config from '../config';
+import { makeRequest } from "../Helper"
 
-function Spaces() {
-    const [name, setName] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [msg, setMsg] = useState('');
+function Spaces({ setMsg }) {
+    const [spaceName, setSpaceName] = useState('');
     const [spaces, setSpaces] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const createSpace = async () => {
-        setMsg('')
+        setMsg('Please wait...');
         setLoading(true);
-        const response = await fetch(config.apiUrl + '/spaces', {
-            method: 'POST',
-            body: `{
-            "name": "${name}"
-          }`,
-            headers: {
-                'Content-Type': 'application/json',
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
+        let requestBody = JSON.stringify({
+            "name": spaceName
         });
+        let response = await makeRequest('/spaces', 'POST', requestBody)
         if (response.ok) {
             fetchSpaces();
-            setLoading(false);
         } else {
-            const errorMessage = await response.text();
-            setMsg(errorMessage);
-            setLoading(false);
+            setMsg(await response.text());
+            setLoading(false)
         }
     };
 
-
     const fetchSpaces = async () => {
-        const response = await fetch(config.apiUrl + '/spaces', {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
+        setMsg('Please wait...')
+        setLoading(true)
+        let response = await makeRequest('/spaces', 'GET', null)
         if (response.ok) {
-            const data = await response.json();
-            setSpaces(data);
+            setSpaces(await response.json());
         }
+        setMsg('-');
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -56,25 +44,24 @@ function Spaces() {
                 <div>
                     <h4>New space</h4>
                     <input
-                        placeholder="Enter the name..."
+                        placeholder="Name for new space..."
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={spaceName}
+                        onChange={(e) => setSpaceName(e.target.value)}
                     />
                 </div>
-                <button onClick={createSpace} disabled={loading}>
-                    {loading ? 'Creating...' : 'Create space'}
-                </button>
-                <p>{msg}</p>
+                <button onClick={createSpace} disabled={loading}>Create space</button>
             </div>
             <div className="right-div">
                 <h3>My spaces</h3>
-                {spaces.map((value) => {
-                    let id = value.space.id
+                {spaces.map((item) => {
                     return (
-                        <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}`); }} className="link-like" key={value.space.id}>
+                        <a
+                            href="#"
+                            onClick={(e) => { e.preventDefault(); navigate(`/space/${item.space.id}`); }}
+                            className="link-like" key={item.space.id}>
                             <div className="space">
-                                <p>{value.space.name}</p>
+                                <p>{item.space.name}</p>
                             </div>
                         </a>
                     );

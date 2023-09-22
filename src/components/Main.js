@@ -36,9 +36,7 @@ function Main() {
         <Link to="/edit-pwd" className="nav-item">Change password</Link>
         <Link to="/" className="nav-item" onClick={handleLogout}>{loading ? 'Logging out...' : 'Logout (' + sessionStorage.getItem("currentUser") + ')'}</Link>
       </nav>
-      <div className="msg">
-        {msg}
-      </div>
+      <div className="msg">{msg}</div>
       <Routes>
         <Route path="/" element={<Spaces setMsg={setMsg} />}></Route>
         <Route path="/edit-pwd" element={<EditPwd setMsg={setMsg} />}></Route>
