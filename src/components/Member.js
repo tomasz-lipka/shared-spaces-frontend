@@ -1,7 +1,7 @@
 import Config from '../Config';
 import React, { useState, useEffect } from 'react';
 
-function Member({ value, fetchMembers, spaceId, hasPermission }) {
+function Member({ value, fetchMembers, spaceId }) {
 
     const [loadingDelete, setLoadingDelete] = useState(false);
     const [isChecked, setIsChecked] = useState(false);

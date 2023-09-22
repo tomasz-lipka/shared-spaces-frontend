@@ -17,24 +17,23 @@ function Space({ setMsg }) {
         setLoading(true)
     }
 
+    function endFunction() {
+        setMsg('\u00A0');
+        setLoading(false);
+    }
+
     const fetchSpace = async () => {
         startFunction()
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
-        if (response.ok) {
-            setSpace(await response.json());
-        }
-        setMsg('\u00A0');
-        setLoading(false);
+        setSpace(await response.json());
+        endFunction()
     };
 
     const fetchShares = async () => {
         startFunction()
         let response = await makeRequest('/spaces/' + spaceId + '/shares', 'GET', null)
-        if (response.ok) {
-            setShares(await response.json());
-        }
-        setMsg('\u00A0');
-        setLoading(false);
+        setShares(await response.json());
+        endFunction()
     };
 
     const createShare = async () => {
@@ -47,6 +46,7 @@ function Space({ setMsg }) {
         let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
         if (response.ok) {
             fetchShares();
+            setText('')
         } else {
             setMsg(await response.text());
             setLoading(false)
@@ -61,6 +61,7 @@ function Space({ setMsg }) {
         let response = await makeRequest('/spaces/' + spaceId, 'PUT', requestBody);
         if (response.ok) {
             fetchSpace();
+            setSpaceNewName('')
         } else {
             setMsg(await response.text());
             setLoading(false)
@@ -75,6 +76,7 @@ function Space({ setMsg }) {
             alert('Space deleted')
         } else {
             setMsg(await response.text());
+            setLoading(false)
         }
     };
 
@@ -109,6 +111,7 @@ function Space({ setMsg }) {
                         value={spaceNewName}
                         onChange={(e) => setSpaceNewName(e.target.value)}
                     />
+                    <br />
                     <button onClick={renameSpace} disabled={loading}>Rename space</button>
                 </div>
                 <hr />
@@ -117,9 +120,11 @@ function Space({ setMsg }) {
             </div>
             <div className="right-div">
                 <h3>{space.name}</h3>
-                {shares.map((item) => {
-                    return <Share share={item} fetchShares={fetchShares} setMsg={setMsg} key={item.id} />
-                })}
+                {shares.length === 0 ? (<p>No shares</p>) : (
+                    shares.map((item) => (
+                        <Share share={item} fetchShares={fetchShares} setMsg={setMsg} key={item.id} />
+                    ))
+                )}
             </div>
         </div>
     );

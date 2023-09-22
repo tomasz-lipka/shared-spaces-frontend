@@ -20,6 +20,7 @@ function Spaces({ setMsg }) {
         let response = await makeRequest('/spaces', 'POST', requestBody)
         if (response.ok) {
             fetchSpaces();
+            setSpaceName('')
         } else {
             setMsg(await response.text());
             setLoading(false)
