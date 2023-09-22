@@ -1,24 +1,18 @@
 import { format } from "date-fns";
-import Config from '../Config';
+import { makeRequest } from "../Helper"
+import React, { useState } from 'react';
 
-
-function Share({ share, fetchShares, loading }) {
+function Share({ share, fetchShares, setMsg }) {
 
     const formattedTimestamp = format(new Date(share.timestamp), "dd/MM/yyyy HH:mm");
     const showButton = sessionStorage.getItem("currentUser") === share.user.login;
-
+    const [loading, setLoading] = useState(false);
 
     const deleteShare = async (shareId) => {
-        const response = await fetch(Config.apiUrl + '/shares/' + shareId, {
-            method: 'DELETE',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
-        if (response.ok) {
-            await response;
-            fetchShares();
-        }
+        setMsg('Please wait...')
+        setLoading(true)
+        await makeRequest('/shares/' + shareId, 'DELETE', null)
+        fetchShares();
     };
 
     return (

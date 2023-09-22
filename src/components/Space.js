@@ -118,7 +118,7 @@ function Space({ setMsg }) {
             <div className="right-div">
                 <h3>{space.name}</h3>
                 {shares.map((item) => {
-                    return <Share share={item} fetchShares={fetchShares} loading={loading} key={item.id} />
+                    return <Share share={item} fetchShares={fetchShares} setMsg={setMsg} key={item.id} />
                 })}
             </div>
         </div>

@@ -7,9 +7,13 @@ function Spaces({ setMsg }) {
     const [spaces, setSpaces] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    function startFunction() {
+        setMsg('Please wait...')
+        setLoading(true)
+    }
+
     const createSpace = async () => {
-        setMsg('Please wait...');
-        setLoading(true);
+        startFunction()
         let requestBody = JSON.stringify({
             "name": spaceName
         });
@@ -23,8 +27,7 @@ function Spaces({ setMsg }) {
     };
 
     const fetchSpaces = async () => {
-        setMsg('Please wait...')
-        setLoading(true)
+        startFunction()
         let response = await makeRequest('/spaces', 'GET', null)
         if (response.ok) {
             setSpaces(await response.json());
