@@ -11,12 +11,14 @@ function EditPwd({ setMsg }) {
         setMsg('-')
         setLoading(true)
         setMsg('Please wait...')
+
         let requestBody = JSON.stringify({
             "old-password": oldPwd,
             "new-password": newPwd,
             "confirm-password": confirmPwd
         });
         let response = await makeRequest('/change-password', 'PUT', requestBody)
+        
         setMsg(await response.text())
         setLoading(false)
     };
