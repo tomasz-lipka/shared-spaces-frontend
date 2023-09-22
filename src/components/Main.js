@@ -41,7 +41,7 @@ function Main() {
         <Route path="/" element={<Spaces setMsg={setMsg} />}></Route>
         <Route path="/edit-pwd" element={<EditPwd setMsg={setMsg} />}></Route>
         <Route path="/space/:spaceId" element={<Space setMsg={setMsg} />}></Route>
-        <Route path="/space/:id/members" element={<Members />}></Route>
+        <Route path="/space/:spaceId/members" element={<Members />}></Route>
       </Routes>
     </div>
   );

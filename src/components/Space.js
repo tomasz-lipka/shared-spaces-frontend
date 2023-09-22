@@ -4,8 +4,8 @@ import Share from "./Share"
 import { makeRequest, makeShareRequest } from "../Helper"
 
 function Space({ setMsg }) {
-    const { spaceId } = useParams();
     const navigate = useNavigate()
+    const { spaceId } = useParams();
     const [loading, setLoading] = useState(false);
     const [space, setSpace] = useState('');
     const [text, setText] = useState('');

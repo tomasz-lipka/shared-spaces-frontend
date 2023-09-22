@@ -5,18 +5,19 @@ import Member from "./Member"
 
 function Members() {
 
-    const { id } = useParams();
+    const navigate = useNavigate()
+    const { spaceId } = useParams();
     const [space, setSpace] = useState('');
     const [members, setMembers] = useState([]);
     const [loadingMembers, setLoadingMembers] = useState(false);
     const [loadingAddMember, setLoadingAddMember] = useState(false);
     const [userId, setUserId] = useState('');
-    const navigate = useNavigate()
+   
     const [msg, setMsg] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
 
     const fetchSpace = async () => {
-        const response = await fetch(Config.apiUrl + '/spaces/' + id, {
+        const response = await fetch(Config.apiUrl + '/spaces/' + spaceId, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`
@@ -31,7 +32,7 @@ function Members() {
     const fetchMembers = async () => {
         setMsg('')
         setLoadingMembers(true)
-        const response = await fetch(Config.apiUrl + '/spaces/' + id + '/members', {
+        const response = await fetch(Config.apiUrl + '/spaces/' + spaceId + '/members', {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`
@@ -50,7 +51,7 @@ function Members() {
 
     const addMember = async () => {
         setLoadingAddMember(true)
-        const response = await fetch(Config.apiUrl + '/spaces/' + id + '/members', {
+        const response = await fetch(Config.apiUrl + '/spaces/' + spaceId + '/members', {
             method: 'POST',
             body: `{
             "user-id": "${userId}"
@@ -112,7 +113,7 @@ function Members() {
                 <h3>{space.name} {'>'} members</h3>
                 <p>{loadingMembers ? 'Loading...' : '\u00A0'}</p>
                 {members.map((value) => {
-                    return <Member value={value} fetchMembers={fetchMembers} id={id}
+                    return <Member value={value} fetchMembers={fetchMembers} spaceId={spaceId}
                         hasPermission={value.user.login === sessionStorage.getItem("currentUser") && value.is_admin}
                         key={value.user.id} />
                 })}
