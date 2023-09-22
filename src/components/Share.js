@@ -2,10 +2,10 @@ import { format } from "date-fns";
 import config from '../config';
 
 
-function Share({ value, fetchShares, fetchLoading }) {
+function Share({ share, fetchShares, loading }) {
 
-    const formattedTimestamp = format(new Date(value.timestamp), "dd/MM/yyyy HH:mm");
-    const showButton = sessionStorage.getItem("currentUser") === value.user.login;
+    const formattedTimestamp = format(new Date(share.timestamp), "dd/MM/yyyy HH:mm");
+    const showButton = sessionStorage.getItem("currentUser") === share.user.login;
 
 
     const deleteShare = async (shareId) => {
@@ -22,17 +22,17 @@ function Share({ value, fetchShares, fetchLoading }) {
     };
 
     return (
-        <div className="share" key={value.id}>
+        <div className="share" key={share.id}>
             <div className="left-div-flex">
-                <p><b>{value.user.login}</b></p>
+                <p><b>{share.user.login}</b></p>
                 <p>{formattedTimestamp}</p>
             </div>
             <div className="right-div-flex">
                 {showButton && (
                     <button
-                        onClick={() => deleteShare(value.id)} disabled={fetchLoading}>Delete</button>
+                        onClick={() => deleteShare(share.id)} disabled={loading}>Delete</button>
                 )}
-                <p>{value.text}</p>
+                <p>{share.text}</p>
             </div>
         </div>
     );

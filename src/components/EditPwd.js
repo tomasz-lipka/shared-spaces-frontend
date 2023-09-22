@@ -21,7 +21,7 @@ function EditPwd({ setMsg }) {
     };
 
     useEffect(() => {
-        setMsg('-')
+        setMsg('\u00A0')
     }, []);
 
     return (

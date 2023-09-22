@@ -1,111 +1,84 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import config from '../config';
 import Share from "./Share"
+import { makeRequest, makeShareRequest } from "../Helper"
 
-function Space() {
-    const { id } = useParams();
+function Space({ setMsg }) {
+    const { spaceId } = useParams();
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
     const [space, setSpace] = useState('');
     const [text, setText] = useState('');
-    const [createLoading, setCreateLoading] = useState(false);
-    const [fetchLoading, setFetchLoading] = useState(false);
-    const [msg, setMsg] = useState('');
-    const [deleteMsg, setDeleteMsg] = useState('');
     const [shares, setShares] = useState([]);
-    const [name, setName] = useState('');
+    const [spaceNewName, setSpaceNewName] = useState('');
+
+    function startFunction() {
+        setMsg('Please wait...')
+        setLoading(true)
+    }
 
     const fetchSpace = async () => {
-        const response = await fetch(config.apiUrl + '/spaces/' + id, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
+        startFunction()
+        let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
-            const data = await response.json();
-            setSpace(data);
+            setSpace(await response.json());
         }
+        setMsg('\u00A0');
+        setLoading(false);
+    };
+
+    const fetchShares = async () => {
+        startFunction()
+        let response = await makeRequest('/spaces/' + spaceId + '/shares', 'GET', null)
+        if (response.ok) {
+            setShares(await response.json());
+        }
+        setMsg('\u00A0');
+        setLoading(false);
     };
 
     const createShare = async () => {
+        startFunction()
+
         let bodyContent = new FormData();
         bodyContent.append("text", text);
         // bodyContent.append("file", "/workspaces/shared-spaces/project/test/test-image.jpg");
 
-        setMsg('')
-        setCreateLoading(true);
-        const response = await fetch(config.apiUrl + '/spaces/' + id + '/shares', {
-            method: 'POST',
-            body: bodyContent,
-            headers: {
-                "Accept": "*/*",
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
+        let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
         if (response.ok) {
             fetchShares();
         } else {
-            const errorMessage = await response.text();
-            setMsg(errorMessage);
-            setCreateLoading(false);
+            setMsg(await response.text());
+            setLoading(false)
         }
     }
 
-    const fetchShares = async () => {
-        setFetchLoading(true)
-        const response = await fetch(config.apiUrl + '/spaces/' + id + '/shares', {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
+    const renameSpace = async () => {
+        startFunction()
+        let requestBody = JSON.stringify({
+            "new-name": spaceNewName
         });
+        let response = await makeRequest('/spaces/' + spaceId, 'PUT', requestBody);
         if (response.ok) {
-            const data = await response.json();
-            setShares(data);
-            setCreateLoading(false);
-            setFetchLoading(false)
+            fetchSpace();
+        } else {
+            setMsg(await response.text());
+            setLoading(false)
         }
     };
 
     const deleteSpace = async () => {
-        const response = await fetch(config.apiUrl + '/spaces/' + id, {
-            method: 'DELETE',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
+        startFunction()
+        let response = await makeRequest('/spaces/' + spaceId, 'DELETE', null)
         if (response.ok) {
-            await response;
-            alert('Space deleted')
             navigate(-1);
+            alert('Space deleted')
         } else {
-            const errorMessage = await response.text();
-            setDeleteMsg(errorMessage);
-        }
-    };
-
-    const renameSpace = async () => {
-        const response = await fetch(config.apiUrl + '/spaces/' + id, {
-            method: 'PUT',
-            body: JSON.stringify({
-                "new-name": name
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
-        if (response.ok) {
-            await response;
-
-            fetchSpace();
+            setMsg(await response.text());
         }
     };
 
     useEffect(() => {
-        setMsg('')
-        setDeleteMsg('')
         fetchSpace();
         fetchShares();
     }, []);
@@ -114,10 +87,11 @@ function Space() {
         <div>
             <div className="left-div">
                 <br />
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'}Go back</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<< '}Back</a>
+                <hr />
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${spaceId}/members`); }}>Members</a>
                 <hr />
                 <div>
-                    <h4>New share</h4>
                     <textarea
                         type="text"
                         placeholder="Enter your text here..."
@@ -126,35 +100,25 @@ function Space() {
                         onChange={(e) => setText(e.target.value)}
                     />
                 </div>
-                <button onClick={createShare} disabled={createLoading}>
-                    {createLoading ? 'Creating...' : 'Create share'}
-                </button>
-                <p>{msg}</p>
-                <hr />
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/space/${id}/members`); }}>Members</a>
+                <button onClick={createShare} disabled={loading}>Create share</button>
                 <hr />
                 <div>
-                    <h4>Rename space</h4>
                     <input
-                        placeholder="Enter new name..."
+                        placeholder="New name for space..."
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={spaceNewName}
+                        onChange={(e) => setSpaceNewName(e.target.value)}
                     />
-                    <button onClick={renameSpace} >
-                        Rename
-                    </button>
+                    <button onClick={renameSpace} disabled={loading}>Rename space</button>
                 </div>
                 <hr />
-                <button onClick={deleteSpace} >Delete this space</button>
-                <p>{deleteMsg}</p>
+                <button onClick={deleteSpace} disabled={loading}>Delete this space</button>
                 <hr />
             </div>
             <div className="right-div">
                 <h3>{space.name}</h3>
-                <p>{fetchLoading ? 'Loading...' : '\u00A0'}</p>
-                {shares.map((value) => {
-                    return <Share value={value} fetchShares={fetchShares} fetchLoading={fetchLoading} key={value.id} />
+                {shares.map((item) => {
+                    return <Share share={item} fetchShares={fetchShares} loading={loading} key={item.id} />
                 })}
             </div>
         </div>

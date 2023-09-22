@@ -29,7 +29,7 @@ function Spaces({ setMsg }) {
         if (response.ok) {
             setSpaces(await response.json());
         }
-        setMsg('-');
+        setMsg('\u00A0');
         setLoading(false);
     };
 
@@ -41,8 +41,8 @@ function Spaces({ setMsg }) {
     return (
         <div>
             <div className="left-div">
+                <br />
                 <div>
-                    <h4>New space</h4>
                     <input
                         placeholder="Name for new space..."
                         type="text"
@@ -50,7 +50,7 @@ function Spaces({ setMsg }) {
                         onChange={(e) => setSpaceName(e.target.value)}
                     />
                 </div>
-                <button onClick={createSpace} disabled={loading}>Create space</button>
+                <button onClick={createSpace} disabled={loading}>Create a new space</button>
             </div>
             <div className="right-div">
                 <h3>My spaces</h3>

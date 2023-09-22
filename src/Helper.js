@@ -11,3 +11,14 @@ export function makeRequest(endpoint, method, body) {
     });
     return response
 };
+
+export function makeShareRequest(endpoint, method, body) {
+    let response = fetch(config.apiUrl + endpoint, {
+        method: method,
+        body: body,
+        headers: {
+            authorization: `Bearer ${sessionStorage.getItem("access_token")}`
+        },
+    });
+    return response
+};

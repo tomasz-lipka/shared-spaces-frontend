@@ -25,7 +25,7 @@ function Main() {
   };
 
   useEffect(() => {
-    setMsg('-')
+    setMsg('\u00A0')
   }, []);
 
   return (
@@ -40,7 +40,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<Spaces setMsg={setMsg} />}></Route>
         <Route path="/edit-pwd" element={<EditPwd setMsg={setMsg} />}></Route>
-        <Route path="/space/:id" element={<Space />}></Route>
+        <Route path="/space/:spaceId" element={<Space setMsg={setMsg} />}></Route>
         <Route path="/space/:id/members" element={<Members />}></Route>
       </Routes>
     </div>
