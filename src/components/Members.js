@@ -60,7 +60,7 @@ function Members({ setMsg }) {
         <div >
             <div className="left-div">
                 <br />
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'}Go back</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
                 <hr />
                 <div>
                     <input
@@ -74,9 +74,9 @@ function Members({ setMsg }) {
                 <hr />
             </div>
             <div className="right-div">
-                {loading ? '\u00A0' : <h3>{space.name} members</h3>}
-                {members.map((value) => {
-                    return <Member value={value} fetchMembers={fetchMembers} spaceId={spaceId} key={value.user.id} />
+                <h3>{space.name} members</h3>
+                {members.map((item) => {
+                    return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId} key={item.user.id} setMsg={setMsg} />
                 })}
             </div>
         </div >

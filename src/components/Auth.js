@@ -130,6 +130,10 @@ function Auth({ setAuthenticated }) {
       </div>
       <button onClick={handleRegister}>Register</button>
       <p>{registerMsg}</p>
+      <p>
+        This is a educational project. Please don't put any confidential information
+        (especially passwrod that you already use somewhere else) and other data that you dont want to loose.
+      </p>
     </div >
   );
 }

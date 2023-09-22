@@ -58,18 +58,24 @@ function Spaces({ setMsg }) {
             </div>
             <div className="right-div">
                 <h3>My spaces</h3>
-                {spaces.map((item) => {
-                    return (
-                        <a
-                            href="#"
-                            onClick={(e) => { e.preventDefault(); navigate(`/space/${item.space.id}`); }}
-                            className="link-like" key={item.space.id}>
-                            <div className="space">
-                                <p>{item.space.name}</p>
-                            </div>
-                        </a>
-                    );
-                })}
+                {
+                    spaces.length === 0 ? (
+                        <p>You have no spaces</p>
+                    ) : (
+                        spaces.map((item) => (
+                            <a
+                                href="#"
+                                onClick={(e) => { e.preventDefault(); navigate(`/space/${item.space.id}`); }}
+                                className="link-like"
+                                key={item.space.id}
+                            >
+                                <div className="space">
+                                    <p>{item.space.name}</p>
+                                </div>
+                            </a>
+                        ))
+                    )
+                }
             </div>
         </div>
     );

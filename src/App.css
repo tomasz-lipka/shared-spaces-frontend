@@ -165,7 +165,7 @@ input:checked+.slider:before {
   transform: translateX(26px);
 }
 
-.msg{
-  height: 10%;
-  background-color: #ccc;
+.msg {
+  background-color: honeydew;
+  font-size: 1.5em;
 }
