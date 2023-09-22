@@ -1,9 +1,7 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import config from '../config';
 import { makeRequest } from "../Helper"
 
-function EditPwd() {
+function EditPwd({ setMsg }) {
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
@@ -15,13 +13,15 @@ function EditPwd() {
             "confirm-password": confirmPwd
         });
         let response = await makeRequest('/change-password', 'PUT', requestBody)
+
+
         const msg = await response.text();
-        if (response.ok) {
-            console.log(msg)
-        } else {
-            console.log(msg)
-        }
+        setMsg(msg)
     };
+
+    useEffect(() => {
+        setMsg('-')
+    }, []);
 
     return (
         <div>
@@ -45,7 +45,7 @@ function EditPwd() {
                 onChange={(e) => setConfirmPwd(e.target.value)}
             />
             <br /><br />
-            <button onClick={handleSubmit}>Change password</button>
+            <button onClick={handleSubmit}>Submit</button>
         </div>
     );
 }
