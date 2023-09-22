@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import config from '../config';
+import Config from '../Config';
 
 
 function Share({ share, fetchShares, loading }) {
@@ -9,7 +9,7 @@ function Share({ share, fetchShares, loading }) {
 
 
     const deleteShare = async (shareId) => {
-        const response = await fetch(config.apiUrl + '/shares/' + shareId, {
+        const response = await fetch(Config.apiUrl + '/shares/' + shareId, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`

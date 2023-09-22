@@ -4,7 +4,7 @@ import EditPwd from "./EditPwd";
 import Space from "./Space";
 import Members from "./Members";
 import { Routes, Route, Link } from "react-router-dom";
-import config from '../config';
+import Config from '../Config';
 
 function Main() {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ function Main() {
 
   const handleLogout = async () => {
     setLoading(true);
-    const response = await fetch(config.apiUrl + '/logout', {
+    const response = await fetch(Config.apiUrl + '/logout', {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${sessionStorage.getItem("access_token")}`

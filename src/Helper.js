@@ -1,7 +1,7 @@
-import config from './config';
+import Config from './Config';
 
 export function makeRequest(endpoint, method, body) {
-    let response = fetch(config.apiUrl + endpoint, {
+    let response = fetch(Config.apiUrl + endpoint, {
         method: method,
         body: body,
         headers: {
@@ -13,7 +13,7 @@ export function makeRequest(endpoint, method, body) {
 };
 
 export function makeShareRequest(endpoint, method, body) {
-    let response = fetch(config.apiUrl + endpoint, {
+    let response = fetch(Config.apiUrl + endpoint, {
         method: method,
         body: body,
         headers: {

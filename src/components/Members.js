@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import config from '../config';
+import Config from '../Config';
 import Member from "./Member"
 
 function Members() {
@@ -16,7 +16,7 @@ function Members() {
     const [isAdmin, setIsAdmin] = useState(false);
 
     const fetchSpace = async () => {
-        const response = await fetch(config.apiUrl + '/spaces/' + id, {
+        const response = await fetch(Config.apiUrl + '/spaces/' + id, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`
@@ -31,7 +31,7 @@ function Members() {
     const fetchMembers = async () => {
         setMsg('')
         setLoadingMembers(true)
-        const response = await fetch(config.apiUrl + '/spaces/' + id + '/members', {
+        const response = await fetch(Config.apiUrl + '/spaces/' + id + '/members', {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`
@@ -50,7 +50,7 @@ function Members() {
 
     const addMember = async () => {
         setLoadingAddMember(true)
-        const response = await fetch(config.apiUrl + '/spaces/' + id + '/members', {
+        const response = await fetch(Config.apiUrl + '/spaces/' + id + '/members', {
             method: 'POST',
             body: `{
             "user-id": "${userId}"

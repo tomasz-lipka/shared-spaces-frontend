@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import config from '../config';
+import Config from '../Config';
 
 function Auth({ setAuthenticated }) {
   const [login, setLogin] = useState('');
@@ -18,7 +18,7 @@ function Auth({ setAuthenticated }) {
     setRegisterMsg('')
     setLoading(true);
 
-    const response = await fetch(config.apiUrl + '/login', {
+    const response = await fetch(Config.apiUrl + '/login', {
       method: 'POST',
       body: `{
         "login": "${login}",
@@ -43,7 +43,7 @@ function Auth({ setAuthenticated }) {
   const handleRegister = async () => {
     setMsg('')
     setRegisterMsg('')
-    const response = await fetch(config.apiUrl + '/register', {
+    const response = await fetch(Config.apiUrl + '/register', {
       method: 'POST',
       body: `{
         "login": "${registerLogin}",

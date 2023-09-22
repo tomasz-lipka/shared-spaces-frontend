@@ -1,4 +1,4 @@
-import config from '../config';
+import Config from '../Config';
 import React, { useState, useEffect } from 'react';
 
 function Member({ value, fetchMembers, id, hasPermission }) {
@@ -8,7 +8,7 @@ function Member({ value, fetchMembers, id, hasPermission }) {
 
     const deleteMember = async (userId) => {
         setLoadingDelete(true)
-        const response = await fetch(config.apiUrl + '/spaces/' + id + '/members/' + userId, {
+        const response = await fetch(Config.apiUrl + '/spaces/' + id + '/members/' + userId, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem("access_token")}`
@@ -23,7 +23,7 @@ function Member({ value, fetchMembers, id, hasPermission }) {
 
     const changeAdminPermission = async (userId, isChecked) => {
         console.log(isChecked)
-        const response = await fetch(config.apiUrl + '/spaces/' + id + '/members/' + userId, {
+        const response = await fetch(Config.apiUrl + '/spaces/' + id + '/members/' + userId, {
             method: 'PUT',
             body: JSON.stringify({
                 "is-admin": Boolean(isChecked)
