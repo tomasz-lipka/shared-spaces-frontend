@@ -5,18 +5,20 @@ function EditPwd({ setMsg }) {
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async () => {
+        setMsg('-')
+        setLoading(true)
+        setMsg('Please wait...')
         let requestBody = JSON.stringify({
             "old-password": oldPwd,
             "new-password": newPwd,
             "confirm-password": confirmPwd
         });
         let response = await makeRequest('/change-password', 'PUT', requestBody)
-
-
-        const msg = await response.text();
-        setMsg(msg)
+        setMsg(await response.text())
+        setLoading(false)
     };
 
     useEffect(() => {
@@ -45,7 +47,7 @@ function EditPwd({ setMsg }) {
                 onChange={(e) => setConfirmPwd(e.target.value)}
             />
             <br /><br />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} disabled={loading}>Submit</button>
         </div>
     );
 }
