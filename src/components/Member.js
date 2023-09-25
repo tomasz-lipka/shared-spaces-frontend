@@ -1,50 +1,49 @@
-import Config from '../Config';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { makeRequest } from "../Helper"
 
-function Member({ value, fetchMembers, spaceId }) {
+function Member({ member, fetchMembers, spaceId, setMsg, loading, setLoading }) {
 
-    const [loadingDelete, setLoadingDelete] = useState(false);
+    const navigate = useNavigate()
     const [isChecked, setIsChecked] = useState(false);
 
-    const deleteMember = async (userId) => {
-        setLoadingDelete(true)
-        const response = await fetch(Config.apiUrl + '/spaces/' + spaceId + '/members/' + userId, {
-            method: 'DELETE',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
-        });
-        if (response.ok) {
-            await response;
-            fetchMembers();
+    function startFunction() {
+        setMsg('Please wait...');
+        setLoading(true);
+    }
+
+    const deleteMember = async (userId, login) => {
+        startFunction()
+        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
+
+        if (sessionStorage.getItem("currentUser") === login) {
+            setLoading(true);
+            alert("You left the space")
+            navigate(-2);
         }
-        setLoadingDelete(false)
+        if (response.ok) {
+            fetchMembers();
+
+        } else {
+            setMsg(await response.text());
+            setLoading(false);
+        }
     };
 
     const changeAdminPermission = async (userId, isChecked) => {
-        console.log(isChecked)
-        const response = await fetch(Config.apiUrl + '/spaces/' + spaceId + '/members/' + userId, {
-            method: 'PUT',
-            body: JSON.stringify({
-                "is-admin": Boolean(isChecked)
-              }),
-            headers: {
-                'Content-Type': 'application/json',
-                authorization: `Bearer ${sessionStorage.getItem("access_token")}`
-            },
+        startFunction()
+        let requestBody = JSON.stringify({
+            "is-admin": Boolean(isChecked)
         });
+        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'PUT', requestBody)
+
         if (response.ok) {
-            await response;
             fetchMembers();
-           
-        } 
-    };
-
-
-
-    function isCurrentUser(value) {
-        return value.user.login === sessionStorage.getItem("currentUser")
-
+        } else {
+            setMsg(await response.text());
+            setIsChecked(!isChecked)
+            setLoading(false);
+        }
     };
 
     const toggleSwitch = (userId) => {
@@ -53,31 +52,26 @@ function Member({ value, fetchMembers, spaceId }) {
     };
 
     useEffect(() => {
-        setIsChecked(value.is_admin)
+        setIsChecked(member.is_admin)
     }, []);
 
     return (
-        <div className="member" key={value.user.id}>
+        <div className="member" key={member.user.id}>
             <div className='div-flex'>
-                <h4>{value.user.login}</h4>
+                <h4>{member.user.login}</h4>
             </div>
             <div className='div-flex-basic'>
                 <div className='div-flex'>
                     <div className="switch-container">
                         <span className="label"><small>Admin: </small></span>
                         <label className="switch">
-                            <input type="checkbox" checked={isChecked} onChange={() => toggleSwitch(value.user.id)} />
+                            <input type="checkbox" checked={isChecked} onChange={() => toggleSwitch(member.user.id)} />
                             <span className="slider"></span>
                         </label>
                     </div>
                 </div>
                 <div className='div-flex'>
-                    <button onClick={() => deleteMember(value.user.id)}
-                        // disabled={
-                        //     loadingDelete || !hasPermission 
-                        //     // || isCurrentUser(value)
-                        // }
-                    >Delete</button>
+                    <button onClick={() => deleteMember(member.user.id, member.user.login)} disabled={loading}>Delete</button>
                 </div>
             </div>
         </div>

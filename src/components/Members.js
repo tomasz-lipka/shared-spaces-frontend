@@ -17,23 +17,36 @@ function Members({ setMsg }) {
         setLoading(true);
     }
 
-    function endFunction() {
+    function endFunctionOk() {
         setMsg('\u00A0');
+        setLoading(false);
+    }
+
+    const endFunctionErr = async (response) => {
+        setMsg(await response.text());
         setLoading(false);
     }
 
     const fetchSpace = async () => {
         startFunction();
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
-        setSpace(await response.json());
-        endFunction();
+        if (response.ok) {
+            setSpace(await response.json());
+            endFunctionOk();
+        }else {
+            endFunctionErr(response)
+        }
     };
 
     const fetchMembers = async () => {
         startFunction()
         let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null)
-        setMembers(await response.json());
-        endFunction();
+        if (response.ok) {
+            setMembers(await response.json());
+            endFunctionOk();
+        } else {
+            endFunctionErr(response)
+        }
     };
 
     const addMember = async () => {
@@ -76,7 +89,8 @@ function Members({ setMsg }) {
             <div className="right-div">
                 <h3>{space.name} members</h3>
                 {members.map((item) => {
-                    return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId} key={item.user.id} setMsg={setMsg} />
+                    return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId}
+                        key={item.user.id} setMsg={setMsg} loading={loading} setLoading={setLoading} />
                 })}
             </div>
         </div >

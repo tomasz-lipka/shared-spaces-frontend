@@ -7,6 +7,7 @@ function EditPwd({ setMsg }) {
     const [confirmPwd, setConfirmPwd] = useState('');
     const [loading, setLoading] = useState(false);
 
+    
     const changePwd = async () => {
         setMsg('Please wait...')
         setLoading(true)

@@ -17,23 +17,36 @@ function Space({ setMsg }) {
         setLoading(true)
     }
 
-    function endFunction() {
+    function endFunctionOk() {
         setMsg('\u00A0');
         setLoading(false);
     }
 
+    const endFunctionErr = async (response) => {
+        setMsg(await response.text());
+        setLoading(false);
+    }
+
     const fetchSpace = async () => {
-        startFunction()
+        startFunction();
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
-        setSpace(await response.json());
-        endFunction()
+        if (response.ok) {
+            setSpace(await response.json());
+            endFunctionOk();
+        } else {
+            endFunctionErr(response)
+        }
     };
 
     const fetchShares = async () => {
         startFunction()
         let response = await makeRequest('/spaces/' + spaceId + '/shares', 'GET', null)
-        setShares(await response.json());
-        endFunction()
+        if (response.ok) {
+            setShares(await response.json());
+            endFunctionOk();
+        } else {
+            endFunctionErr(response);
+        }
     };
 
     const createShare = async () => {
@@ -48,8 +61,7 @@ function Space({ setMsg }) {
             fetchShares();
             setText('')
         } else {
-            setMsg(await response.text());
-            setLoading(false)
+            endFunctionErr(response);
         }
     }
 
@@ -63,8 +75,7 @@ function Space({ setMsg }) {
             fetchSpace();
             setSpaceNewName('')
         } else {
-            setMsg(await response.text());
-            setLoading(false)
+            endFunctionErr(response);
         }
     };
 
@@ -75,8 +86,7 @@ function Space({ setMsg }) {
             navigate(-1);
             alert('Space deleted')
         } else {
-            setMsg(await response.text());
-            setLoading(false)
+            endFunctionErr(response);
         }
     };
 
