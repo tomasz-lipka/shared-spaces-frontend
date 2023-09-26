@@ -21,14 +21,15 @@ function Share({ share, fetchShares, setMsg }) {
             <div className="left-div-flex">
                 <p><b>{share.user.login}</b></p>
                 <p>{formattedTimestamp}</p>
-            </div>
-            <div className="right-div-flex">
-                {showButtons && !edit ? (
+                {showButtons && !edit && (
                     <div>
                         <button onClick={() => setEdit(true)}>Edit</button>
+                        <br />
                         <button onClick={() => deleteShare(share.id)}>Delete</button>
                     </div>
-                ) : null}
+                )}
+            </div>
+            <div className="right-div-flex">
                 {!edit ? (
                     <div className='div-flex-basic'>
                         <div className='div-flex'>

@@ -42,7 +42,12 @@ function Space({ setMsg }) {
         bodyContent.append("text", text);
         if (file) { bodyContent.append("file", file) }
         let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
-        response.ok ? fetchShares() : setMsg(await response.text())
+        if (response.ok) {
+            fetchShares()
+            setText('')
+        } else {
+            setMsg(await response.text())
+        }
     }
 
     async function renameSpace() {
@@ -105,7 +110,7 @@ function Space({ setMsg }) {
                     />
                 </div>
                 <br />
-                <button onClick={createShare} >Create share</button>
+                <button onClick={createShare} >Share</button>
                 <hr />
                 <div>
                     <input
@@ -118,7 +123,7 @@ function Space({ setMsg }) {
                     <button onClick={renameSpace} >Rename space</button>
                 </div>
                 <hr />
-                <button onClick={deleteSpace} >Delete this space</button>
+                <button onClick={deleteSpace} >Delete space</button>
                 <hr />
             </div>
             <div className="content-div">
