@@ -31,6 +31,7 @@ function Spaces({ setMsg }) {
 
     useEffect(() => {
         fetchSpaces();
+        // eslint-disable-next-line
     }, []);
 
     const navigate = useNavigate()

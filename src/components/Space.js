@@ -93,6 +93,7 @@ function Space({ setMsg }) {
     useEffect(() => {
         fetchSpace();
         fetchShares();
+        // eslint-disable-next-line
     }, []);
 
     return (

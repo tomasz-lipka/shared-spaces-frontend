@@ -11,7 +11,7 @@ function Members({ setMsg }) {
     const [members, setMembers] = useState([]);
     const [userId, setUserId] = useState('');
 
-    const fetchSpace = async () => {
+    async function fetchSpace() {
         setMsg('Please wait...');
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
@@ -50,6 +50,7 @@ function Members({ setMsg }) {
     useEffect(() => {
         fetchSpace();
         fetchMembers();
+    // eslint-disable-next-line
     }, []);
 
     return (
