@@ -171,25 +171,16 @@ input:checked+.slider:before {
 }
 
 .full-img {
-  width: 100%;   
-}
-
-.small-img {
-  width: 100%; 
-  border: 2px solid #000;
+  width: 100%;
 }
 
 .image-container {
-  display: inline-block;
-  margin-right: 10px; /* Add some spacing between images */
+  display: 'flex';
+  text-align: left;
 }
 
-.row {
-  display: flex;
-}
-
-/* Create three equal columns that sits next to each other */
-.column {
-  flex: 33.33%;
-  padding: 5px;
+.small-image {
+  height: 250px;
+  border: 1px solid #000;
+  margin-right: 10px;
 }

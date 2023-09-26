@@ -55,13 +55,13 @@ function Images({ setMsg }) {
                     images.length === 0 ? (
                         <p>No images</p>
                     ) : (
-                        <div style={{ display: 'flex' }}>
+                        <div className="image-container">
                         {images.map((item, index) => (
                           <img
                             key={index}
                             src={item.image_url}
                             alt='Images attached to the share'
-                            style={{ width: '100px', marginRight: '10px' }} // Set the width and add margin for spacing
+                            className="small-image"
                           />
                         ))}
                       </div>
