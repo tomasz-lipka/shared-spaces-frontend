@@ -59,8 +59,9 @@ function Images({ setMsg }) {
                             {images.map((item) => (
                                 <img
                                     src={item.image_url}
-                                    alt='Image attached to the share'
+                                    alt='Attached to the share'
                                     className="small-image"
+                                    key={item.image_url}
                                 />
                             ))}
                         </div>
