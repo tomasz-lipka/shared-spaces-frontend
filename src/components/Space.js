@@ -71,8 +71,7 @@ function Space({ setMsg }) {
     };
 
     function handleFileChange(event) {
-        const file = event.target.files[0];
-        setFile(file);
+        setFile(event.target.files[0]);
     };
 
     useEffect(() => {
