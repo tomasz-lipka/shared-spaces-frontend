@@ -11,7 +11,7 @@ function Space({ setMsg }) {
     const [text, setText] = useState('');
     const [shares, setShares] = useState([]);
     const [spaceNewName, setSpaceNewName] = useState('');
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [file, setFile] = useState(null);
 
 
     async function fetchSpace() {
@@ -38,18 +38,11 @@ function Space({ setMsg }) {
 
     async function createShare() {
         setMsg(Config.waitMsg)
-
         let bodyContent = new FormData();
         bodyContent.append("text", text);
-        // bodyContent.append("file", "/workspaces/shared-spaces/project/test/test-image.jpg");
-
+        if (file) { bodyContent.append("file", file) }
         let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
-        if (response.ok) {
-            fetchShares();
-            setText('')
-        } else {
-            setMsg(await response.text())
-        }
+        response.ok ? fetchShares() : setMsg(await response.text())
     }
 
     async function renameSpace() {
@@ -79,7 +72,7 @@ function Space({ setMsg }) {
 
     function handleFileChange(event) {
         const file = event.target.files[0];
-        setSelectedFile(file);
+        setFile(file);
     };
 
     useEffect(() => {
@@ -110,6 +103,7 @@ function Space({ setMsg }) {
                         onChange={handleFileChange}
                     />
                 </div>
+                <br />
                 <button onClick={createShare} >Create share</button>
                 <hr />
                 <div>
