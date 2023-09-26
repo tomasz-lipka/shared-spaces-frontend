@@ -169,3 +169,7 @@ input:checked+.slider:before {
   background-color: honeydew;
   font-size: 1.5em;
 }
+
+img {
+  width: 100%;   
+}
