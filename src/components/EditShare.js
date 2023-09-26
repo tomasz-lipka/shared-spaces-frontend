@@ -30,7 +30,7 @@ function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
         setFile(event.target.files[0]);
     };
 
-    return (
+    return ( 
         <div>
             <div className='div-flex-basic'>
                 <div className='div-flex'>

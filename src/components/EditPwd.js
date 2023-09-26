@@ -25,7 +25,7 @@ function EditPwd({ setMsg }) {
                 <br />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
             </div>
-            <div>
+            <div className='content-div'>
                 <h2>Change password</h2>
                 <p>Old password: </p>
                 <input

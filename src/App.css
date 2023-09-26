@@ -43,20 +43,10 @@
   color: #000;
 }
 
-.space:hover {
-  background-color: #2dbd7a;
-  color: #fff;
-}
 
-.space {
-  margin: 20px auto;
-  max-width: 70%;
-  border: 1px solid gray;
-  background-color: cadetblue;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 1.2em;
-}
+
+
+
 
 .share {
   display: flex;
@@ -68,44 +58,73 @@
   border-radius: 0px;
 }
 
+.main-menu-bar {
+  background: #2D4B65;
+  padding: 20px;
+
+}
+
 .logo-text {
   font-weight: bold;
-  color: #333;
-  font-size: 30px;
+  color: #F4C434;
+  font-size: 2em;
   margin-right: 40px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .logo-text:hover {
-  color: #e74c3c;
+  color: #fff
 }
 
-.nav-item:hover {
-  color: #e74c3c;
-}
-
-nav {
-  background: #2196F3;
-  padding: 20px;
-}
-
-nav a {
+.main-menu-item {
   color: #edefee;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.3em;
   margin-right: 20px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.main-menu-item:hover {
+  color: #F4C434;
+}
+
+.msg-bar {
+  background-color: #4378A2;
+  font-size: 1.5em;
+  color: #fff;
 }
 
 .sidebar {
   width: 25%;
   float: left;
-  background-color: honeydew;
+  background-color: #AF4474;
   height: 100vh;
 }
 
-.content {
+.content-div {
   width: 75%;
   float: right;
 }
+
+.space {
+  margin: 20px auto;
+  max-width: 70%;
+  border: 1px solid #2D4B65;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  color: #2D4B65;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.space:hover {
+  background-color: #4378A2;
+  color: #fff;
+}
+
 
 .left-div-flex {
   flex: 1;
@@ -186,11 +205,6 @@ input:checked+.slider:before {
   transform: translateX(26px);
 }
 
-.msg {
-  background-color: honeydew;
-  font-size: 1.5em;
-}
-
 .full-img {
   width: 100%;
 }
@@ -208,9 +222,8 @@ input:checked+.slider:before {
 
 button {
   margin-top: 5px;
-  background-color: #2196F3;
+  background-color: #4378A2;
   color: #fff;
-  border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -218,10 +231,12 @@ button {
 }
 
 button:hover {
-  background-color: #e74c3c;
-  color: #fff;
+  background-color: #F4C434;
 }
 
-a:hover {
-  color: #e74c3c;
+input {
+  text-align: center;
+  width: 80%;
+  height: 2em;
+  border-radius: 5px;
 }

@@ -70,8 +70,8 @@ function Members({ setMsg }) {
                 <button onClick={addMember} >Add member</button>
                 <hr />
             </div>
-            <div className="content">
-                <h3>{space.name} members</h3>
+            <div className="content-div">
+                <h2>{space.name} members</h2>
                 {members.map((item) => {
                     return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId}
                         key={item.user.id} setMsg={setMsg} />

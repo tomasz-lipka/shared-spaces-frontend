@@ -44,7 +44,7 @@ function Spaces({ setMsg }) {
                 <br />
                 <div>
                     <input
-                        placeholder="Name for new space..."
+                        placeholder="Name for a new space..."
                         type="text"
                         value={spaceName}
                         onChange={(e) => setSpaceName(e.target.value)}
@@ -52,11 +52,11 @@ function Spaces({ setMsg }) {
                 </div>
                 <button onClick={createSpace} >Create a new space</button>
             </div>
-            <div className="content">
+            <div className="content-div">
                 <h2>Spaces</h2>
                 {
                     spaces.length === 0 ? (
-                        <p>You have no spaces</p>
+                        <p>No spaces</p>
                     ) : (
                         spaces.map((item) => (
                             <a href="#/"
