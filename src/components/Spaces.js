@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { makeRequest } from "../Helper"
+import Config from '../Config';
 
 function Spaces({ setMsg }) {
+    const navigate = useNavigate()
     const [spaceName, setSpaceName] = useState('');
     const [spaces, setSpaces] = useState([]);
 
-    const createSpace = async () => {
-        setMsg('Please wait...')
+    async function fetchSpaces() {
+        setMsg(Config.waitMsg)
+        let response = await makeRequest('/spaces', 'GET', null)
+        if (response.ok) {
+            setSpaces(await response.json());
+            setMsg(Config.blankMsg);
+        } else {
+            setMsg(await response.text())
+        }
+    };
+
+    async function createSpace() {
+        setMsg(Config.waitMsg)
         let requestBody = JSON.stringify({
             "name": spaceName
         });
@@ -20,24 +33,14 @@ function Spaces({ setMsg }) {
         }
     };
 
-    const fetchSpaces = async () => {
-        setMsg('Please wait...')
-        let response = await makeRequest('/spaces', 'GET', null)
-        if (response.ok) {
-            setSpaces(await response.json());
-        }
-        setMsg('\u00A0');
-    };
-
     useEffect(() => {
         fetchSpaces();
         // eslint-disable-next-line
     }, []);
 
-    const navigate = useNavigate()
     return (
         <div>
-            <div className="left-div">
+            <div className="sidebar">
                 <br />
                 <div>
                     <input
@@ -49,22 +52,18 @@ function Spaces({ setMsg }) {
                 </div>
                 <button onClick={createSpace} >Create a new space</button>
             </div>
-            <div className="right-div">
-                <h3>My spaces</h3>
+            <div className="content">
+                <h2>Spaces</h2>
                 {
                     spaces.length === 0 ? (
                         <p>You have no spaces</p>
                     ) : (
                         spaces.map((item) => (
-                            <a
-                                href="#/"
+                            <a href="#/"
                                 onClick={(e) => { e.preventDefault(); navigate(`/spaces/${item.space.id}`); }}
-                                className="link-like"
-                                key={item.space.id}
-                            >
-                                <div className="space">
-                                    <p>{item.space.name}</p>
-                                </div>
+                                className="space-link"
+                                key={item.space.id}>
+                                <div className="space"><p>{item.space.name}</p></div>
                             </a>
                         ))
                     )

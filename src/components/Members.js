@@ -55,7 +55,7 @@ function Members({ setMsg }) {
 
     return (
         <div >
-            <div className="left-div">
+            <div className="sidebar">
                 <br />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
                 <hr />
@@ -70,7 +70,7 @@ function Members({ setMsg }) {
                 <button onClick={addMember} >Add member</button>
                 <hr />
             </div>
-            <div className="right-div">
+            <div className="content">
                 <h3>{space.name} members</h3>
                 {members.map((item) => {
                     return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId}

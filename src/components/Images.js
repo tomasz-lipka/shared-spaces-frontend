@@ -43,12 +43,12 @@ function Images({ setMsg }) {
 
     return (
         <div >
-            <div className="left-div">
+            <div className="sidebar">
                 <br />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
                 <hr />
             </div>
-            <div className="right-div">
+            <div className="content">
                 <h3>{space.name} images</h3>
 
                 {

@@ -38,6 +38,16 @@
   }
 }
 
+.space-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.space:hover {
+  background-color: #2dbd7a;
+  color: #fff;
+}
+
 .space {
   margin: 20px auto;
   max-width: 70%;
@@ -45,6 +55,7 @@
   background-color: cadetblue;
   padding: 20px;
   border-radius: 10px;
+  font-size: 1.2em;
 }
 
 .share {
@@ -65,7 +76,7 @@
 }
 
 nav {
-  background: #7274ee;
+  background: #2196F3;
   padding: 20px;
 }
 
@@ -76,12 +87,14 @@ nav a {
   margin-right: 20px;
 }
 
-.left-div {
+.sidebar {
   width: 25%;
   float: left;
+  background-color: honeydew;
+  height: 100vh;
 }
 
-.right-div {
+.content {
   width: 75%;
   float: right;
 }
@@ -183,4 +196,20 @@ input:checked+.slider:before {
   height: 250px;
   border: 1px solid #000;
   margin-right: 10px;
+}
+
+button {
+  margin-top: 5px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #e74c3c;
+  color: #fff;
 }

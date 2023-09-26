@@ -82,7 +82,7 @@ function Space({ setMsg }) {
 
     return (
         <div>
-            <div className="left-div">
+            <div className="sidebar">
                 <br />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<< '}Back</a>
                 <hr />
@@ -121,7 +121,7 @@ function Space({ setMsg }) {
                 <button onClick={deleteSpace} >Delete this space</button>
                 <hr />
             </div>
-            <div className="right-div">
+            <div className="content">
                 <h3>{space.name}</h3>
                 {shares.length === 0 ? (<p>No shares</p>) : (
                     shares.map((item) => (
