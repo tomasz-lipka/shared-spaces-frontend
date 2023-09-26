@@ -88,6 +88,8 @@ function Space({ setMsg }) {
                 <hr />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }}>Members</a>
                 <hr />
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }}>All photos</a>
+                <hr />
                 <div>
                     <textarea
                         type="text"

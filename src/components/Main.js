@@ -5,6 +5,7 @@ import Space from "./Space";
 import Members from "./Members";
 import { Routes, Route, Link } from "react-router-dom";
 import Config from '../Config';
+import Images from './Images';
 
 function Main() {
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,7 @@ function Main() {
         <Route path="/edit-pwd" element={<EditPwd setMsg={setMsg} />}></Route>
         <Route path="/spaces/:spaceId" element={<Space setMsg={setMsg} />}></Route>
         <Route path="/spaces/:spaceId/members" element={<Members setMsg={setMsg} />}></Route>
+        <Route path="/spaces/:spaceId/images" element={<Images />}></Route>
       </Routes>
     </div>
   );
