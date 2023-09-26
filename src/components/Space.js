@@ -136,7 +136,7 @@ function Space({ setMsg }) {
                 <button onClick={deleteSpace} >Delete space</button>
             </div>
             <div className="content-div">
-                <h2>{space.name}</h2>
+                <div className='content-title'>{Config.titleSymbol} spaces {Config.titleSymbol} {space.name}</div>
                 {shares.length === 0 ? (<p>No shares</p>) : (
                     shares.map((item) => (
                         <Share share={item} fetchShares={fetchShares} setMsg={setMsg} key={item.id} />

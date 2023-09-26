@@ -53,7 +53,7 @@ function Spaces({ setMsg }) {
                 <button onClick={createSpace} >Create a new space</button>
             </div>
             <div className="content-div">
-                <h2>Spaces</h2>
+                <div className='content-title'>{Config.titleSymbol} spaces</div>
                 {
                     spaces.length === 0 ? (
                         <p>No spaces</p>

@@ -30,7 +30,7 @@ function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
         setFile(event.target.files[0]);
     };
 
-    return ( 
+    return (
         <div>
             <div className='div-flex-basic'>
                 <div className='div-flex'>
@@ -47,7 +47,11 @@ function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
                         type="file"
                         accept=".jpg, .jpeg, .png"
                         onChange={handleFileChange}
+                        id="fileInput"
                     />
+                    <label for="fileInput" class="file-upload">
+                        Choose a new photo 📷
+                    </label>
                     <button onClick={updateShare} >Update</button>
                     <br />
                     <button onClick={closeEditor} >Cancel</button>

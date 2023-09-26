@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Member from "./Member"
 import { makeRequest } from "../Helper"
+import Config from '../Config';
 
 function Members({ setMsg }) {
 
@@ -50,15 +51,17 @@ function Members({ setMsg }) {
     useEffect(() => {
         fetchSpace();
         fetchMembers();
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, []);
 
     return (
         <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
-                <hr />
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }} className='main-menu-item'>
+                    {Config.backSymbol}
+                </a>
+                <br /><br /><hr /><br />
                 <div>
                     <input
                         placeholder="Login of new member..."
@@ -68,10 +71,9 @@ function Members({ setMsg }) {
                     />
                 </div>
                 <button onClick={addMember} >Add member</button>
-                <hr />
             </div>
             <div className="content-div">
-                <h2>{space.name} members</h2>
+                <div className='content-title'>{Config.titleSymbol} spaces {Config.titleSymbol} {space.name} {Config.titleSymbol} members</div>
                 {members.map((item) => {
                     return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId}
                         key={item.user.id} setMsg={setMsg} />
