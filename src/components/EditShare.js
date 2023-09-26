@@ -3,7 +3,7 @@ import Config from '../Config';
 import { makeShareRequest } from "../Helper"
 
 
-function EditShare({ originalText, shareId, setMsg, setEdit }) {
+export default function ({ originalText, shareId, setMsg, setEdit }) {
 
     const [text, setText] = useState(originalText);
 
@@ -31,10 +31,6 @@ function EditShare({ originalText, shareId, setMsg, setEdit }) {
             <button onClick={updateShare} >Update</button>
             <button onClick={closeEditor} >Cancel</button>
         </div>
-
-        // <div>edittt</div>
     );
 
 }
-
-export default EditShare;
