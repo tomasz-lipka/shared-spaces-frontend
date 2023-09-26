@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { makeRequest } from "../Helper"
 
 function EditPwd({ setMsg }) {
+    const navigate = useNavigate()
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
@@ -19,27 +21,33 @@ function EditPwd({ setMsg }) {
 
     return (
         <div>
-            <h2>Change password</h2>
-            <p>Old password: </p>
-            <input
-                type="password"
-                value={oldPwd}
-                onChange={(e) => setOldPwd(e.target.value)}
-            />
-            <p>New password: </p>
-            <input
-                type="password"
-                value={newPwd}
-                onChange={(e) => setNewPwd(e.target.value)}
-            />
-            <p>Confirm password: </p>
-            <input
-                type="password"
-                value={confirmPwd}
-                onChange={(e) => setConfirmPwd(e.target.value)}
-            />
-            <br /><br />
-            <button onClick={changePwd} >Submit</button>
+            <div className="sidebar">
+                <br />
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
+            </div>
+            <div>
+                <h2>Change password</h2>
+                <p>Old password: </p>
+                <input
+                    type="password"
+                    value={oldPwd}
+                    onChange={(e) => setOldPwd(e.target.value)}
+                />
+                <p>New password: </p>
+                <input
+                    type="password"
+                    value={newPwd}
+                    onChange={(e) => setNewPwd(e.target.value)}
+                />
+                <p>Confirm password: </p>
+                <input
+                    type="password"
+                    value={confirmPwd}
+                    onChange={(e) => setConfirmPwd(e.target.value)}
+                />
+                <br /><br />
+                <button onClick={changePwd} >Submit</button>
+            </div>
         </div>
     );
 }

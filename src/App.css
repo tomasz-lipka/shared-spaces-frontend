@@ -75,6 +75,14 @@
   margin-right: 40px;
 }
 
+.logo-text:hover {
+  color: #e74c3c;
+}
+
+.nav-item:hover {
+  color: #e74c3c;
+}
+
 nav {
   background: #2196F3;
   padding: 20px;
@@ -212,4 +220,8 @@ button {
 button:hover {
   background-color: #e74c3c;
   color: #fff;
+}
+
+a:hover {
+  color: #e74c3c;
 }
