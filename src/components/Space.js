@@ -2,55 +2,42 @@ import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Share from "./Share"
 import { makeRequest, makeShareRequest } from "../Helper"
+import Config from '../Config';
 
 function Space({ setMsg }) {
     const navigate = useNavigate()
     const { spaceId } = useParams();
-    const [loading, setLoading] = useState(false);
     const [space, setSpace] = useState('');
     const [text, setText] = useState('');
     const [shares, setShares] = useState([]);
     const [spaceNewName, setSpaceNewName] = useState('');
+    const [selectedFile, setSelectedFile] = useState(null);
 
-    function startFunction() {
-        setMsg('Please wait...')
-        setLoading(true)
-    }
 
-    function endFunctionOk() {
-        setMsg('\u00A0');
-        setLoading(false);
-    }
-
-    const endFunctionErr = async (response) => {
-        setMsg(await response.text());
-        setLoading(false);
-    }
-
-    const fetchSpace = async () => {
-        startFunction();
+    async function fetchSpace() {
+        setMsg(Config.waitMsg)
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
             setSpace(await response.json());
-            endFunctionOk();
+            setMsg(Config.blankMsg)
         } else {
-            endFunctionErr(response)
+            setMsg(await response.text())
         }
     };
 
-    const fetchShares = async () => {
-        startFunction()
+    async function fetchShares() {
+        setMsg(Config.waitMsg)
         let response = await makeRequest('/spaces/' + spaceId + '/shares', 'GET', null)
         if (response.ok) {
             setShares(await response.json());
-            endFunctionOk();
+            setMsg(Config.blankMsg)
         } else {
-            endFunctionErr(response);
+            setMsg(await response.text())
         }
     };
 
-    const createShare = async () => {
-        startFunction()
+    async function createShare() {
+        setMsg(Config.waitMsg)
 
         let bodyContent = new FormData();
         bodyContent.append("text", text);
@@ -61,12 +48,12 @@ function Space({ setMsg }) {
             fetchShares();
             setText('')
         } else {
-            endFunctionErr(response);
+            setMsg(await response.text())
         }
     }
 
-    const renameSpace = async () => {
-        startFunction()
+    async function renameSpace() {
+        setMsg(Config.waitMsg)
         let requestBody = JSON.stringify({
             "new-name": spaceNewName
         });
@@ -75,19 +62,24 @@ function Space({ setMsg }) {
             fetchSpace();
             setSpaceNewName('')
         } else {
-            endFunctionErr(response);
+            setMsg(await response.text())
         }
     };
 
-    const deleteSpace = async () => {
-        startFunction()
+    async function deleteSpace() {
+        setMsg(Config.waitMsg)
         let response = await makeRequest('/spaces/' + spaceId, 'DELETE', null)
         if (response.ok) {
             navigate(-1);
             alert('Space deleted')
         } else {
-            endFunctionErr(response);
+            setMsg(await response.text())
         }
+    };
+
+    function handleFileChange(event) {
+        const file = event.target.files[0];
+        setSelectedFile(file);
     };
 
     useEffect(() => {
@@ -112,8 +104,13 @@ function Space({ setMsg }) {
                         value={text}
                         onChange={(e) => setText(e.target.value)}
                     />
+                    <input
+                        type="file"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={handleFileChange}
+                    />
                 </div>
-                <button onClick={createShare} disabled={loading}>Create share</button>
+                <button onClick={createShare} >Create share</button>
                 <hr />
                 <div>
                     <input
@@ -123,10 +120,10 @@ function Space({ setMsg }) {
                         onChange={(e) => setSpaceNewName(e.target.value)}
                     />
                     <br />
-                    <button onClick={renameSpace} disabled={loading}>Rename space</button>
+                    <button onClick={renameSpace} >Rename space</button>
                 </div>
                 <hr />
-                <button onClick={deleteSpace} disabled={loading}>Delete this space</button>
+                <button onClick={deleteSpace} >Delete this space</button>
                 <hr />
             </div>
             <div className="right-div">
