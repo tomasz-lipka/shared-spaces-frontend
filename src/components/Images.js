@@ -48,7 +48,7 @@ function Images({ setMsg }) {
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
             </div>
             <div className="content-div">
-                <h2>{space.name} images</h2>
+                <h2>All {space.name} photos</h2>
                 {
                     images.length === 0 ? (
                         <p>No images</p>

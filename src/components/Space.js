@@ -105,7 +105,7 @@ function Space({ setMsg }) {
                 <div>
                     <textarea
                         type="text"
-                        placeholder="Enter your text here..."
+                        placeholder="What do you want to share with your space?"
                         rows="5"
                         value={text}
                         onChange={(e) => setText(e.target.value)}
