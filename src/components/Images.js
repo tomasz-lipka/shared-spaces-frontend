@@ -56,15 +56,14 @@ function Images({ setMsg }) {
                         <p>No images</p>
                     ) : (
                         <div className="image-container">
-                        {images.map((item, index) => (
-                          <img
-                            key={index}
-                            src={item.image_url}
-                            alt='Images attached to the share'
-                            className="small-image"
-                          />
-                        ))}
-                      </div>
+                            {images.map((item) => (
+                                <img
+                                    src={item.image_url}
+                                    alt='Image attached to the share'
+                                    className="small-image"
+                                />
+                            ))}
+                        </div>
                     )
                 }
             </div>
