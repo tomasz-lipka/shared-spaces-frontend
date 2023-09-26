@@ -4,7 +4,7 @@ import { makeRequest } from "../Helper"
 import Config from '../Config';
 import EditShare from './EditShare';
 
-export default function ({ share, fetchShares, setMsg }) {
+function Share({ share, fetchShares, setMsg }) {
 
     const formattedTimestamp = format(new Date(share.timestamp), "dd/MM/yyyy HH:mm");
     const showButtons = sessionStorage.getItem("currentUser") === share.user.login;
@@ -32,9 +32,11 @@ export default function ({ share, fetchShares, setMsg }) {
                 {!edit ? (
                     <p>{share.text}</p>
                 ) : (
-                    <EditShare originalText={share.text} shareId={share.id} setMsg={setMsg} setEdit={setEdit} />
+                    <EditShare originalText={share.text} shareId={share.id} setMsg={setMsg} setEdit={setEdit} fetchShares={fetchShares} />
                 )}
             </div>
         </div>
     );
 }
+
+export default Share

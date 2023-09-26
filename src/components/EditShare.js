@@ -3,17 +3,22 @@ import Config from '../Config';
 import { makeShareRequest } from "../Helper"
 
 
-export default function ({ originalText, shareId, setMsg, setEdit }) {
+function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
 
     const [text, setText] = useState(originalText);
 
     async function updateShare() {
         setMsg(Config.waitMsg)
-        let bodyContent = new FormData();
-        bodyContent.append("text", text);
+        let bodyContent = new FormData()
+        bodyContent.append("text", text)
         // bodyContent.append("file", "/workspaces/shared-spaces/project/test/test-image.jpg");
         let response = await makeShareRequest('/shares/' + shareId, 'PUT', bodyContent)
-        response.ok ? closeEditor() : setMsg(await response.text())
+        if (response.ok) {
+            fetchShares()
+            closeEditor()
+        } else {
+            setMsg(await response.text())
+        }
     }
 
     function closeEditor() { setEdit(false) }
@@ -34,3 +39,5 @@ export default function ({ originalText, shareId, setMsg, setEdit }) {
     );
 
 }
+
+export default EditShare
