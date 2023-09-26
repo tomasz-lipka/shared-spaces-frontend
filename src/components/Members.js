@@ -7,50 +7,34 @@ function Members({ setMsg }) {
 
     const navigate = useNavigate()
     const { spaceId } = useParams();
-    const [loading, setLoading] = useState(false);
     const [space, setSpace] = useState('');
     const [members, setMembers] = useState([]);
     const [userId, setUserId] = useState('');
 
-    function startFunction() {
-        setMsg('Please wait...');
-        setLoading(true);
-    }
-
-    function endFunctionOk() {
-        setMsg('\u00A0');
-        setLoading(false);
-    }
-
-    const endFunctionErr = async (response) => {
-        setMsg(await response.text());
-        setLoading(false);
-    }
-
     const fetchSpace = async () => {
-        startFunction();
+        setMsg('Please wait...');
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
             setSpace(await response.json());
-            endFunctionOk();
-        }else {
-            endFunctionErr(response)
+            setMsg('\u00A0');
+        } else {
+            setMsg(await response.text());
         }
     };
 
     const fetchMembers = async () => {
-        startFunction()
+        setMsg('Please wait...');
         let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null)
         if (response.ok) {
             setMembers(await response.json());
-            endFunctionOk();
+            setMsg('\u00A0');
         } else {
-            endFunctionErr(response)
+            setMsg(await response.text());
         }
     };
 
     const addMember = async () => {
-        startFunction()
+        setMsg('Please wait...');
         let requestBody = JSON.stringify({
             "user-id": userId
         });
@@ -60,7 +44,6 @@ function Members({ setMsg }) {
             setUserId('')
         } else {
             setMsg(await response.text());
-            setLoading(false);
         }
     };
 
@@ -83,14 +66,14 @@ function Members({ setMsg }) {
                         onChange={(e) => setUserId(e.target.value)}
                     />
                 </div>
-                <button onClick={addMember} disabled={loading}>Add member</button>
+                <button onClick={addMember} >Add member</button>
                 <hr />
             </div>
             <div className="right-div">
                 <h3>{space.name} members</h3>
                 {members.map((item) => {
                     return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId}
-                        key={item.user.id} setMsg={setMsg} loading={loading} setLoading={setLoading} />
+                        key={item.user.id} setMsg={setMsg} />
                 })}
             </div>
         </div >

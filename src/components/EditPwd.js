@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeRequest } from "../Helper"
 
 function EditPwd({ setMsg }) {
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
-    const [loading, setLoading] = useState(false);
 
-    
     const changePwd = async () => {
         setMsg('Please wait...')
-        setLoading(true)
         let requestBody = JSON.stringify({
             "old-password": oldPwd,
             "new-password": newPwd,
@@ -18,12 +15,7 @@ function EditPwd({ setMsg }) {
         });
         let response = await makeRequest('/change-password', 'PUT', requestBody)
         setMsg(await response.text())
-        setLoading(false)
     };
-
-    useEffect(() => {
-        setMsg('\u00A0')
-    }, []);
 
     return (
         <div>
@@ -47,7 +39,7 @@ function EditPwd({ setMsg }) {
                 onChange={(e) => setConfirmPwd(e.target.value)}
             />
             <br /><br />
-            <button onClick={changePwd} disabled={loading}>Submit</button>
+            <button onClick={changePwd} >Submit</button>
         </div>
     );
 }
