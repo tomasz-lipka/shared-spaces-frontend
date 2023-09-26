@@ -5,15 +5,9 @@ import { makeRequest } from "../Helper"
 function Spaces({ setMsg }) {
     const [spaceName, setSpaceName] = useState('');
     const [spaces, setSpaces] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    function startFunction() {
-        setMsg('Please wait...')
-        setLoading(true)
-    }
 
     const createSpace = async () => {
-        startFunction()
+        setMsg('Please wait...')
         let requestBody = JSON.stringify({
             "name": spaceName
         });
@@ -23,18 +17,16 @@ function Spaces({ setMsg }) {
             setSpaceName('')
         } else {
             setMsg(await response.text());
-            setLoading(false)
         }
     };
 
     const fetchSpaces = async () => {
-        startFunction()
+        setMsg('Please wait...')
         let response = await makeRequest('/spaces', 'GET', null)
         if (response.ok) {
             setSpaces(await response.json());
         }
         setMsg('\u00A0');
-        setLoading(false);
     };
 
     useEffect(() => {
@@ -54,7 +46,7 @@ function Spaces({ setMsg }) {
                         onChange={(e) => setSpaceName(e.target.value)}
                     />
                 </div>
-                <button onClick={createSpace} disabled={loading}>Create a new space</button>
+                <button onClick={createSpace} >Create a new space</button>
             </div>
             <div className="right-div">
                 <h3>My spaces</h3>
