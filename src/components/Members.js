@@ -56,7 +56,7 @@ function Members({ setMsg }) {
         <div >
             <div className="left-div">
                 <br />
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
                 <hr />
                 <div>
                     <input

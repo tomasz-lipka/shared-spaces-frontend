@@ -99,9 +99,9 @@ function Space({ setMsg }) {
         <div>
             <div className="left-div">
                 <br />
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<< '}Back</a>
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<< '}Back</a>
                 <hr />
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }}>Members</a>
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }}>Members</a>
                 <hr />
                 <div>
                     <textarea
