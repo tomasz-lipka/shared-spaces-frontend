@@ -20,7 +20,7 @@ function EditPwd({ setMsg }) {
     };
 
     return (
-        <div>
+        <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>

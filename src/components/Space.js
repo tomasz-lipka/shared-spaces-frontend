@@ -86,15 +86,22 @@ function Space({ setMsg }) {
     }, []);
 
     return (
-        <div>
+        <div className='div-flex-basic'>
             <div className="sidebar">
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }} className='main-menu-item'>
+                {Config.backSymbol}
+                </a>
                 <br />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<< '}Back</a>
-                <hr />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }}>Members</a>
-                <hr />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }}>All photos</a>
-                <hr />
+                <br />
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }} className='main-menu-item'>
+                    Members
+                </a>
+                <br />
+                <br />
+                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }} className='main-menu-item'>
+                    All photos
+                </a>
+                <br /><br /><hr /><br />
                 <div>
                     <textarea
                         type="text"
@@ -111,7 +118,7 @@ function Space({ setMsg }) {
                 </div>
                 <br />
                 <button onClick={createShare} >Share</button>
-                <hr />
+                <br /><br /><hr /><br />
                 <div>
                     <input
                         placeholder="New name for space..."
@@ -122,9 +129,8 @@ function Space({ setMsg }) {
                     <br />
                     <button onClick={renameSpace} >Rename space</button>
                 </div>
-                <hr />
+                <br /><hr /><br />
                 <button onClick={deleteSpace} >Delete space</button>
-                <hr />
             </div>
             <div className="content-div">
                 <h2>{space.name}</h2>

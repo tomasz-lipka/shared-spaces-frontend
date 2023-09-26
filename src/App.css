@@ -91,15 +91,13 @@
 }
 
 .sidebar {
-  width: 25%;
-  float: left;
+  flex: 1;
   background-color: #4378A2;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .content-div {
-  width: 75%;
-  float: right;
+  flex: 3;
 }
 
 .space {
@@ -226,6 +224,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  min-width: 10em;
   
 }
 
@@ -264,4 +263,10 @@ textarea {
   font-size: 30px;
   clip-path: inset(0 5ch 0 0);
   animation: l 3s steps(6) infinite;
+}
+
+hr {
+  width: 95%;
+  border-style: dotted;
+  border-color: #F4C434;  
 }

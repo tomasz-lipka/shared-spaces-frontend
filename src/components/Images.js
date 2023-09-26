@@ -42,14 +42,13 @@ function Images({ setMsg }) {
 
 
     return (
-        <div >
+        <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
             </div>
             <div className="content-div">
                 <h2>{space.name} images</h2>
-
                 {
                     images.length === 0 ? (
                         <p>No images</p>

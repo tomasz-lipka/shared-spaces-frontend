@@ -39,7 +39,7 @@ function Spaces({ setMsg }) {
     }, []);
 
     return (
-        <div>
+        <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
                 <div>
