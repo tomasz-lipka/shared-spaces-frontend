@@ -89,7 +89,7 @@ function Space({ setMsg }) {
         <div className='div-flex-basic'>
             <div className="sidebar">
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }} className='main-menu-item'>
-                {Config.backSymbol}
+                    {Config.backSymbol}
                 </a>
                 <br />
                 <br />
@@ -114,9 +114,12 @@ function Space({ setMsg }) {
                         type="file"
                         accept=".jpg, .jpeg, .png"
                         onChange={handleFileChange}
+                        id="fileInput"
                     />
+                    <label for="fileInput" class="file-upload">
+                        Choose a photo 📷
+                    </label>
                 </div>
-                <br />
                 <button onClick={createShare} >Share</button>
                 <br /><br /><hr /><br />
                 <div>
