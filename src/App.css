@@ -43,11 +43,6 @@
   color: #000;
 }
 
-
-
-
-
-
 .share {
   display: flex;
   margin: 10px auto;
@@ -60,7 +55,7 @@
 
 .main-menu-bar {
   background: #2D4B65;
-  padding: 20px;
+  padding: 0px;
 
 }
 
@@ -90,7 +85,7 @@
 }
 
 .msg-bar {
-  background-color: #4378A2;
+  background-color: #2D4B65;
   font-size: 1.5em;
   color: #fff;
 }
@@ -98,7 +93,7 @@
 .sidebar {
   width: 25%;
   float: left;
-  background-color: #AF4474;
+  background-color: #4378A2;
   height: 100vh;
 }
 
@@ -121,7 +116,7 @@
 }
 
 .space:hover {
-  background-color: #4378A2;
+  background-color: #F4C434;
   color: #fff;
 }
 
@@ -222,7 +217,7 @@ input:checked+.slider:before {
 
 button {
   margin-top: 5px;
-  background-color: #4378A2;
+  background-color: #AF4474;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
@@ -239,4 +234,20 @@ input {
   width: 80%;
   height: 2em;
   border-radius: 5px;
+}
+
+
+@keyframes l {
+  to {
+    clip-path: inset(0 -1ch 0 0)
+  }
+}
+
+.loading {
+  font-weight: bold;
+  display:inline-block;
+  font-family: monospace;
+  font-size: 30px;
+  clip-path: inset(0 6ch 0 0);
+  animation: l 1s steps(6) infinite;
 }

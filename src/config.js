@@ -1,6 +1,6 @@
 const Config = {
     apiUrl: 'http://35.175.215.26:8000',
-    waitMsg: 'Please wait...',
+    waitMsg: '......',
     blankMsg: '\u00A0'
 };
 
