@@ -65,7 +65,7 @@ function Spaces({ setMsg }) {
                         spaces.map((item) => (
                             <a
                                 href="#"
-                                onClick={(e) => { e.preventDefault(); navigate(`/space/${item.space.id}`); }}
+                                onClick={(e) => { e.preventDefault(); navigate(`/spaces/${item.space.id}`); }}
                                 className="link-like"
                                 key={item.space.id}
                             >
