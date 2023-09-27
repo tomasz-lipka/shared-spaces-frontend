@@ -12,29 +12,29 @@ function Members({ setMsg }) {
     const [userId, setUserId] = useState('');
 
     async function fetchSpace() {
-        setMsg('Please wait...');
+        setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
             setSpace(await response.json());
-            setMsg('\u00A0');
+            setMsg(Config.blankMsg);
         } else {
             setMsg(await response.text());
         }
     };
 
-    const fetchMembers = async () => {
-        setMsg('Please wait...');
+    async function fetchMembers() {
+        setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null)
         if (response.ok) {
             setMembers(await response.json());
-            setMsg('\u00A0');
+            setMsg(Config.blankMsg);
         } else {
             setMsg(await response.text());
         }
     };
 
-    const addMember = async () => {
-        setMsg('Please wait...');
+    async function addMember() {
+        setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
             "user-id": userId
         });
