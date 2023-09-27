@@ -293,12 +293,12 @@ hr {
   font-family: monospace;
 }
 
-.breadcrump-div {
+.breadcrumb-div {
+  display: flex;
   margin: 15px;
-  text-align: left;
 }
 
-.breadcrump {
+.breadcrumb {
   font-family: monospace;
   font-size: 2em;
   font-weight: bold;
@@ -306,7 +306,7 @@ hr {
   text-decoration: none;
 }
 
-.breadcrump:hover {
+.breadcrumb:hover {
   color: #F4C434;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
@@ -344,7 +344,6 @@ hr {
   display: inline-block;
   vertical-align: top
 }
-
 
 .share-title-div {
   flex: 1

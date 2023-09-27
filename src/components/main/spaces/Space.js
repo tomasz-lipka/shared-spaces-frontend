@@ -1,4 +1,4 @@
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import {  useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Share from "../shares/Share"
 import { makeRequest } from "../../../Helper"
@@ -7,9 +7,11 @@ import CreateShare from './CreateShare';
 import PhotoAndMembersNav from './PhotoAndMembersNav';
 import SidebarLine from '../SidebarLine';
 import RenameSpace from './RenameSpace';
+import DeleteSpace from './DeleteSpace';
+import Breadcrumb from '../Breadcrumb';
 
 function Space({ setMsg }) {
-    const navigate = useNavigate()
+    
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');
     const [shares, setShares] = useState([]);
@@ -37,19 +39,6 @@ function Space({ setMsg }) {
         }
     };
 
-
-
-    async function deleteSpace() {
-        setMsg(Config.waitMsg)
-        let response = await makeRequest('/spaces/' + spaceId, 'DELETE', null)
-        if (response.ok) {
-            navigate(-1);
-            alert('Space deleted')
-        } else {
-            setMsg(await response.text())
-        }
-    };
-
     useEffect(() => {
         fetchSpace();
         fetchShares();
@@ -66,12 +55,12 @@ function Space({ setMsg }) {
                 <SidebarLine />
                 <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpace} />
                 <SidebarLine />
-                <button onClick={deleteSpace} >Delete space</button>
+                <DeleteSpace setMsg={setMsg} spaceId={spaceId} />
             </div>
             <div className="content-div">
-                <div className='breadcrump-div'>
-                    <Link to='/' className='breadcrump'> {Config.titleSymbol} spaces</Link>
-                    <Link className='breadcrump'> {Config.titleSymbol} {space.name}</Link>
+                <div className='breadcrumb-div'>
+                    <Breadcrumb to={'/'} display={'spaces'}/>
+                    <Breadcrumb to={''} display={space.name}/>
                 </div>
                 {shares.length === 0 ? (<p>No shares</p>) : (
                     shares.map((item) => (
