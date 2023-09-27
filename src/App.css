@@ -205,6 +205,7 @@ img {
 .share-image {
   max-height: 200px;
   margin: 5px;
+  margin-right: 20px;
 }
 
 .all-photos-image {
@@ -329,4 +330,9 @@ hr {
 .auth-page-msg {
   font-family: monospace;
   font-size: 2em;
+}
+
+.share-content {
+  display: inline-block;
+  vertical-align: top
 }
