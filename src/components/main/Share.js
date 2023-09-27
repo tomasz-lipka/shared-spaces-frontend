@@ -5,7 +5,6 @@ import Config from '../../Config';
 import EditShare from './EditShare';
 
 function Share({ share, fetchShares, setMsg }) {
-
     const formattedTimestamp = format(new Date(share.timestamp), "dd.MM HH:mm");
     const showButtons = sessionStorage.getItem("currentUser") === share.user.login;
     const [edit, setEdit] = useState(false)

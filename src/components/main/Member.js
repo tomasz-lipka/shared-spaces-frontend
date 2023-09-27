@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { makeRequest } from "../../Helper"
 
 function Member({ member, fetchMembers, spaceId, setMsg }) {
-
     const navigate = useNavigate()
     const [isChecked, setIsChecked] = useState(member.is_admin);
 

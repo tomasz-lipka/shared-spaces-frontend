@@ -3,10 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Config from '../../Config';
 import { makeRequest } from "../../Helper"
 
-
-
 function Images({ setMsg }) {
-
     const navigate = useNavigate()
     const [images, setImages] = useState([])
     const { spaceId } = useParams();

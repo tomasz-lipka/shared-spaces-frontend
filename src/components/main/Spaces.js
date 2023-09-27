@@ -72,4 +72,5 @@ function Spaces({ setMsg }) {
         </div>
     );
 }
+
 export default Spaces;

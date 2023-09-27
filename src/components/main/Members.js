@@ -5,7 +5,6 @@ import { makeRequest } from "../../Helper"
 import Config from '../../Config';
 
 function Members({ setMsg }) {
-
     const navigate = useNavigate()
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');

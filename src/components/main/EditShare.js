@@ -4,10 +4,8 @@ import { makeShareRequest } from "../../Helper"
 
 
 function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
-
     const [text, setText] = useState(originalText);
     const [file, setFile] = useState(null);
-
 
     async function updateShare() {
         setMsg(Config.waitMsg)
