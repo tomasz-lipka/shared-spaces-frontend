@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
-import Spaces from "./Spaces";
-import EditPwd from "./EditPwd";
-import Space from "./Space";
-import Members from "./Members";
+import Spaces from "./spaces/Spaces";
+import ChangePwd from "./ChangePwd";
+import Space from "./spaces/Space";
+import Members from "./members/Members";
 import Images from './Images';
 
 function Main() {
@@ -35,7 +35,7 @@ function Main() {
       </div>
       <Routes>
         <Route path="/" element={<Spaces setMsg={setMsg} />}></Route>
-        <Route path="/edit-pwd" element={<EditPwd setMsg={setMsg} />}></Route>
+        <Route path="/edit-pwd" element={<ChangePwd setMsg={setMsg} />}></Route>
         <Route path="/spaces/:spaceId" element={<Space setMsg={setMsg} />}></Route>
         <Route path="/spaces/:spaceId/members" element={<Members setMsg={setMsg} />}></Route>
         <Route path="/spaces/:spaceId/images" element={<Images setMsg={setMsg} />}></Route>

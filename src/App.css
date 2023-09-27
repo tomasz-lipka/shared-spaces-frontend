@@ -45,6 +45,7 @@
 
 .share {
   display: flex;
+  flex-direction: row;
   margin: 10px auto;
   max-width: 90%;
   border: 1px solid #2D4B65;
@@ -333,4 +334,13 @@ hr {
 .share-content {
   display: inline-block;
   vertical-align: top
+}
+
+
+.share-title-div {
+  flex: 1
+}
+
+.share-body-div {
+  flex: 1
 }

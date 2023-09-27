@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { format } from "date-fns";
-import { makeRequest } from "../../Helper"
-import Config from '../../Config';
+import { makeRequest } from "../../../Helper"
+import Config from '../../../Config';
 import EditShare from './EditShare';
 
 function Share({ share, fetchShares, setMsg }) {
@@ -16,32 +16,39 @@ function Share({ share, fetchShares, setMsg }) {
     };
 
     return (
+
         <div className="share" key={share.id}>
-            <div className="left-div-flex">
+            <div className="share-title-div">
                 <p><b>{share.user.login}</b></p>
                 <p>{formattedTimestamp}</p>
+            </div>
+            <div className="div-flex">
+                {!edit ? (
+                    <div className="div-flex">
+                        <div  >
+                            {share.image_url && (
+                                <img src={share.image_url} alt='Attached to the share' className='share-image' />
+                            )}
+                        </div>
+                        <div >
+                            <p>{share.text}</p>
+                        </div>
+                    </div>
+                ) : (
+                    <EditShare originalText={share.text} shareId={share.id} setMsg={setMsg} setEdit={setEdit} fetchShares={fetchShares} />
+                )}
+            </div>
+            <div >
+
+
+            </div>
+            <div className="div-flex">
                 {showButtons && !edit && (
                     <div>
                         <button onClick={() => setEdit(true)}>Edit</button>
                         <br />
                         <button onClick={() => deleteShare(share.id)}>Delete</button>
                     </div>
-                )}
-            </div>
-            <div className="right-div-flex">
-                {!edit ? (
-                    <div >
-                        <div className='share-content' >
-                            {share.image_url && (
-                                <img src={share.image_url} alt='Attached to the share' className='share-image' />
-                            )}
-                        </div>
-                        <div className='share-content'>
-                            <p>{share.text}</p>
-                        </div>
-                    </div>
-                ) : (
-                    <EditShare originalText={share.text} shareId={share.id} setMsg={setMsg} setEdit={setEdit} fetchShares={fetchShares} />
                 )}
             </div>
         </div>

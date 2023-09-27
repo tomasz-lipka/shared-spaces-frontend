@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { makeRequest } from "../../Helper"
 
-function EditPwd({ setMsg }) {
+function ChangePwd({ setMsg }) {
     const navigate = useNavigate()
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
@@ -52,4 +52,4 @@ function EditPwd({ setMsg }) {
     );
 }
 
-export default EditPwd;
+export default ChangePwd;

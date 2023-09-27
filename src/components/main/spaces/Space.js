@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import Share from "./Share"
-import { makeRequest, makeShareRequest } from "../../Helper"
-import Config from '../../Config';
+import Share from "../shares/Share"
+import { makeRequest, makeShareRequest } from "../../../Helper"
+import Config from '../../../Config';
 
 function Space({ setMsg }) {
     const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { makeRequest } from "../../Helper"
+import { makeRequest } from "../../../Helper"
 
 function Member({ member, fetchMembers, spaceId, setMsg }) {
     const navigate = useNavigate()
