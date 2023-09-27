@@ -4,6 +4,7 @@ import Member from "./Member"
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 import AddMember from './AddMember';
+import Breadcrumb from '../Breadcrumb';
 
 function Members({ setMsg }) {
     const { spaceId } = useParams();
@@ -32,8 +33,6 @@ function Members({ setMsg }) {
         }
     };
 
-
-
     useEffect(() => {
         fetchSpace();
         fetchMembers();
@@ -47,7 +46,11 @@ function Members({ setMsg }) {
                 <AddMember setMsg={setMsg} spaceId={spaceId} fetchMembers={fetchMembers} />
             </div>
             <div className="content-div">
-                <div className='content-title'>{Config.titleSymbol} spaces {Config.titleSymbol} {space.name} {Config.titleSymbol} members</div>
+                <div className='breadcrumb-div'>
+                    <Breadcrumb to={'/'} display={'spaces'} />
+                    <Breadcrumb to={'/spaces/' + spaceId} display={space.name} />
+                    <Breadcrumb to={''} display={'members'} />
+                </div>
                 {members.map((item) => {
                     return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId}
                         key={item.user.id} setMsg={setMsg} />

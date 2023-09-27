@@ -214,11 +214,6 @@ img {
   margin: 10px;
 }
 
-.image-container {
-  display: 'flex';
-  text-align: left;
-}
-
 button {
   margin-top: 5px;
   background-color: #AF4474;
@@ -256,8 +251,10 @@ textarea {
 .msg {
   font-family: monospace;
   font-weight: bold;
-  font-size: 1.8em;
-  color: #F4C434;
+  font-size: 1.2em;
+  color: #9ACC8F;
+  margin: 15px;
+  display: inline-block;
 }
 
 hr {

@@ -47,7 +47,7 @@ function Images({ setMsg }) {
             {images.length === 0 ? (
                 <p>No photos</p>
             ) : (
-                <div className="image-container">
+                <div>
                     {images.map((item) => (
                         <img
                             src={item.image_url}
