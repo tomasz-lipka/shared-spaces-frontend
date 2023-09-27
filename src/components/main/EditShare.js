@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Config from '../Config';
-import { makeShareRequest } from "../Helper"
+import Config from '../../Config';
+import { makeShareRequest } from "../../Helper"
 
 
 function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {

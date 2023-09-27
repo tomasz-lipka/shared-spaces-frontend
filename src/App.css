@@ -300,3 +300,21 @@ hr {
   font-weight: bold;
   color: #2D4B65;
 }
+
+.auth-input {
+  width: 20%;
+  margin-top: 2px;
+}
+
+.auth-page {
+  text-align: center;
+  background-color: #2D4B65;
+  color: white;
+}
+
+.auth-logo-text {
+  font-weight: bold;
+  color: #F4C434;
+  font-size: 2em;
+}
+

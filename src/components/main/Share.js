@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { format } from "date-fns";
-import { makeRequest } from "../Helper"
-import Config from '../Config';
+import { makeRequest } from "../../Helper"
+import Config from '../../Config';
 import EditShare from './EditShare';
 
 function Share({ share, fetchShares, setMsg }) {

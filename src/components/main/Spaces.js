@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { makeRequest } from "../Helper"
-import Config from '../Config';
+import { makeRequest } from "../../Helper"
+import Config from '../../Config';
 
 function Spaces({ setMsg }) {
     const navigate = useNavigate()

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
-import { makeRequest } from "../Helper"
+import { makeRequest } from "../../Helper"
+import Config from '../../Config';
 import Spaces from "./Spaces";
 import EditPwd from "./EditPwd";
 import Space from "./Space";
 import Members from "./Members";
-import Config from '../Config';
 import Images from './Images';
 
 function Main() {

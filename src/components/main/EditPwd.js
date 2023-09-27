@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import { makeRequest } from "../Helper"
+import { makeRequest } from "../../Helper"
 
 function EditPwd({ setMsg }) {
     const navigate = useNavigate()

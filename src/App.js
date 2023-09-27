@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
-import Auth from "./components/Auth";
-import Main from "./components/Main";
+import Auth from "./components/auth/Auth";
+import Main from "./components/main/Main";
 
 
 function App() {

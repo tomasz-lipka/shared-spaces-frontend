@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
-import Config from '../Config';
-import { makeRequest } from "../Helper"
+import Config from '../../Config';
+import { makeRequest } from "../../Helper"
 
 
 
