@@ -36,7 +36,7 @@ function Share({ share, fetchShares, setMsg }) {
                         </div>
                         <div className='div-flex'>
                             {share.image_url && (
-                                <img src={share.image_url} alt='Attached to the share' className='full-img' />
+                                <img src={share.image_url} alt='Attached to the share' className='share-image' />
                             )}
                         </div>
                     </div>

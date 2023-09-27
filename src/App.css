@@ -197,23 +197,24 @@ input:checked+.slider:before {
   transform: translateX(26px);
 }
 
-.full-img {
-  width: 100%;
-}
-
 img {
   border-radius: 5px;
+  border: 1px solid #000;
+}
+
+.share-image {
+  max-height: 200px;
+  margin: 5px;
+}
+
+.all-photos-image {
+  max-height: 300px;
+  margin: 10px;
 }
 
 .image-container {
   display: 'flex';
   text-align: left;
-}
-
-.small-image {
-  height: 250px;
-  border: 1px solid #000;
-  margin-right: 10px;
 }
 
 button {
