@@ -17,8 +17,6 @@ function Main() {
     if (response.ok) {
       sessionStorage.removeItem("access_token");
       window.location.reload(false);
-    } else {
-      setMsg(await response.text())
     }
   };
 

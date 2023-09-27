@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Input from '../Input';
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
 
@@ -28,26 +29,8 @@ function Login({ setAuthenticated, setMsg }) {
 
     return (
         <div>
-            <div>
-                <label>Login: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="text"
-                    value={login}
-                    onChange={(e) => setLogin(e.target.value)}
-                />
-            </div>
-            <div >
-                <label>Password: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="password"
-                    value={pwd}
-                    onChange={(e) => setPwd(e.target.value)}
-                />
-            </div>
+            <Input setValue={setLogin} label={'Login'} />
+            <Input setValue={setPwd} label={'Password'} />
             <button onClick={handleLogin} disabled={loading}>
                 {loading ? 'Logging in...' : 'Login'}
             </button>

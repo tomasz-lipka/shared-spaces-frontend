@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Input from '../Input';
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
 
@@ -28,36 +29,9 @@ function Register({ setMsg }) {
 
     return (
         <div>
-            <div>
-                <label>Login: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="text"
-                    value={login}
-                    onChange={(e) => setLogin(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Password: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="password"
-                    value={pwd}
-                    onChange={(e) => setPwd(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Confirm password: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="password"
-                    value={confirmPwd}
-                    onChange={(e) => setConfirmPwd(e.target.value)}
-                />
-            </div>
+            <Input value={login} setValue={setLogin} label={'Login'} />
+            <Input value={pwd} setValue={setPwd} label={'Password'} />
+            <Input value={confirmPwd} setValue={setConfirmPwd} label={'Old password'} />
             <button onClick={handleRegister}>
                 {loading ? 'Pending...' : 'Register'}
             </button>

@@ -1,10 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { makeRequest } from "../../Helper"
-import Breadcrumb from './Breadcrumb';
+import Input from '../Input';
 
 function ChangePwd({ setMsg }) {
-    const navigate = useNavigate()
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
@@ -23,36 +21,9 @@ function ChangePwd({ setMsg }) {
     return (
         <div >
             <h2>Change password</h2>
-            <div>
-                <label>Old password: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="password"
-                    value={oldPwd}
-                    onChange={(e) => setOldPwd(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>New password: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="password"
-                    value={newPwd}
-                    onChange={(e) => setNewPwd(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Confirm password: </label>
-                <br />
-                <input
-                    className='auth-input'
-                    type="password"
-                    value={confirmPwd}
-                    onChange={(e) => setConfirmPwd(e.target.value)}
-                />
-            </div>
+            <Input setValue={setOldPwd} label={'Old password'} />
+            <Input setValue={setNewPwd} label={'New password'} />
+            <Input setValue={setConfirmPwd} label={'Confirm password'} />
             <br />
             <button onClick={changePwd} >Submit</button>
         </div>
