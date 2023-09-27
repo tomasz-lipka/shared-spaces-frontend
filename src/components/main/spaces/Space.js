@@ -4,13 +4,15 @@ import Share from "../shares/Share"
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 import CreateShare from './CreateShare';
+import PhotoAndMembersNav from './PhotoAndMembersNav';
+import SidebarLine from '../SidebarLine';
+import RenameSpace from './RenameSpace';
 
 function Space({ setMsg }) {
     const navigate = useNavigate()
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');
     const [shares, setShares] = useState([]);
-    const [spaceNewName, setSpaceNewName] = useState('');
 
 
     async function fetchSpace() {
@@ -37,20 +39,6 @@ function Space({ setMsg }) {
 
 
 
-    async function renameSpace() {
-        setMsg(Config.waitMsg)
-        let requestBody = JSON.stringify({
-            "new-name": spaceNewName
-        });
-        let response = await makeRequest('/spaces/' + spaceId, 'PUT', requestBody);
-        if (response.ok) {
-            fetchSpace();
-            setSpaceNewName('')
-        } else {
-            setMsg(await response.text())
-        }
-    };
-
     async function deleteSpace() {
         setMsg(Config.waitMsg)
         let response = await makeRequest('/spaces/' + spaceId, 'DELETE', null)
@@ -72,28 +60,12 @@ function Space({ setMsg }) {
         <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }} className='main-menu-item'>
-                    Members
-                </a>
-                <br />
-                <br />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }} className='main-menu-item'>
-                    All photos
-                </a>
-                <br /><br /><hr /><br />
+                <PhotoAndMembersNav spaceId={spaceId} />
+                <SidebarLine />
                 <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
-                <br /><br /><hr /><br />
-                <div>
-                    <input
-                        placeholder="New name for space..."
-                        type="text"
-                        value={spaceNewName}
-                        onChange={(e) => setSpaceNewName(e.target.value)}
-                    />
-                    <br />
-                    <button onClick={renameSpace} >Rename space</button>
-                </div>
-                <br /><hr /><br />
+                <SidebarLine />
+                <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpace} />
+                <SidebarLine />
                 <button onClick={deleteSpace} >Delete space</button>
             </div>
             <div className="content-div">
