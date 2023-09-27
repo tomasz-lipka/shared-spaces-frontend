@@ -29,7 +29,7 @@ function Register({ setMsg }) {
 
     return (
         <div>
-            <Input value={login} setValue={setLogin} label={'Login'} />
+            <Input value={login} setValue={setLogin} label={'Login'} type={'text'} />
             <Input value={pwd} setValue={setPwd} label={'Password'} />
             <Input value={confirmPwd} setValue={setConfirmPwd} label={'Old password'} />
             <button onClick={handleRegister}>

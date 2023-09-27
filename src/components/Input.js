@@ -1,4 +1,5 @@
-function Input({ value, setValue, label }) {
+function Input({ value, setValue, label, type }) {
+    type ? type = 'text' : type = 'password'
     return (
         <div>
             <label>{label}:</label>
@@ -6,7 +7,7 @@ function Input({ value, setValue, label }) {
             <input
                 className='auth-input'
                 value={value}
-                type="password"
+                type={type}
                 onChange={(e) => setValue(e.target.value)}
             />
         </div>

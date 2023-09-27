@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Config from '../../Config';
 import { makeRequest } from "../../Helper"
+import Breadcrumb from './Breadcrumb';
 
 function Images({ setMsg }) {
-    const navigate = useNavigate()
-    const [images, setImages] = useState([])
     const { spaceId } = useParams();
+    const [images, setImages] = useState([])
     const [space, setSpace] = useState('');
 
     async function fetchSpace() {
@@ -37,34 +37,28 @@ function Images({ setMsg }) {
         // eslint-disable-next-line
     }, []);
 
-
     return (
-        <div className='div-flex-basic'>
-            <div className="sidebar">
-                <br />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
+        <div>
+            <div className='breadcrumb-div'>
+                <Breadcrumb to={'/'} display={'spaces'} />
+                <Breadcrumb to={'/spaces/' + spaceId} display={space.name} />
+                <Breadcrumb to={''} display={'all photos'} />
             </div>
-            <div className="content-div">
-            <div className='content-title'>{Config.titleSymbol} spaces {Config.titleSymbol} {space.name} {Config.titleSymbol} photos</div>
-
-                {
-                    images.length === 0 ? (
-                        <p>No images</p>
-                    ) : (
-                        <div className="image-container">
-                            {images.map((item) => (
-                                <img
-                                    src={item.image_url}
-                                    alt='Attached to the share'
-                                    className="all-photos-image"
-                                    key={item.image_url}
-                                />
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
-        </div >
+            {images.length === 0 ? (
+                <p>No photos</p>
+            ) : (
+                <div className="image-container">
+                    {images.map((item) => (
+                        <img
+                            src={item.image_url}
+                            alt='Attached to the share'
+                            className="all-photos-image"
+                            key={item.image_url}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
     );
 }
 

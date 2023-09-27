@@ -16,7 +16,6 @@ function Share({ share, fetchShares, setMsg }) {
     };
 
     return (
-
         <div className="share" key={share.id}>
             <div className="share-title-div">
                 <p><b>{share.user.login}</b></p>
@@ -39,8 +38,6 @@ function Share({ share, fetchShares, setMsg }) {
                 )}
             </div>
             <div >
-
-
             </div>
             <div className="div-flex">
                 {showButtons && !edit && (

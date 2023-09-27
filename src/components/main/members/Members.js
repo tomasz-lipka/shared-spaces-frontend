@@ -1,15 +1,14 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Member from "./Member"
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
+import AddMember from './AddMember';
 
 function Members({ setMsg }) {
-    const navigate = useNavigate()
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');
     const [members, setMembers] = useState([]);
-    const [userId, setUserId] = useState('');
 
     async function fetchSpace() {
         setMsg(Config.waitMsg);
@@ -33,19 +32,7 @@ function Members({ setMsg }) {
         }
     };
 
-    async function addMember() {
-        setMsg(Config.waitMsg);
-        let requestBody = JSON.stringify({
-            "user-id": userId
-        });
-        let response = await makeRequest('/spaces/' + spaceId + '/members', 'POST', requestBody)
-        if (response.ok) {
-            fetchMembers();
-            setUserId('')
-        } else {
-            setMsg(await response.text());
-        }
-    };
+
 
     useEffect(() => {
         fetchSpace();
@@ -57,19 +44,7 @@ function Members({ setMsg }) {
         <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }} className='main-menu-item'>
-                    {Config.backSymbol}
-                </a>
-                <br /><br /><hr /><br />
-                <div>
-                    <input
-                        placeholder="Login of new member..."
-                        type="text"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                    />
-                </div>
-                <button onClick={addMember} >Add member</button>
+                <AddMember setMsg={setMsg} spaceId={spaceId} fetchMembers={fetchMembers} />
             </div>
             <div className="content-div">
                 <div className='content-title'>{Config.titleSymbol} spaces {Config.titleSymbol} {space.name} {Config.titleSymbol} members</div>

@@ -29,7 +29,7 @@ function Login({ setAuthenticated, setMsg }) {
 
     return (
         <div>
-            <Input setValue={setLogin} label={'Login'} />
+            <Input setValue={setLogin} label={'Login'} type={'text'} />
             <Input setValue={setPwd} label={'Password'} />
             <button onClick={handleLogin} disabled={loading}>
                 {loading ? 'Logging in...' : 'Login'}
