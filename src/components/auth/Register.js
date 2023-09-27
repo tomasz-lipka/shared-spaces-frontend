@@ -17,6 +17,11 @@ function Register({ setMsg }) {
             "confirm-password": confirmPwd
         });
         let response = await makeRequest('/register', 'POST', requestBody);
+        if (response.ok) {
+            setLogin('')
+            setPwd('')
+            setConfirmPwd('')
+        }
         setMsg(await response.text())
         setLoading(false)
     };
