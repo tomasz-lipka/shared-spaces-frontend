@@ -16,7 +16,6 @@ function Space({ setMsg }) {
     const [space, setSpace] = useState('');
     const [shares, setShares] = useState([]);
 
-
     async function fetchSpace() {
         setMsg(Config.waitMsg)
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 import CreateSpace from './CreateSpace';
+import Breadcrumb from '../Breadcrumb';
 
 function Spaces({ setMsg }) {
     const navigate = useNavigate()
@@ -31,7 +32,9 @@ function Spaces({ setMsg }) {
                 <CreateSpace setMsg={setMsg} fetchSpaces={fetchSpaces} />
             </div>
             <div className="content-div">
-                <div className='content-title'>{Config.titleSymbol} spaces</div>
+                <div className='breadcrumb-div'>
+                    <Breadcrumb to={''} display={'spaces'} />
+                </div>
                 {spaces.length === 0 ? (
                     <p>No spaces</p>
                 ) : (
