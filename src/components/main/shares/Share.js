@@ -8,15 +8,21 @@ function Share({ share, fetchShares, setMsg }) {
     const formattedTimestamp = format(new Date(share.timestamp), "dd.MM HH:mm");
     const showButtons = sessionStorage.getItem("currentUser") === share.user.login;
     const [edit, setEdit] = useState(false)
+    const [classN, setClassN] = useState('share')
 
     async function deleteShare(shareId) {
         setMsg(Config.waitMsg)
         let response = await makeRequest('/shares/' + shareId, 'DELETE', null)
-        response.ok ? fetchShares() : setMsg(await response.text())
+        if (response.ok) {
+            setClassN('share fade-out')
+            setTimeout(() => {
+                fetchShares();
+            }, 1000);
+        } else { setMsg(await response.text()) }
     };
 
     return (
-        <div className="share" key={share.id}>
+        <div className={classN} key={share.id}>
             <div className="share-title-div">
                 <p><b>{share.user.login}</b></p>
                 <p>{formattedTimestamp}</p>
@@ -36,8 +42,6 @@ function Share({ share, fetchShares, setMsg }) {
                 ) : (
                     <EditShare originalText={share.text} shareId={share.id} setMsg={setMsg} setEdit={setEdit} fetchShares={fetchShares} />
                 )}
-            </div>
-            <div >
             </div>
             <div className="div-flex">
                 {showButtons && !edit && (

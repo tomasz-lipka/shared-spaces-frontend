@@ -54,6 +54,19 @@
   color: #2D4B65;
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 2s linear;
+}
+
 .main-menu-bar {
   background: #2D4B65;
   padding: 0px;
@@ -76,7 +89,7 @@
 .main-menu-item {
   color: #edefee;
   text-decoration: none;
-  font-size: 1.3em;
+  font-size: 1.4em;
   margin-right: 20px;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
@@ -303,7 +316,7 @@ hr {
 
 .breadcrumb {
   font-family: monospace;
-  font-size: 2em;
+  font-size: 1.7em;
   font-weight: bold;
   color: #2D4B65;
   text-decoration: none;
