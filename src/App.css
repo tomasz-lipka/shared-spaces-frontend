@@ -293,13 +293,22 @@ hr {
   font-family: monospace;
 }
 
-.content-title {
+.breadcrump-div {
   margin: 15px;
   text-align: left;
+}
+
+.breadcrump {
   font-family: monospace;
   font-size: 2em;
   font-weight: bold;
   color: #2D4B65;
+  text-decoration: none;
+}
+
+.breadcrump:hover {
+  color: #F4C434;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .auth-input {

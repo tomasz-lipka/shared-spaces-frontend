@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Share from "../shares/Share"
 import { makeRequest, makeShareRequest } from "../../../Helper"
@@ -93,10 +93,6 @@ function Space({ setMsg }) {
     return (
         <div className='div-flex-basic'>
             <div className="sidebar">
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }} className='main-menu-item'>
-                    {Config.backSymbol}
-                </a>
-                <br />
                 <br />
                 <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }} className='main-menu-item'>
                     Members
@@ -142,7 +138,10 @@ function Space({ setMsg }) {
                 <button onClick={deleteSpace} >Delete space</button>
             </div>
             <div className="content-div">
-                <div className='content-title'>{Config.titleSymbol} spaces {Config.titleSymbol} {space.name}</div>
+                <div className='breadcrump-div'>
+                    <Link to='/' className='breadcrump'> {Config.titleSymbol} spaces</Link>
+                    <Link className='breadcrump'> {Config.titleSymbol} {space.name}</Link>
+                </div>
                 {shares.length === 0 ? (<p>No shares</p>) : (
                     shares.map((item) => (
                         <Share share={item} fetchShares={fetchShares} setMsg={setMsg} key={item.id} />
