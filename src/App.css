@@ -271,7 +271,7 @@ hr {
 
 .file-upload {
   display: inline-block;
-  background-color: #F4C434;
+  background-color: #AF4474;
   color: #fff;
   padding: 5px 20px;
   cursor: pointer;
@@ -284,7 +284,12 @@ hr {
 }
 
 .file-upload:hover {
-  background-color: #AF4474;
+  background-color: #F4C434;
+}
+
+.chosen-image {
+  color: white;
+  font-family: monospace;
 }
 
 .content-title {

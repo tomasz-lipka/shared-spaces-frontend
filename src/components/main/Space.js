@@ -12,7 +12,7 @@ function Space({ setMsg }) {
     const [shares, setShares] = useState([]);
     const [spaceNewName, setSpaceNewName] = useState('');
     const [file, setFile] = useState(null);
-
+    const [fileName, setFileName] = useState(null);
 
     async function fetchSpace() {
         setMsg(Config.waitMsg)
@@ -45,6 +45,8 @@ function Space({ setMsg }) {
         if (response.ok) {
             fetchShares()
             setText('')
+            setFile(null)
+            setFileName('')
         } else {
             setMsg(await response.text())
         }
@@ -77,6 +79,9 @@ function Space({ setMsg }) {
 
     function handleFileChange(event) {
         setFile(event.target.files[0]);
+        if (event.target.files[0]) {
+            setFileName(event.target.files[0].name)
+        }
     };
 
     useEffect(() => {
@@ -119,6 +124,7 @@ function Space({ setMsg }) {
                     <label for="fileInput" class="file-upload">
                         Choose a photo 📷
                     </label>
+                    <span className='chosen-image'> {fileName}</span>
                 </div>
                 <button onClick={createShare} >Share</button>
                 <br /><br /><hr /><br />
