@@ -1,18 +1,17 @@
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Share from "../shares/Share"
-import { makeRequest, makeShareRequest } from "../../../Helper"
+import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
+import CreateShare from './CreateShare';
 
 function Space({ setMsg }) {
     const navigate = useNavigate()
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');
-    const [text, setText] = useState('');
     const [shares, setShares] = useState([]);
     const [spaceNewName, setSpaceNewName] = useState('');
-    const [file, setFile] = useState(null);
-    const [fileName, setFileName] = useState(null);
+
 
     async function fetchSpace() {
         setMsg(Config.waitMsg)
@@ -36,21 +35,7 @@ function Space({ setMsg }) {
         }
     };
 
-    async function createShare() {
-        setMsg(Config.waitMsg)
-        let bodyContent = new FormData();
-        bodyContent.append("text", text);
-        if (file) { bodyContent.append("file", file) }
-        let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
-        if (response.ok) {
-            fetchShares()
-            setText('')
-            setFile(null)
-            setFileName('')
-        } else {
-            setMsg(await response.text())
-        }
-    }
+
 
     async function renameSpace() {
         setMsg(Config.waitMsg)
@@ -77,13 +62,6 @@ function Space({ setMsg }) {
         }
     };
 
-    function handleFileChange(event) {
-        setFile(event.target.files[0]);
-        if (event.target.files[0]) {
-            setFileName(event.target.files[0].name)
-        }
-    };
-
     useEffect(() => {
         fetchSpace();
         fetchShares();
@@ -103,26 +81,7 @@ function Space({ setMsg }) {
                     All photos
                 </a>
                 <br /><br /><hr /><br />
-                <div>
-                    <textarea
-                        type="text"
-                        placeholder="What do you want to share with your space?"
-                        rows="5"
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                    />
-                    <input
-                        type="file"
-                        accept=".jpg, .jpeg, .png"
-                        onChange={handleFileChange}
-                        id="fileInput"
-                    />
-                    <label for="fileInput" class="file-upload">
-                        Choose a photo 📷
-                    </label>
-                    <span className='chosen-image'> {fileName}</span>
-                </div>
-                <button onClick={createShare} >Share</button>
+                <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
                 <br /><br /><hr /><br />
                 <div>
                     <input
