@@ -298,6 +298,12 @@ hr {
   margin: 15px;
 }
 
+.breadcrumb-div-center {
+  display: flex;
+  margin: 15px;
+  justify-content: center;
+}
+
 .breadcrumb {
   font-family: monospace;
   font-size: 2em;

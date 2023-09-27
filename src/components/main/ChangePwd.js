@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { makeRequest } from "../../Helper"
+import Breadcrumb from './Breadcrumb';
 
 function ChangePwd({ setMsg }) {
     const navigate = useNavigate()
@@ -20,34 +21,40 @@ function ChangePwd({ setMsg }) {
     };
 
     return (
-        <div className='div-flex-basic'>
-            <div className="sidebar">
+        <div >
+            <h2>Change password</h2>
+            <div>
+                <label>Old password: </label>
                 <br />
-                <a href="#/" onClick={(e) => { e.preventDefault(); navigate(-1); }}>{'<<'} Back</a>
-            </div>
-            <div className='content-div'>
-                <h2>Change password</h2>
-                <p>Old password: </p>
                 <input
+                    className='auth-input'
                     type="password"
                     value={oldPwd}
                     onChange={(e) => setOldPwd(e.target.value)}
                 />
-                <p>New password: </p>
+            </div>
+            <div>
+                <label>New password: </label>
+                <br />
                 <input
+                    className='auth-input'
                     type="password"
                     value={newPwd}
                     onChange={(e) => setNewPwd(e.target.value)}
                 />
-                <p>Confirm password: </p>
+            </div>
+            <div>
+                <label>Confirm password: </label>
+                <br />
                 <input
+                    className='auth-input'
                     type="password"
                     value={confirmPwd}
                     onChange={(e) => setConfirmPwd(e.target.value)}
                 />
-                <br /><br />
-                <button onClick={changePwd} >Submit</button>
             </div>
+            <br />
+            <button onClick={changePwd} >Submit</button>
         </div>
     );
 }
