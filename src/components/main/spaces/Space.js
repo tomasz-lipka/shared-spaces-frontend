@@ -1,4 +1,4 @@
-import {  useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Share from "../shares/Share"
 import { makeRequest } from "../../../Helper"
@@ -11,7 +11,7 @@ import DeleteSpace from './DeleteSpace';
 import Breadcrumb from '../Breadcrumb';
 
 function Space({ setMsg }) {
-    
+
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');
     const [shares, setShares] = useState([]);
@@ -59,8 +59,8 @@ function Space({ setMsg }) {
             </div>
             <div className="content-div">
                 <div className='breadcrumb-div'>
-                    <Breadcrumb to={'/'} display={'spaces'}/>
-                    <Breadcrumb to={''} display={space.name}/>
+                    <Breadcrumb to={'/'} display={'spaces'} />
+                    <Breadcrumb to={''} display={space.name} />
                 </div>
                 {shares.length === 0 ? (<p>No shares</p>) : (
                     shares.map((item) => (
