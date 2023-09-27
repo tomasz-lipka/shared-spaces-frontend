@@ -309,11 +309,23 @@ hr {
   text-align: center;
   background-color: #2D4B65;
   color: white;
+  min-height: 100vh;
 }
 
 .auth-logo-text {
   font-weight: bold;
   color: #F4C434;
-  font-size: 2em;
+  font-size: 3em;
 }
 
+.disclaimer {
+  color: #F4C434;
+  border: 2px dotted white;
+  padding: 10px;
+  display: inline-block;
+}
+
+.auth-page-msg {
+  font-family: monospace;
+  font-size: 2em;
+}
