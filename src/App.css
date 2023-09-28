@@ -65,7 +65,7 @@
 }
 
 .fade-out {
-  animation: fadeOut 2s linear;
+  animation: fadeOut 1.5s linear;
 }
 
 @keyframes fadeIn {

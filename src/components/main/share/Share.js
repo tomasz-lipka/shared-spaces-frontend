@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import { format } from "date-fns";
-import EditShare from './EditShare';
-import ShareContent from './ShareContent';
-import RegularShareButtons from './RegularShareButtons';
-import EditShareButtons from './EditShareButton';
+import EditShareBody from './EditShareBody';
+import BasicShareBody from './BasicShareBody';
 
 function Share({ share, fetchShares, setMsg }) {
     const formattedTimestamp = format(new Date(share.timestamp), "dd.MM HH:mm");
-    const showButtons = sessionStorage.getItem("currentUser") === share.user.login;
     const [edit, setEdit] = useState(false)
     const [classN, setClassN] = useState('share div-flex-basic')
-    const [file, setFile] = useState(null);
-    const [updatedText, setUpdatedText] = useState('');
-
-
 
     return (
         <div className={classN} key={share.id}>
@@ -23,35 +16,20 @@ function Share({ share, fetchShares, setMsg }) {
             </div>
             <div className="share-content-container">
                 {edit ? (
-                    <EditShare
-                        originalText={share.text}
-                        setFile={setFile}
-                        setUpdatedText={setUpdatedText}
+                    <EditShareBody
+                        setEdit={setEdit}
+                        setMsg={setMsg}
+                        share={share}
+                        fetchShares={fetchShares}
+                        setClassN={setClassN}
                     />
                 ) : (
-                    <ShareContent share={share} />
-                )}
-            </div>
-            <div className="div-flex">
-                {showButtons && (
-                    edit ? (
-                        <EditShareButtons
-                            file={file}
-                            setMsg={setMsg}
-                            updatedText={updatedText}
-                            share={share}
-                            fetchShares={fetchShares}
-                            setEdit={setEdit}
-                        />
-                    ) : (
-                        <RegularShareButtons
-                            share={share}
-                            setEdit={setEdit}
-                            setClassN={setClassN}
-                            setMsg={setMsg}
-                            fetchShares={fetchShares}
-                        />
-                    )
+                    <BasicShareBody setMsg
+                        share={share}
+                        setClassN={setClassN}
+                        fetchShares={fetchShares}
+                        setEdit={setEdit}
+                    />
                 )}
             </div>
         </div>

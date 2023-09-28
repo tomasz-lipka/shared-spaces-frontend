@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { makeShareRequest } from "../../../Helper"
 import Config from '../../../Config';
-import TextPhotoInput from './TextPhotoInput';
 
 function CreateShare({ setMsg, spaceId, fetchShares }) {
     const [text, setText] = useState('');
     const [file, setFile] = useState(null);
-    const [defaultFileName, setDefaultFileName] = useState('');
+    const [fileName, setFileName] = useState('');
+
+    function handleFileChange(event) {
+        setFile(event.target.files[0]);
+        if (event.target.files[0]) {
+            setFileName(event.target.files[0].name)
+        }
+    };
 
     async function createShare() {
         setMsg(Config.waitMsg)
@@ -17,7 +23,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
         if (response.ok) {
             fetchShares()
             setFile(null)
-            setDefaultFileName(Config.blankMsg)
+            setFileName('')
             setText('')
         } else {
             setMsg(await response.text())
@@ -25,13 +31,29 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
     }
 
     return (
-        <TextPhotoInput
-            setFile={setFile}
-            text={text}
-            setText={setText}
-            execute={createShare}
-            defaultFileName={defaultFileName} 
-            buttonText={'Share'}/>
+        <div>
+            <div>
+                <textarea
+                    className='text-align-left'
+                    type="text"
+                    value={text}
+                    placeholder="What do you want to share with your space?"
+                    rows="5"
+                    onChange={(e) => setText(e.target.value)}
+                />
+                <input
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    onChange={handleFileChange}
+                    id="fileInput"
+                />
+                <label for="fileInput" class="file-upload">
+                    Choose a photo 📷
+                </label>
+                <span className='chosen-image'> {fileName}</span>
+            </div>
+            <button onClick={createShare} >Share</button>
+        </div>
     );
 }
 export default CreateShare
