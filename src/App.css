@@ -289,7 +289,7 @@ hr {
   border-color: #F4C434;
 }
 
-#fileInput {
+.file-input {
   display: none;
 }
 
@@ -313,6 +313,9 @@ hr {
 
 .chosen-image {
   color: white;
+  font-family: monospace;
+}
+.chosen-image-edit {
   font-family: monospace;
 }
 

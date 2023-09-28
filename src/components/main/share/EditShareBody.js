@@ -48,12 +48,13 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares, setClassN }) {
                         type="file"
                         accept=".jpg, .jpeg, .png"
                         onChange={handleFileChange}
-                        id="fileInput"
+                        id="fileInputEdit"
+                        className='file-input'
                     />
-                    <label for="fileInput" class="file-upload">
+                    <label for="fileInputEdit" class="file-upload">
                         Choose a new photo 📷
                     </label>
-                    <span className='chosen-image'> {fileName}</span>
+                    <span className='chosen-image-edit'> {fileName}</span>
             </div>
             <div className='div-flex'>
                 <button onClick={updateShare} >Update</button>

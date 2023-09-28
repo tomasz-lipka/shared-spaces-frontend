@@ -46,6 +46,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
                     accept=".jpg, .jpeg, .png"
                     onChange={handleFileChange}
                     id="fileInput"
+                    className='file-input'
                 />
                 <label for="fileInput" class="file-upload">
                     Choose a photo 📷
