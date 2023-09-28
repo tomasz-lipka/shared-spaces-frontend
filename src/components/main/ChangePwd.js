@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { makeRequest } from "../../Helper"
 import Input from '../Input';
+import Config from '../../Config';
 
 function ChangePwd({ setMsg }) {
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
 
-    const changePwd = async () => {
-        setMsg('Please wait...')
+    async function changePwd() {
+        setMsg(Config.waitMsg)
         let requestBody = JSON.stringify({
             "old-password": oldPwd,
             "new-password": newPwd,

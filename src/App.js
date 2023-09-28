@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import Auth from "./components/auth/Auth";
-import Main from "./components/main/Main";
+import MainMenu from "./components/main/MainMenu";
 
 function App() {
   //eslint-disable-next-line
@@ -10,7 +10,7 @@ function App() {
   if (!sessionStorage.getItem("access_token")) {
     return <Auth setAuthenticated={setAuthenticated} />
   }
-  return <Main />
+  return <MainMenu />
 }
 
 export default App;

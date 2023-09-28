@@ -10,11 +10,11 @@ function Images({ setMsg }) {
     const [space, setSpace] = useState('');
 
     async function fetchSpace() {
-        setMsg('Please wait...');
+        setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
             setSpace(await response.json());
-            setMsg('\u00A0');
+            setMsg(Config.blankMsg);
         } else {
             setMsg(await response.text());
         }

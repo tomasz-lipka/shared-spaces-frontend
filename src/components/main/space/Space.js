@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import Share from "../shares/Share"
+import Share from "../share/Share"
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
-import CreateShare from './CreateShare';
-import PhotoAndMembersNav from './PhotoAndMembersNav';
+import CreateShare from '../share/CreateShare';
+import PhotoAndMembersNav from '../PhotoAndMembersNav';
 import SidebarLine from '../SidebarLine';
 import RenameSpace from './RenameSpace';
 import DeleteSpace from './DeleteSpace';

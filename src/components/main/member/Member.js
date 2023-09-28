@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { makeRequest } from "../../../Helper"
+import Config from '../../../Config';
 
 function Member({ member, fetchMembers, spaceId, setMsg }) {
     const navigate = useNavigate()
     const [isChecked, setIsChecked] = useState(member.is_admin);
 
-    const deleteMember = async (userId, login) => {
-        setMsg('Please wait...');
+    async function deleteMember(userId, login) {
+        setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
 
         if (sessionStorage.getItem("currentUser") === login) {
@@ -22,8 +23,8 @@ function Member({ member, fetchMembers, spaceId, setMsg }) {
         }
     };
 
-    const changeAdminPermission = async (userId, isChecked) => {
-        setMsg('Please wait...');
+    async function changeAdminPermission(userId, isChecked) {
+        setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
             "is-admin": Boolean(isChecked)
         });

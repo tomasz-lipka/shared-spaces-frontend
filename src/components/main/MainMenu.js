@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
-import Spaces from "./spaces/Spaces";
+import Spaces from "./space/Spaces";
 import ChangePwd from "./ChangePwd";
-import Space from "./spaces/Space";
-import Members from "./members/Members";
+import Space from "./space/Space";
+import Members from "./member/Members";
 import Images from './Images';
 
-function Main() {
+function MainMenu() {
   const [msg, setMsg] = useState('');
 
   async function handleLogout() {
@@ -42,4 +42,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainMenu;
