@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import { makeShareRequest } from "../../../Helper"
 import Config from '../../../Config';
+import TextPhotoInput from './TextPhotoInput';
 
 function CreateShare({ setMsg, spaceId, fetchShares }) {
     const [text, setText] = useState('');
     const [file, setFile] = useState(null);
-    const [fileName, setFileName] = useState(null);
-
-    function handleFileChange(event) {
-        setFile(event.target.files[0]);
-        if (event.target.files[0]) {
-            setFileName(event.target.files[0].name)
-        }
-    };
+    const [defaultFileName, setDefaultFileName] = useState('');
 
     async function createShare() {
         setMsg(Config.waitMsg)
@@ -22,37 +16,22 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
         let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
         if (response.ok) {
             fetchShares()
-            setText('')
             setFile(null)
-            setFileName('')
+            setDefaultFileName(Config.blankMsg)
+            setText('')
         } else {
             setMsg(await response.text())
         }
     }
 
     return (
-        <div>
-            <div>
-                <textarea
-                    type="text"
-                    placeholder="What do you want to share with your space?"
-                    rows="5"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                />
-                <input
-                    type="file"
-                    accept=".jpg, .jpeg, .png"
-                    onChange={handleFileChange}
-                    id="fileInput"
-                />
-                <label for="fileInput" class="file-upload">
-                    Choose a photo 📷
-                </label>
-                <span className='chosen-image'> {fileName}</span>
-            </div>
-            <button onClick={createShare} >Share</button>
-        </div>
+        <TextPhotoInput
+            setFile={setFile}
+            text={text}
+            setText={setText}
+            execute={createShare}
+            defaultFileName={defaultFileName} 
+            buttonText={'Share'}/>
     );
 }
 export default CreateShare

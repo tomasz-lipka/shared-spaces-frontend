@@ -379,3 +379,7 @@ hr {
   display: inline-block;
   vertical-align: top;
 }
+
+.text-align-left{
+  text-align: left;
+}
