@@ -1,31 +1,16 @@
 import React, { useState } from 'react';
-import Config from '../../../Config';
-import { makeShareRequest } from "../../../Helper"
 
 
-function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
-    const [text, setText] = useState(originalText);
-    const [file, setFile] = useState(null);
 
-    async function updateShare() {
-        setMsg(Config.waitMsg)
-        let bodyContent = new FormData()
-        bodyContent.append("text", text)
-        if (file) { bodyContent.append("file", file) }
-        bodyContent.append("file", file);
-        let response = await makeShareRequest('/shares/' + shareId, 'PUT', bodyContent)
-        if (response.ok) {
-            fetchShares()
-            closeEditor()
-        } else {
-            setMsg(await response.text())
-        }
-    }
+function EditShare({ originalText, setFile, setUpdatedText }) {
 
-    function closeEditor() { setEdit(false) }
+    const [fileName, setFileName] = useState(null);
 
     function handleFileChange(event) {
         setFile(event.target.files[0]);
+        if (event.target.files[0]) {
+            setFileName(event.target.files[0].name)
+        }
     };
 
     return (
@@ -34,13 +19,12 @@ function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
                 <div className='div-flex'>
                     <textarea
                         type="text"
-                        placeholder="Enter your text here..."
                         rows="5"
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
+                        value={originalText}
+                        onChange={(e) => setUpdatedText(e.target.value)}
                     />
                 </div>
-                <div className='div-flex'>
+                {/* <div className='div-flex'>
                     <input
                         type="file"
                         accept=".jpg, .jpeg, .png"
@@ -50,10 +34,8 @@ function EditShare({ originalText, shareId, setMsg, setEdit, fetchShares }) {
                     <label for="fileInput" class="file-upload">
                         Choose a new photo 📷
                     </label>
-                    <button onClick={updateShare} >Update</button>
-                    <br />
-                    <button onClick={closeEditor} >Cancel</button>
-                </div>
+                    <span className='chosen-image'> {fileName}</span>
+                </div> */}
             </div>
         </div>
     );

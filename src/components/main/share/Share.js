@@ -1,26 +1,19 @@
 import React, { useState } from 'react';
 import { format } from "date-fns";
-import { makeRequest } from "../../../Helper"
-import Config from '../../../Config';
 import EditShare from './EditShare';
 import ShareContent from './ShareContent';
+import RegularShareButtons from './RegularShareButtons';
+import EditShareButtons from './EditShareButton';
 
 function Share({ share, fetchShares, setMsg }) {
     const formattedTimestamp = format(new Date(share.timestamp), "dd.MM HH:mm");
     const showButtons = sessionStorage.getItem("currentUser") === share.user.login;
     const [edit, setEdit] = useState(false)
     const [classN, setClassN] = useState('share div-flex-basic')
+    const [file, setFile] = useState(null);
+    const [updatedText, setUpdatedText] = useState('');
 
-    async function deleteShare(shareId) {
-        setMsg(Config.waitMsg)
-        let response = await makeRequest('/shares/' + shareId, 'DELETE', null)
-        if (response.ok) {
-            setClassN('share div-flex-basic fade-out')
-            setTimeout(() => {
-                fetchShares();
-            }, 1000);
-        } else { setMsg(await response.text()) }
-    };
+
 
     return (
         <div className={classN} key={share.id}>
@@ -29,19 +22,36 @@ function Share({ share, fetchShares, setMsg }) {
                 <p>{formattedTimestamp}</p>
             </div>
             <div className="share-content-container">
-                {!edit ? (
-                    <ShareContent share={share}/>
+                {edit ? (
+                    <EditShare
+                        originalText={share.text}
+                        setFile={setFile}
+                        setUpdatedText={setUpdatedText}
+                    />
                 ) : (
-                    <EditShare originalText={share.text} shareId={share.id} setMsg={setMsg} setEdit={setEdit} fetchShares={fetchShares} />
+                    <ShareContent share={share} />
                 )}
             </div>
             <div className="div-flex">
-                {showButtons && !edit && (
-                    <div>
-                        <button onClick={() => setEdit(true)}>Edit</button>
-                        <br />
-                        <button onClick={() => deleteShare(share.id)}>Delete</button>
-                    </div>
+                {showButtons && (
+                    edit ? (
+                        <EditShareButtons
+                            file={file}
+                            setMsg={setMsg}
+                            updatedText={updatedText}
+                            share={share}
+                            fetchShares={fetchShares}
+                            setEdit={setEdit}
+                        />
+                    ) : (
+                        <RegularShareButtons
+                            share={share}
+                            setEdit={setEdit}
+                            setClassN={setClassN}
+                            setMsg={setMsg}
+                            fetchShares={fetchShares}
+                        />
+                    )
                 )}
             </div>
         </div>
