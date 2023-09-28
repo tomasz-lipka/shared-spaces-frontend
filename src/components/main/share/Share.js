@@ -3,18 +3,19 @@ import { format } from "date-fns";
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 import EditShare from './EditShare';
+import ShareContent from './ShareContent';
 
 function Share({ share, fetchShares, setMsg }) {
     const formattedTimestamp = format(new Date(share.timestamp), "dd.MM HH:mm");
     const showButtons = sessionStorage.getItem("currentUser") === share.user.login;
     const [edit, setEdit] = useState(false)
-    const [classN, setClassN] = useState('share')
+    const [classN, setClassN] = useState('share div-flex-basic')
 
     async function deleteShare(shareId) {
         setMsg(Config.waitMsg)
         let response = await makeRequest('/shares/' + shareId, 'DELETE', null)
         if (response.ok) {
-            setClassN('share fade-out')
+            setClassN('share div-flex-basic fade-out')
             setTimeout(() => {
                 fetchShares();
             }, 1000);
@@ -23,22 +24,13 @@ function Share({ share, fetchShares, setMsg }) {
 
     return (
         <div className={classN} key={share.id}>
-            <div className="share-title-div">
+            <div className="div-flex">
                 <p><b>{share.user.login}</b></p>
                 <p>{formattedTimestamp}</p>
             </div>
-            <div className="div-flex">
+            <div className="share-content-container">
                 {!edit ? (
-                    <div className="div-flex">
-                        <div  >
-                            {share.image_url && (
-                                <img src={share.image_url} alt='Attached to the share' className='share-image' />
-                            )}
-                        </div>
-                        <div >
-                            <p>{share.text}</p>
-                        </div>
-                    </div>
+                    <ShareContent share={share}/>
                 ) : (
                     <EditShare originalText={share.text} shareId={share.id} setMsg={setMsg} setEdit={setEdit} fetchShares={fetchShares} />
                 )}
