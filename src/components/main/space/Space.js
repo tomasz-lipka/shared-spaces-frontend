@@ -72,7 +72,7 @@ function Space({ setMsg }) {
             <div className="content-div">
                 <div className='breadcrumb-div'>
                     <Breadcrumb to={'/'} display={'spaces'} />
-                    <Breadcrumb to={''} display={space.name} />
+                    <Breadcrumb to={''} display={space.name} reload={fetchShares} />
                 </div>
                 {shares.length === 0 ? (<p>No shares</p>) : (
                     shares.map((item) => (

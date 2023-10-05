@@ -33,7 +33,7 @@ function Spaces({ setMsg }) {
             </div>
             <div className="content-div">
                 <div className='breadcrumb-div'>
-                    <Breadcrumb to={''} display={'spaces'} />
+                    <Breadcrumb to={''} display={'spaces'} reload={fetchSpaces}/>
                 </div>
                 {spaces.length === 0 ? (
                     <p>No spaces</p>

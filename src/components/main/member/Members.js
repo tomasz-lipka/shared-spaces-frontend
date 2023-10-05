@@ -72,7 +72,7 @@ function Members({ setMsg }) {
                 <div className='breadcrumb-div'>
                     <Breadcrumb to={'/'} display={'spaces'} />
                     <Breadcrumb to={'/spaces/' + spaceId} display={space.name} />
-                    <Breadcrumb to={''} display={'members'} />
+                    <Breadcrumb to={''} display={'members'} reload={fetchMembers} />
                 </div>
                 <div className='members-container'>
                     {members.map((item) => {
