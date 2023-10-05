@@ -11,10 +11,10 @@ import DeleteSpace from './DeleteSpace';
 import Breadcrumb from '../Breadcrumb';
 
 function Space({ setMsg }) {
-
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');
     const [shares, setShares] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     async function fetchSpace() {
         setMsg(Config.waitMsg)
@@ -38,9 +38,22 @@ function Space({ setMsg }) {
         }
     };
 
+    async function setCurrentUserAdmin() {
+        let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null)
+        if (response.ok) {
+            let members = await response.json()
+            members.map((item) => {
+                if (item.is_admin && item.user.login === sessionStorage.getItem("currentUser")) {
+                    setIsAdmin(true);
+                }
+            });
+        }
+    };
+
     useEffect(() => {
         fetchSpace();
         fetchShares();
+        setCurrentUserAdmin();
         // eslint-disable-next-line
     }, []);
 
@@ -52,9 +65,9 @@ function Space({ setMsg }) {
                 <SidebarLine />
                 <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
                 <SidebarLine />
-                <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpace} />
+                <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpace} isAdmin={isAdmin} />
                 <SidebarLine />
-                <DeleteSpace setMsg={setMsg} spaceId={spaceId} />
+                <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
             </div>
             <div className="content-div">
                 <div className='breadcrumb-div'>

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 
-function DeleteSpace({ setMsg, spaceId }) {
+function DeleteSpace({ setMsg, spaceId, isAdmin }) {
     const navigate = useNavigate()
 
     async function deleteSpace() {
@@ -18,7 +18,7 @@ function DeleteSpace({ setMsg, spaceId }) {
 
     return (
         <div>
-            <button onClick={deleteSpace} >Delete space</button>
+            <button onClick={deleteSpace} disabled={!isAdmin} >Delete space</button>
         </div>
     );
 }

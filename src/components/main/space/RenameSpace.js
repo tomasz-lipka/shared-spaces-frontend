@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 
-function RenameSpace({ setMsg, spaceId, fetchSpace }) {
+function RenameSpace({ setMsg, spaceId, fetchSpace, isAdmin }) {
     const [spaceNewName, setSpaceNewName] = useState('');
 
     async function renameSpace() {
@@ -28,7 +28,7 @@ function RenameSpace({ setMsg, spaceId, fetchSpace }) {
                 onChange={(e) => setSpaceNewName(e.target.value)}
             />
             <br />
-            <button onClick={renameSpace} >Rename space</button>
+            <button onClick={renameSpace} disabled={!isAdmin}>Rename space</button>
         </div>
     );
 }
