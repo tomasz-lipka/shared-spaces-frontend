@@ -37,24 +37,25 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares, setClassN }) {
     return (
         <div className='div-flex-basic'>
             <div className='share-content-container'>
-                    <textarea
-                        className='text-align-left'
-                        type="text"
-                        rows="5"
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                    />
-                    <input
-                        type="file"
-                        accept=".jpg, .jpeg, .png"
-                        onChange={handleFileChange}
-                        id="fileInputEdit"
-                        className='file-input'
-                    />
-                    <label for="fileInputEdit" class="file-upload">
-                        Choose a new photo 📷
-                    </label>
-                    <span className='chosen-image-edit'> {fileName}</span>
+                <textarea
+                    className='text-align-left'
+                    type="text"
+                    rows="5"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    name='edit-share'
+                />
+                <input
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    onChange={handleFileChange}
+                    id="fileInputEdit"
+                    className='file-input'
+                />
+                <label for="fileInputEdit" className="file-upload">
+                    Choose a new photo 📷
+                </label>
+                <span className='chosen-image-edit'> {fileName}</span>
             </div>
             <div className='div-flex'>
                 <button onClick={updateShare} >Update</button>

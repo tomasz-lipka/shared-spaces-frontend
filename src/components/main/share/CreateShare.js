@@ -49,7 +49,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
                     id="fileInput"
                     className='file-input'
                 />
-                <label for="fileInput" class="file-upload">
+                <label htmlFor="fileInput" className="file-upload">
                     Choose a photo 📷
                 </label>
                 <span className='chosen-image'> {fileName}</span>

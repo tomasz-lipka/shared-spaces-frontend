@@ -14,7 +14,7 @@ function Auth({ setAuthenticated }) {
       <br /><hr /><br />
       <Register setMsg={setMsg} />
       <br />
-      <p class='disclaimer'>
+      <p className='disclaimer'>
         This is an educational project. Please don't put any confidential data in.<br />
         Especially passwords that you already use somewhere else, personal information,<br />
         photos and data that you don't want to lose.
