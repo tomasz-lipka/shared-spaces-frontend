@@ -22,8 +22,10 @@ function Register({ setMsg }) {
             setLogin('')
             setPwd('')
             setConfirmPwd('')
+            setMsg('User created')
+        } else{
+            setMsg(await response.text())
         }
-        setMsg(await response.text())
         setLoading(false)
     };
 

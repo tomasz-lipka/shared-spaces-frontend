@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 
-function Member({ member, fetchMembers, spaceId, setMsg }) {
+function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
     const navigate = useNavigate()
-    const [isChecked, setIsChecked] = useState(member.is_admin);
 
     async function deleteMember(userId, login) {
         setMsg(Config.waitMsg);
@@ -23,10 +21,10 @@ function Member({ member, fetchMembers, spaceId, setMsg }) {
         }
     };
 
-    async function changeAdminPermission(userId, isChecked) {
+    async function changeAdminPermission(userId) {
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
-            "is-admin": Boolean(isChecked)
+            "is-admin": !Boolean(member.is_admin)
         });
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'PUT', requestBody)
 
@@ -34,34 +32,19 @@ function Member({ member, fetchMembers, spaceId, setMsg }) {
             fetchMembers();
         } else {
             setMsg(await response.text());
-            setIsChecked(!isChecked)
         }
-    };
-
-    const toggleSwitch = (userId) => {
-        setIsChecked(!isChecked);
-        changeAdminPermission(userId, !isChecked);
     };
 
     return (
         <div className="member" key={member.user.id}>
-            <div className='div-flex'>
-                <h4>{member.user.login}</h4>
-            </div>
-            <div className='div-flex-basic'>
-                <div className='div-flex'>
-                    <div className="switch-container">
-                        <span className="label"><small>Admin: </small></span>
-                        <label className="switch">
-                            <input type="checkbox" checked={isChecked} onChange={() => toggleSwitch(member.user.id)} />
-                            <span className="slider"></span>
-                        </label>
-                    </div>
-                </div>
-                <div className='div-flex'>
-                    <button onClick={() => deleteMember(member.user.id, member.user.login)} >Delete</button>
-                </div>
-            </div>
+            <h4>{member.user.login}</h4>
+            <p>{member.is_admin ? 'Admin' : 'Member'}</p>
+            <button onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
+                {isAdmin ? 'Unmake admin' : 'Make admin'}
+            </button>
+            <button onClick={() => deleteMember(member.user.id, member.user.login)} disabled={!isAdmin}>
+                Delete
+            </button>
         </div>
     )
 }

@@ -10,6 +10,7 @@ function Members({ setMsg }) {
     const { spaceId } = useParams();
     const [space, setSpace] = useState('');
     const [members, setMembers] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     async function fetchSpace() {
         setMsg(Config.waitMsg);
@@ -26,12 +27,22 @@ function Members({ setMsg }) {
         setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null)
         if (response.ok) {
-            setMembers(await response.json());
+            let members = await response.json()
+            setCurrentUserAdmin(members);
+            setMembers(members);
             setMsg(Config.blankMsg);
         } else {
             setMsg(await response.text());
         }
     };
+
+    function setCurrentUserAdmin(members) {
+        members.map((item) => {
+            if (item.is_admin && item.user.login === sessionStorage.getItem("currentUser")) {
+                setIsAdmin(true);
+            }
+        });
+    }
 
     useEffect(() => {
         fetchSpace();
@@ -43,7 +54,11 @@ function Members({ setMsg }) {
         <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
-                <AddMember setMsg={setMsg} spaceId={spaceId} fetchMembers={fetchMembers} />
+                <AddMember
+                    setMsg={setMsg}
+                    spaceId={spaceId}
+                    fetchMembers={fetchMembers}
+                    isAdmin={isAdmin} />
             </div>
             <div className="content-div">
                 <div className='breadcrumb-div'>
@@ -52,8 +67,12 @@ function Members({ setMsg }) {
                     <Breadcrumb to={''} display={'members'} />
                 </div>
                 {members.map((item) => {
-                    return <Member member={item} fetchMembers={fetchMembers} spaceId={spaceId}
-                        key={item.user.id} setMsg={setMsg} />
+                    return <Member
+                        member={item}
+                        fetchMembers={fetchMembers}
+                        spaceId={spaceId}
+                        setMsg={setMsg}
+                        isAdmin={isAdmin} />
                 })}
             </div>
         </div >

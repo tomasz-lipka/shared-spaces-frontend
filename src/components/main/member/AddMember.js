@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 
-function AddMember({ setMsg, spaceId, fetchMembers }) {
-    const [userId, setUserId] = useState('');
+function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
+    const [login, setLogin] = useState('');
 
     async function addMember() {
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
-            "user-id": userId
+            "login": login
         });
         let response = await makeRequest('/spaces/' + spaceId + '/members', 'POST', requestBody)
         if (response.ok) {
             fetchMembers();
-            setUserId('')
+            setLogin('')
         } else {
             setMsg(await response.text());
         }
@@ -25,11 +25,11 @@ function AddMember({ setMsg, spaceId, fetchMembers }) {
                 <input
                     placeholder="Login of new member..."
                     type="text"
-                    value={userId}
-                    onChange={(e) => setUserId(e.target.value)}
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)}
                 />
             </div>
-            <button onClick={addMember} >Add member</button>
+            <button onClick={addMember} disabled={!isAdmin}>Add member</button>
         </div>
     );
 }
