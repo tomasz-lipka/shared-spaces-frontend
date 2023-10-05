@@ -74,14 +74,16 @@ function Members({ setMsg }) {
                     <Breadcrumb to={'/spaces/' + spaceId} display={space.name} />
                     <Breadcrumb to={''} display={'members'} />
                 </div>
-                {members.map((item) => {
-                    return <Member
-                        member={item}
-                        fetchMembers={fetchMembers}
-                        spaceId={spaceId}
-                        setMsg={setMsg}
-                        isAdmin={isAdmin} />
-                })}
+                <div className='members-container'>
+                    {members.map((item) => {
+                        return <Member
+                            member={item}
+                            fetchMembers={fetchMembers}
+                            spaceId={spaceId}
+                            setMsg={setMsg}
+                            isAdmin={isAdmin} />
+                    })}
+                </div>
             </div>
         </div >
     );

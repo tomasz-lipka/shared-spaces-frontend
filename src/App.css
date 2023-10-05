@@ -154,15 +154,18 @@
 }
 
 .member {
-  display: flex;
-  flex-direction: column;
-  margin: 10px auto;
-  max-width: 70%;
+  margin: 10px;
   border: 1px solid gray;
   background-color: rgb(255, 255, 255);
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
   animation: fadeIn 2s linear;
+}
+
+.members-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .div-flex {
@@ -220,7 +223,7 @@ button:hover {
   background-color: #F4C434;
 }
 
-button:disabled{
+button:disabled {
   background-color: gainsboro;
 }
 
@@ -283,6 +286,7 @@ hr {
   color: white;
   font-family: monospace;
 }
+
 .chosen-image-edit {
   font-family: monospace;
 }
@@ -351,6 +355,6 @@ hr {
   vertical-align: top;
 }
 
-.text-align-left{
+.text-align-left {
   text-align: left;
 }

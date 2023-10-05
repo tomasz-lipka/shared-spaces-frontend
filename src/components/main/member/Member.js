@@ -37,12 +37,16 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
         <div className="member" key={member.user.id}>
             <h4>{member.user.login}</h4>
             <p>{member.is_admin ? 'Admin' : 'Member'}</p>
-            <button onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
-                {isAdmin ? 'Unmake admin' : 'Make admin'}
-            </button>
-            <button onClick={() => deleteMember(member.user.id, member.user.login)} disabled={!isAdmin}>
-                Delete
-            </button>
+            <div>
+                <button onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
+                    {isAdmin ? 'Unmake admin' : 'Make admin'}
+                </button>
+            </div>
+            <div>
+                <button onClick={() => deleteMember(member.user.id, member.user.login)} disabled={!isAdmin}>
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }
