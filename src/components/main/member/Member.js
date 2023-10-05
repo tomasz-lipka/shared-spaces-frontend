@@ -39,7 +39,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
             <p>{member.is_admin ? 'Admin' : 'Member'}</p>
             <div>
                 <button onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
-                    {isAdmin ? 'Unmake admin' : 'Make admin'}
+                    {member.is_admin ? 'Unmake admin' : 'Make admin'}
                 </button>
             </div>
             <div>
