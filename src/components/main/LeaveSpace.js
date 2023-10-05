@@ -7,12 +7,13 @@ function LeaveSpace({ setMsg, spaceId, members }) {
     let userId;
 
     function setCurrentUserId() {
-        members.map((item) => {
+        members.forEach((item) => {
             if (item.user.login === sessionStorage.getItem("currentUser")) {
-                userId = item.user.id
+                userId = item.user.id;
             }
         });
     }
+    
 
     async function leaveSpace() {
         setCurrentUserId();

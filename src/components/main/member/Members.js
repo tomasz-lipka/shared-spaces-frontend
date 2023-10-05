@@ -39,7 +39,7 @@ function Members({ setMsg }) {
     };
 
     function setCurrentUserAdmin(members) {
-        members.map((item) => {
+        members.forEach((item) => {
             if (item.is_admin && item.user.login === sessionStorage.getItem("currentUser")) {
                 setIsAdmin(true);
             }

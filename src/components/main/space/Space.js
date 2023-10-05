@@ -42,7 +42,7 @@ function Space({ setMsg }) {
         let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null)
         if (response.ok) {
             let members = await response.json()
-            members.map((item) => {
+            members.forEach((item) => {
                 if (item.is_admin && item.user.login === sessionStorage.getItem("currentUser")) {
                     setIsAdmin(true);
                 }
