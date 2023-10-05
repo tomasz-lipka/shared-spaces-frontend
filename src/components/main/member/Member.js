@@ -8,14 +8,12 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
     async function deleteMember(userId, login) {
         setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
-
-        if (sessionStorage.getItem("currentUser") === login) {
-            alert("You left the space")
-            navigate(-2);
-        }
         if (response.ok) {
+            if (sessionStorage.getItem("currentUser") === login) {
+                alert("You left the space")
+                navigate(-2);
+            }
             fetchMembers();
-
         } else {
             setMsg(await response.text());
         }

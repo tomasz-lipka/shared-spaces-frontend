@@ -10,7 +10,6 @@ function DeleteSpace({ setMsg, spaceId, isAdmin }) {
         let response = await makeRequest('/spaces/' + spaceId, 'DELETE', null)
         if (response.ok) {
             navigate(-1);
-            alert('Space deleted')
         } else {
             setMsg(await response.text())
         }
