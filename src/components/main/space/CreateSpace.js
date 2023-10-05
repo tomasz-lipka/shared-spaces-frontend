@@ -27,6 +27,7 @@ function CreateSpace({ setMsg, fetchSpaces }) {
                     type="text"
                     value={spaceName}
                     onChange={(e) => setSpaceName(e.target.value)}
+                    name='create-space'
                 />
             </div>
             <button onClick={createSpace} >Create a new space</button>

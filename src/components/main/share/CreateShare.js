@@ -40,6 +40,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
                     placeholder="What do you want to share with your space?"
                     rows="5"
                     onChange={(e) => setText(e.target.value)}
+                    name='create-share'
                 />
                 <input
                     type="file"

@@ -27,6 +27,7 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
                     type="text"
                     value={login}
                     onChange={(e) => setLogin(e.target.value)}
+                    name='add-member'
                 />
             </div>
             <button onClick={addMember} disabled={!isAdmin}>Add member</button>

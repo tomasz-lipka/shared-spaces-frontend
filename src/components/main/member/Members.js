@@ -81,7 +81,8 @@ function Members({ setMsg }) {
                             fetchMembers={fetchMembers}
                             spaceId={spaceId}
                             setMsg={setMsg}
-                            isAdmin={isAdmin} />
+                            isAdmin={isAdmin}
+                            key={item.user.id} />
                     })}
                 </div>
             </div>

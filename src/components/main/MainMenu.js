@@ -29,7 +29,7 @@ function MainMenu() {
         <Link to="/" className="main-menu-item" onClick={handleLogout}>{'Logout (' + sessionStorage.getItem("currentUser") + ')'}</Link>
       </nav>
       <div className="msg-bar">
-        <div class="msg">{msg}</div>
+        <div className="msg">{msg}</div>
       </div>
       <Routes>
         <Route path="/" element={<Spaces setMsg={setMsg} />}></Route>
