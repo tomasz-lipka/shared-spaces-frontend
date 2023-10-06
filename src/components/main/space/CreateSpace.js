@@ -19,6 +19,12 @@ function CreateSpace({ setMsg, fetchSpaces }) {
         }
     };
 
+    function handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            createSpace();
+        }
+    };
+
     return (
         <div>
             <div>
@@ -28,6 +34,7 @@ function CreateSpace({ setMsg, fetchSpaces }) {
                     value={spaceName}
                     onChange={(e) => setSpaceName(e.target.value)}
                     name='create-space'
+                    onKeyDown={handleKeyDown}
                 />
             </div>
             <button onClick={createSpace} >Create a new space</button>

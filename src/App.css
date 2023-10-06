@@ -64,8 +64,21 @@
   }
 }
 
+@keyframes colorChange {
+  0% {
+    background-color: gray;
+  }
+  100% {
+    background-color: white;
+  }
+}
+
 .fade-out {
   animation: fadeOut 1.5s linear;
+}
+
+.color-change-animation {
+  animation: colorChange 5s alternate;
 }
 
 @keyframes fadeIn {

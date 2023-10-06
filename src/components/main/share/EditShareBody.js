@@ -25,7 +25,7 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares, setClassN }) {
         if (response.ok) {
             fetchShares()
             closeEditor()
-            setClassN('share div-flex-basic fade-in')
+            setClassN('share div-flex-basic color-change-animation')
             setTimeout(() => {
                 fetchShares();
             }, 500);
