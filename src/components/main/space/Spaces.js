@@ -15,8 +15,6 @@ function Spaces({ setMsg }) {
         if (response.ok) {
             setSpaces(await response.json());
             setMsg(Config.blankSymbol);
-        } else {
-            setMsg(await response.text())
         }
     };
 
@@ -33,7 +31,7 @@ function Spaces({ setMsg }) {
             </div>
             <div className="content-div">
                 <div className='breadcrumb-div'>
-                    <Breadcrumb to={''} display={'spaces'} reload={fetchSpaces}/>
+                    <Breadcrumb to={''} display={'spaces'} reload={fetchSpaces} />
                 </div>
                 {spaces.length === 0 ? (
                     <p>No spaces</p>
