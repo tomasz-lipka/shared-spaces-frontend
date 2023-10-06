@@ -14,7 +14,7 @@ function Spaces({ setMsg }) {
         let response = await makeRequest('/spaces', 'GET', null)
         if (response.ok) {
             setSpaces(await response.json());
-            setMsg(Config.blankMsg);
+            setMsg(Config.blankSymbol);
         } else {
             setMsg(await response.text())
         }

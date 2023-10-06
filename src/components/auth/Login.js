@@ -9,7 +9,7 @@ function Login({ setAuthenticated, setMsg }) {
     const [pwd, setPwd] = useState('');
 
     async function handleLogin() {
-        setMsg(Config.blankMsg)
+        setMsg(Config.blankSymbol)
         setLoading(true);
         let requestBody = JSON.stringify({
             "login": login,

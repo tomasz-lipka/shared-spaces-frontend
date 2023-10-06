@@ -14,7 +14,7 @@ function Images({ setMsg }) {
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
             setSpace(await response.json());
-            setMsg(Config.blankMsg);
+            setMsg(Config.blankSymbol);
         } else {
             setMsg(await response.text());
         }
@@ -25,7 +25,7 @@ function Images({ setMsg }) {
         let response = await makeRequest('/spaces/' + spaceId + '/images', 'GET', null)
         if (response.ok) {
             setImages(await response.json());
-            setMsg(Config.blankMsg)
+            setMsg(Config.blankSymbol)
         } else {
             setMsg(await response.text())
         }

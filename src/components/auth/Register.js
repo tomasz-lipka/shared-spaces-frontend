@@ -10,7 +10,7 @@ function Register({ setMsg }) {
     const [loading, setLoading] = useState(false);
 
     async function handleRegister() {
-        setMsg(Config.blankMsg)
+        setMsg(Config.blankSymbol)
         setLoading(true)
         let requestBody = JSON.stringify({
             "login": login,

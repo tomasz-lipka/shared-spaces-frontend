@@ -19,7 +19,7 @@ function Members({ setMsg }) {
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
             setSpace(await response.json());
-            setMsg(Config.blankMsg);
+            setMsg(Config.blankSymbol);
         } else {
             setMsg(await response.text());
         }
@@ -32,7 +32,7 @@ function Members({ setMsg }) {
             let members = await response.json()
             setCurrentUserAdmin(members);
             setMembers(members);
-            setMsg(Config.blankMsg);
+            setMsg(Config.blankSymbol);
         } else {
             setMsg(await response.text());
         }

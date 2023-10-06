@@ -12,7 +12,7 @@ function Breadcrumb({ to, display, reload }) {
     return (
         <div>
             <Link to={to} className='breadcrumb' onClick={handleClick}>
-                {Config.titleSymbol}{Config.blankMsg}{display}{Config.blankMsg}
+                {Config.titleSymbol}{Config.blankSymbol}{display}{Config.blankSymbol}
             </Link>
         </div>
     );

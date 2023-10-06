@@ -21,7 +21,7 @@ function Space({ setMsg }) {
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
             setSpace(await response.json());
-            setMsg(Config.blankMsg)
+            setMsg(Config.blankSymbol)
         } else {
             setMsg(await response.text())
         }
@@ -32,7 +32,7 @@ function Space({ setMsg }) {
         let response = await makeRequest('/spaces/' + spaceId + '/shares', 'GET', null)
         if (response.ok) {
             setShares(await response.json());
-            setMsg(Config.blankMsg)
+            setMsg(Config.blankSymbol)
         } else {
             setMsg(await response.text())
         }

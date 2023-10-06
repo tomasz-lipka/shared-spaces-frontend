@@ -4,7 +4,7 @@ import Login from './Login';
 import Register from './Register';
 
 function Auth({ setAuthenticated }) {
-  const [msg, setMsg] = useState(Config.blankMsg);
+  const [msg, setMsg] = useState(Config.blankSymbol);
 
   return (
     <div className="auth-page">

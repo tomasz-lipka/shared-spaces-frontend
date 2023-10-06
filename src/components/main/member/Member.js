@@ -22,7 +22,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
     return (
         <div className="member" key={member.user.id}>
             <h4>{member.user.login}</h4>
-            <p>{member.is_admin ? 'Admin' : 'Member'}</p>
+            <p>{member.is_admin ? 'Admin' : Config.blankSymbol}</p>
             <div>
                 <button onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
                     {member.is_admin ? 'Unmake admin' : 'Make admin'}
