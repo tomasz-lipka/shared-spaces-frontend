@@ -20,6 +20,12 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
         bodyContent.append("text", text);
         if (file) { bodyContent.append("file", file) }
         let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
+
+        // TODO is this good?
+        setTimeout(() => {
+        }, 5000);
+        // end TODO
+
         if (response.ok) {
             fetchShares()
             setFile(null)
