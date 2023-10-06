@@ -1,21 +1,12 @@
-import { useNavigate } from 'react-router-dom';
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 
 function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
-    const navigate = useNavigate()
 
-    async function deleteMember(userId, login) {
+    async function deleteMember(userId) {
         setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
-        if (response.ok) {
-            if (sessionStorage.getItem("currentUser") === login) {
-                navigate('/');
-            }
-            fetchMembers();
-        } else {
-            setMsg(await response.text());
-        }
+        response.ok ? fetchMembers() : setMsg(await response.text());
     };
 
     async function changeAdminPermission(userId) {
@@ -24,12 +15,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
             "is-admin": !Boolean(member.is_admin)
         });
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'PUT', requestBody)
-
-        if (response.ok) {
-            fetchMembers();
-        } else {
-            setMsg(await response.text());
-        }
+        response.ok ? fetchMembers() : setMsg(await response.text());
     };
 
     return (
@@ -42,7 +28,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
                 </button>
             </div>
             <div>
-                <button onClick={() => deleteMember(member.user.id, member.user.login)} disabled={!isAdmin}>
+                <button onClick={() => deleteMember(member.user.id)} disabled={!isAdmin}>
                     Delete
                 </button>
             </div>
