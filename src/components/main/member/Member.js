@@ -1,7 +1,7 @@
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 
-function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
+function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) {
 
     async function deleteMember(userId) {
         setMsg(Config.waitMsg);
@@ -16,6 +16,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
         });
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'PUT', requestBody)
         response.ok ? fetchMembers() : setMsg(await response.text());
+        setIsAdmin(!Boolean(member.is_admin))
     };
 
     return (

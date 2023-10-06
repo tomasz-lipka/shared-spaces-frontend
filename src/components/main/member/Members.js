@@ -82,6 +82,7 @@ function Members({ setMsg }) {
                             spaceId={spaceId}
                             setMsg={setMsg}
                             isAdmin={isAdmin}
+                            setIsAdmin={setIsAdmin}
                             key={item.user.id} />
                     })}
                 </div>
