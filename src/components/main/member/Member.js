@@ -10,8 +10,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin }) {
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
         if (response.ok) {
             if (sessionStorage.getItem("currentUser") === login) {
-                alert("You left the space")
-                navigate(-2);
+                navigate('/');
             }
             fetchMembers();
         } else {

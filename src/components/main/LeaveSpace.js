@@ -13,16 +13,12 @@ function LeaveSpace({ setMsg, spaceId, members }) {
             }
         });
     }
-    
 
     async function leaveSpace() {
         setCurrentUserId();
         setMsg(Config.waitMsg);
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
-        if (response.ok) {
-            navigate(-2);
-        };
-        setMsg(await response.text());
+        response.ok ? navigate('/') : setMsg(await response.text());
     }
     return (
         <div>
