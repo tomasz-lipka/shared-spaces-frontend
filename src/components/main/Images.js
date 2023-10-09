@@ -7,18 +7,6 @@ import Breadcrumb from './Breadcrumb';
 function Images({ setMsg }) {
     const { spaceId } = useParams();
     const [images, setImages] = useState([])
-    const [space, setSpace] = useState('');
-
-    async function fetchSpace() {
-        setMsg(Config.waitMsg);
-        let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
-        if (response.ok) {
-            setSpace(await response.json());
-            setMsg(Config.blankSymbol);
-        } else {
-            setMsg(await response.text());
-        }
-    };
 
     async function fetchImages() {
         setMsg(Config.waitMsg)
@@ -32,7 +20,6 @@ function Images({ setMsg }) {
     }
 
     useEffect(() => {
-        fetchSpace()
         fetchImages()
         // eslint-disable-next-line
     }, []);
@@ -41,8 +28,8 @@ function Images({ setMsg }) {
         <div>
             <div className='breadcrumb-div'>
                 <Breadcrumb to={'/'} display={'spaces'} />
-                <Breadcrumb to={'/spaces/' + spaceId} display={space.name} />
-                <Breadcrumb to={''} display={'all photos'} reload={fetchImages}/>
+                <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
+                <Breadcrumb to={''} display={'all photos'} reload={fetchImages} />
             </div>
             {images.length === 0 ? (
                 <p>No photos</p>

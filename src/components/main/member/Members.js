@@ -10,20 +10,8 @@ import SidebarLine from '../SidebarLine';
 
 function Members({ setMsg }) {
     const { spaceId } = useParams();
-    const [space, setSpace] = useState('');
     const [members, setMembers] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
-
-    async function fetchSpace() {
-        setMsg(Config.waitMsg);
-        let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
-        if (response.ok) {
-            setSpace(await response.json());
-            setMsg(Config.blankSymbol);
-        } else {
-            setMsg(await response.text());
-        }
-    };
 
     async function fetchMembers() {
         setMsg(Config.waitMsg);
@@ -47,7 +35,6 @@ function Members({ setMsg }) {
     }
 
     useEffect(() => {
-        fetchSpace();
         fetchMembers();
         // eslint-disable-next-line
     }, []);
@@ -71,7 +58,7 @@ function Members({ setMsg }) {
             <div className="content-div">
                 <div className='breadcrumb-div'>
                     <Breadcrumb to={'/'} display={'spaces'} />
-                    <Breadcrumb to={'/spaces/' + spaceId} display={space.name} />
+                    <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
                     <Breadcrumb to={''} display={'members'} reload={fetchMembers} />
                 </div>
                 <div className='members-container'>
