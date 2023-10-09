@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { makeShareRequest } from "../../../Helper"
 import Config from '../../../Config';
 
-function EditShareBody({ setEdit, setMsg, share, fetchShares, setClassN }) {
+function EditShareBody({ setEdit, setMsg, share, fetchShares }) {
     const [fileName, setFileName] = useState('');
     const [text, setText] = useState(share.text);
     const [file, setFile] = useState();
@@ -25,7 +25,6 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares, setClassN }) {
         if (response.ok) {
             fetchShares()
             closeEditor()
-            setClassN('share div-flex-basic color-change-animation')
             setTimeout(() => {
                 fetchShares();
             }, 500);

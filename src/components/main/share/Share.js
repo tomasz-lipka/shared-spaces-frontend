@@ -21,7 +21,6 @@ function Share({ share, fetchShares, setMsg }) {
                         setMsg={setMsg}
                         share={share}
                         fetchShares={fetchShares}
-                        setClassN={setClassN}
                     />
                 ) : (
                     <BasicShareBody
