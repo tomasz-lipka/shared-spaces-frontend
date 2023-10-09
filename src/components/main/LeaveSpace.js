@@ -16,10 +16,15 @@ function LeaveSpace({ setMsg, spaceId, members }) {
 
     async function leaveSpace() {
         setCurrentUserId();
-        setMsg(Config.waitMsg);
-        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
-        response.ok ? navigate('/') : setMsg(await response.text());
+        if (userId) {
+            setMsg(Config.waitMsg);
+            let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
+            response.ok ? navigate('/') : setMsg(await response.text());
+        } else {
+            setMsg("Can't leave - not member");
+        }
     }
+
     return (
         <div>
             <button onClick={leaveSpace} >Leave space</button>
