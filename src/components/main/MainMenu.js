@@ -7,6 +7,7 @@ import ChangePwd from "./ChangePwd";
 import Space from "./space/Space";
 import Members from "./member/Members";
 import Images from './Images';
+import WrongUrl from './WrongUrl';
 
 function MainMenu() {
   const [msg, setMsg] = useState('');
@@ -37,6 +38,7 @@ function MainMenu() {
         <Route path="/spaces/:spaceId" element={<Space setMsg={setMsg} />}></Route>
         <Route path="/spaces/:spaceId/members" element={<Members setMsg={setMsg} />}></Route>
         <Route path="/spaces/:spaceId/images" element={<Images setMsg={setMsg} />}></Route>
+        <Route path="*" element={<WrongUrl />}></Route>
       </Routes>
     </div>
   );
