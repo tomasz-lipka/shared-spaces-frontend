@@ -15,8 +15,12 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
             "is-admin": !Boolean(member.is_admin)
         });
         let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'PUT', requestBody)
-        response.ok ? fetchMembers() : setMsg(await response.text());
-        setIsAdmin(!Boolean(member.is_admin))
+        if (response.ok) {
+            fetchMembers()
+            setIsAdmin(!Boolean(member.is_admin))
+        } else {
+            setMsg(await response.text());
+        }
     };
 
     return (
