@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { makeShareRequest } from "../../../Helper"
 import Config from '../../../Config';
 

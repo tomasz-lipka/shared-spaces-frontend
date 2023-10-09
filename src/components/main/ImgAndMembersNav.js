@@ -1,7 +1,6 @@
-
 import { useNavigate } from 'react-router-dom';
 
-function PhotoAndMembersNav({spaceId}) {
+function ImgAndMembersNav({ spaceId }) {
     const navigate = useNavigate()
 
     return (
@@ -18,4 +17,4 @@ function PhotoAndMembersNav({spaceId}) {
     );
 }
 
-export default PhotoAndMembersNav
+export default ImgAndMembersNav

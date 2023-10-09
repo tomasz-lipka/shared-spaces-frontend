@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Member from "./Member"
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';

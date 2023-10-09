@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Input from '../Input';
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';

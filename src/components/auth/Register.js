@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Input from '../Input';
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
@@ -23,7 +23,7 @@ function Register({ setMsg }) {
             setPwd('')
             setConfirmPwd('')
             setMsg('User created')
-        } else{
+        } else {
             setMsg(await response.text())
         }
         setLoading(false)

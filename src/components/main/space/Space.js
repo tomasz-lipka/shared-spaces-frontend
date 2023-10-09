@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Share from "../share/Share"
 import { makeRequest } from "../../../Helper"
 import Config from '../../../Config';
 import CreateShare from '../share/CreateShare';
-import PhotoAndMembersNav from '../PhotoAndMembersNav';
+import ImgAndMembersNav from '../ImgAndMembersNav';
 import SidebarLine from '../SidebarLine';
 import RenameSpace from './RenameSpace';
 import DeleteSpace from './DeleteSpace';
@@ -62,7 +62,7 @@ function Space({ setMsg }) {
         <div className='div-flex-basic'>
             <div className="sidebar">
                 <br />
-                <PhotoAndMembersNav spaceId={spaceId} />
+                <ImgAndMembersNav spaceId={spaceId} />
                 <SidebarLine />
                 <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
                 <SidebarLine />
