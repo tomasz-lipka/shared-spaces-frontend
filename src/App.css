@@ -1,5 +1,6 @@
 :root {
   --dark-blue: #2D4B65;
+  --yellow: #F4C434;
 }
 
 .App {
@@ -14,7 +15,18 @@
   background: var(--dark-blue);
 }
 
+.logo-text {
+  font-weight: bold;
+  color: var(--yellow);
+  font-size: 2em;
+  margin-right: 1em;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
 
+.logo-text:hover {
+  color: white
+}
 
 
 
@@ -57,20 +69,6 @@
   100% {
     opacity: 1;
   }
-}
-
-
-.logo-text {
-  font-weight: bold;
-  color: #F4C434;
-  font-size: 2em;
-  margin-right: 40px;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-.logo-text:hover {
-  color: #fff
 }
 
 .main-menu-item {
