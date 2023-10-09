@@ -1,6 +1,23 @@
+:root {
+  --dark-blue: #2D4B65;
+}
+
 .App {
   text-align: center;
 }
+
+.main-menu-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  background: var(--dark-blue);
+}
+
+
+
+
+
 
 .space-link {
   text-decoration: none;
@@ -42,11 +59,6 @@
   }
 }
 
-.main-menu-bar {
-  background: #2D4B65;
-  padding: 0px;
-
-}
 
 .logo-text {
   font-weight: bold;
