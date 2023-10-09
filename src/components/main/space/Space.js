@@ -12,15 +12,16 @@ import Breadcrumb from '../Breadcrumb';
 
 function Space({ setMsg }) {
     const { spaceId } = useParams();
-    const [space, setSpace] = useState('');
+    const [spaceName, setSpaceName] = useState('...');
     const [shares, setShares] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
 
-    async function fetchSpace() {
+    async function fetchSpaceName() {
         setMsg(Config.waitMsg)
         let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
         if (response.ok) {
-            setSpace(await response.json());
+            let data = await response.json()
+            setSpaceName(data.name);
             setMsg(Config.blankSymbol)
         } else {
             setMsg(await response.text())
@@ -51,7 +52,7 @@ function Space({ setMsg }) {
     };
 
     useEffect(() => {
-        fetchSpace();
+        fetchSpaceName();
         fetchShares();
         setCurrentUserAdmin();
         // eslint-disable-next-line
@@ -65,14 +66,14 @@ function Space({ setMsg }) {
                 <SidebarLine />
                 <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
                 <SidebarLine />
-                <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpace} isAdmin={isAdmin} />
+                <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpaceName} isAdmin={isAdmin} />
                 <SidebarLine />
                 <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
             </div>
             <div className="content-div">
                 <div className='breadcrumb-div'>
                     <Breadcrumb to={'/'} display={'spaces'} />
-                    <Breadcrumb to={''} display={space.name} reload={fetchShares} />
+                    <Breadcrumb to={''} display={spaceName} reload={fetchShares} />
                 </div>
                 {shares.length === 0 ? (<p>No shares</p>) : (
                     shares.map((item) => (
