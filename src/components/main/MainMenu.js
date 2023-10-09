@@ -24,10 +24,10 @@ function MainMenu() {
   return (
     <div className="App">
       <nav className="main-menu-bar">
-        <Link to="/" className="logo-text">Shared Spaces</Link>
-        <Link to="/" className="main-menu-item">Home</Link>
-        <Link to="/edit-pwd" className="main-menu-item">Change password</Link>
-        <Link to="/" className="main-menu-item" onClick={handleLogout}>{'Logout (' + sessionStorage.getItem("currentUser") + ')'}</Link>
+        <Link to="/" className="logo-text margin-right">Shared Spaces</Link>
+        <Link to="/" className="link-item margin-right">Home</Link>
+        <Link to="/edit-pwd" className="link-item margin-right">Change password</Link>
+        <Link to="/" className="link-item margin-right" onClick={handleLogout}>{'Logout (' + sessionStorage.getItem("currentUser") + ')'}</Link>
       </nav>
       <div className="msg-bar">
         <div className="msg">{msg}</div>

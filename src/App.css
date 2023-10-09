@@ -19,7 +19,6 @@
   font-weight: bold;
   color: var(--yellow);
   font-size: 2em;
-  margin-right: 1em;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
@@ -27,6 +26,25 @@
 .logo-text:hover {
   color: white
 }
+
+.link-item {
+  color: white;
+  text-decoration: none;
+  font-size: 1.4em;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.link-item:hover {
+  color: var(--yellow);
+}
+
+.margin-right {
+  margin-right: 1em;
+}
+
+
+
+
 
 
 
@@ -69,18 +87,6 @@
   100% {
     opacity: 1;
   }
-}
-
-.main-menu-item {
-  color: #edefee;
-  text-decoration: none;
-  font-size: 1.4em;
-  margin-right: 20px;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-.main-menu-item:hover {
-  color: #F4C434;
 }
 
 .msg-bar {

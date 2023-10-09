@@ -5,12 +5,12 @@ function ImgAndMembersNav({ spaceId }) {
 
     return (
         <div>
-            <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }} className='main-menu-item'>
+            <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }} className='link-item'>
                 Members
             </a>
             <br />
             <br />
-            <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }} className='main-menu-item'>
+            <a href="#/" onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }} className='link-item'>
                 All photos
             </a>
         </div>
