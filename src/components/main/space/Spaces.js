@@ -45,7 +45,7 @@ function Spaces({ setMsg }) {
     }, []);
 
     return (
-        <div className='flex-container'>
+        <div>
             <div className='sidebar-container'>
                 <CreateSpace setMsg={setMsg} fetchSpaces={fetchSpaces} />
             </div>

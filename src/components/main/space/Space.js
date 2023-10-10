@@ -72,15 +72,17 @@ function Space({ setMsg }) {
     }, []);
 
     return (
-        <div className='flex-container'>
+        <div>
             <div className='sidebar-container'>
-                <ImgAndMembersNav spaceId={spaceId} />
-                <hr />
-                <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
-                <hr />
-                <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpaceName} isAdmin={isAdmin} />
-                <hr />
-                <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
+                <div className='min-height'>
+                    <ImgAndMembersNav spaceId={spaceId} />
+                    <hr />
+                    <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
+                    <hr />
+                    <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpaceName} isAdmin={isAdmin} />
+                    <hr />
+                    <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
+                </div>
             </div>
             <div className='content-container'>
                 <div className='breadcrumb-container'>

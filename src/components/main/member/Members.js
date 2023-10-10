@@ -39,7 +39,7 @@ function Members({ setMsg }) {
     }, []);
 
     return (
-        <div className='flex-container'>
+        <div>
             <div className='sidebar-container'>
                 <AddMember
                     setMsg={setMsg}

@@ -34,14 +34,16 @@ function MainMenu() {
           {msg}
         </div>
       </div>
-      <Routes>
-        <Route path='/' element={<Spaces setMsg={setMsg} />}></Route>
-        <Route path='/edit-pwd' element={<Settings setMsg={setMsg} />}></Route>
-        <Route path='/spaces/:spaceId' element={<Space setMsg={setMsg} />}></Route>
-        <Route path='/spaces/:spaceId/members' element={<Members setMsg={setMsg} />}></Route>
-        <Route path='/spaces/:spaceId/images' element={<Images setMsg={setMsg} />}></Route>
-        <Route path='*' element={<WrongUrl />}></Route>
-      </Routes>
+      <div className='body'>
+        <Routes>
+          <Route path='/' element={<Spaces setMsg={setMsg} />}></Route>
+          <Route path='/edit-pwd' element={<Settings setMsg={setMsg} />}></Route>
+          <Route path='/spaces/:spaceId' element={<Space setMsg={setMsg} />}></Route>
+          <Route path='/spaces/:spaceId/members' element={<Members setMsg={setMsg} />}></Route>
+          <Route path='/spaces/:spaceId/images' element={<Images setMsg={setMsg} />}></Route>
+          <Route path='*' element={<WrongUrl />}></Route>
+        </Routes>
+      </div>
     </div>
   );
 }
