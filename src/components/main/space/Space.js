@@ -60,7 +60,7 @@ function Space({ setMsg }) {
 
     return (
         <div className='flex-container'>
-            <div className="sidebar">
+            <div className="sidebar-container">
                 <br />
                 <ImgAndMembersNav spaceId={spaceId} />
                 <SidebarLine />
