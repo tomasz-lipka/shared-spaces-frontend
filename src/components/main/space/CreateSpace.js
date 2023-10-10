@@ -35,4 +35,4 @@ function CreateSpace({ setMsg, fetchSpaces }) {
     );
 }
 
-export default CreateSpace
+export default CreateSpace;

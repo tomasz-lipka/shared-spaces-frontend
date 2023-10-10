@@ -20,7 +20,7 @@ function Spaces({ setMsg }) {
 
     function renderNoSpaces() {
         return <p>No spaces</p>
-    }
+    };
 
     function renderSpaces() {
         return spaces.map((item) => (
@@ -33,11 +33,11 @@ function Spaces({ setMsg }) {
                 </div>
             </a>
         ));
-    }
+    };
 
     function renderContent() {
         return spaces.length === 0 ? renderNoSpaces() : renderSpaces();
-    }
+    };
 
     useEffect(() => {
         fetchSpaces();

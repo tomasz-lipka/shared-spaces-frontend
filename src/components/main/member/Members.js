@@ -6,7 +6,6 @@ import Config from '../../../Config';
 import AddMember from './AddMember';
 import Breadcrumb from '../Breadcrumb';
 import LeaveSpace from '../LeaveSpace';
-import SidebarLine from '../SidebarLine';
 
 function Members({ setMsg }) {
     const { spaceId } = useParams();
@@ -48,7 +47,7 @@ function Members({ setMsg }) {
                     spaceId={spaceId}
                     fetchMembers={fetchMembers}
                     isAdmin={isAdmin} />
-                <SidebarLine />
+                <hr />
                 <LeaveSpace
                     setMsg={setMsg}
                     spaceId={spaceId}

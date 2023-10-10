@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { makeShareRequest } from "../../../Helper"
+import { makeShareRequest } from '../../../Helper'
 import Config from '../../../Config';
 
 function CreateShare({ setMsg, spaceId, fetchShares }) {
@@ -10,57 +10,60 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
     function handleFileChange(event) {
         setFile(event.target.files[0]);
         if (event.target.files[0]) {
-            setFileName(event.target.files[0].name)
+            setFileName(event.target.files[0].name);
         }
     };
 
     async function createShare() {
-        setMsg(Config.waitMsg)
+        setMsg(Config.waitMsg);
         let bodyContent = new FormData();
-        bodyContent.append("text", text);
-        if (file) { bodyContent.append("file", file) }
-        let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent)
+        bodyContent.append('text', text);
+        if (file) {
+            bodyContent.append('file', file)
+        }
+        let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent);
         // start TODO
         console.log('*START*')
         console.log(await response.json())
         console.log('*END*')
         // end TODO
         if (response.ok) {
-            fetchShares()
-            setFile(null)
-            setFileName('')
-            setText('')
+            fetchShares();
+            setFile(null);
+            setFileName('');
+            setText('');
         } else {
-            setMsg(await response.text())
+            setMsg(await response.text());
         }
-    }
+    };
 
     return (
         <div>
             <div>
                 <textarea
-                    className='text-align-left'
-                    type="text"
+                    type='text'
                     value={text}
-                    placeholder="What do you want to share with your space?"
-                    rows="5"
+                    placeholder='What do you want to share with your space?'
+                    rows='5'
                     onChange={(e) => setText(e.target.value)}
                     name='create-share'
                 />
                 <input
-                    type="file"
-                    accept=".jpg, .jpeg, .png"
+                    type='file'
+                    accept='.jpg, .jpeg, .png'
                     onChange={handleFileChange}
-                    id="fileInput"
-                    className='file-input'
+                    id='fileInput'
+                    className='default-file-input'
                 />
-                <label htmlFor="fileInput" className="file-upload">
+                <label htmlFor='fileInput' className='custom-file-input'>
                     Choose a photo 📷
                 </label>
-                <span className='chosen-image'> {fileName}</span>
+                <br />
+                <span className='chosen-file'>{fileName}</span>
             </div>
             <button onClick={createShare} >Share</button>
         </div>
     );
 }
-export default CreateShare
+
+export default CreateShare;

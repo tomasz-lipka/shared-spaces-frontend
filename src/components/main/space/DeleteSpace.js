@@ -1,18 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { makeRequest } from "../../../Helper"
+import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 
 function DeleteSpace({ setMsg, spaceId, isAdmin }) {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     async function deleteSpace() {
-        setMsg(Config.waitMsg)
-        let response = await makeRequest('/spaces/' + spaceId, 'DELETE', null)
-        if (response.ok) {
-            navigate('/');
-        } else {
-            setMsg(await response.text())
-        }
+        setMsg(Config.waitMsg);
+        let response = await makeRequest('/spaces/' + spaceId, 'DELETE', null);
+        response.ok ? navigate('/') : setMsg(await response.text());
     };
 
     return (
@@ -22,4 +18,4 @@ function DeleteSpace({ setMsg, spaceId, isAdmin }) {
     );
 }
 
-export default DeleteSpace
+export default DeleteSpace;
