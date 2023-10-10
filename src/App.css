@@ -6,15 +6,19 @@
   --green: #9ACC8F;
 } */
 :root {
-  --dark-blue: #40392F; 
-  --light-blue: #465248; 
-  --burgundy: #8E3952; 
-  --yellow: #ECE6DA; 
-  --green: #BCB096; 
+  --dark-blue: #40392F;
+  --light-blue: #465248;
+  --burgundy: #8E3952;
+  --yellow: #ECE6DA;
+  --green: #BCB096;
 }
 
 .App {
   text-align: center;
+}
+
+.header {
+  background: var(--dark-blue);
 }
 
 .main-menu-bar {
@@ -22,11 +26,9 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: baseline;
-  background: var(--dark-blue);
 }
 
 .msg-bar {
-  background-color: var(--dark-blue);
   font-size: 1.5em;
   font-family: monospace;
   font-weight: bold;

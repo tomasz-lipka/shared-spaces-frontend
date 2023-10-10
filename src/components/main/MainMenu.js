@@ -23,14 +23,16 @@ function MainMenu() {
 
   return (
     <div className='App'>
-      <nav className='main-menu-bar'>
-        <Link to='/' className='logo-text margin-right'>Shared Spaces</Link>
-        <Link to='/' className='link-item margin-right'>Home</Link>
-        <Link to='/edit-pwd' className='link-item margin-right'>Settings</Link>
-        <Link to='/' className='link-item margin-right' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
-      </nav>
-      <div className='msg-bar'>
-        {msg}
+      <div className='header'>
+        <nav className='main-menu-bar'>
+          <Link to='/' className='logo-text margin-right'>Shared Spaces</Link>
+          <Link to='/' className='link-item margin-right'>Home</Link>
+          <Link to='/edit-pwd' className='link-item margin-right'>Settings</Link>
+          <Link to='/' className='link-item margin-right' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
+        </nav>
+        <div className='msg-bar'>
+          {msg}
+        </div>
       </div>
       <Routes>
         <Route path='/' element={<Spaces setMsg={setMsg} />}></Route>
