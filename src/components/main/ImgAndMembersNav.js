@@ -9,7 +9,6 @@ function ImgAndMembersNav({ spaceId }) {
                 Members
             </a>
             <br />
-            <br />
             <a href='#/' onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }} className='link-item'>
                 All photos
             </a>

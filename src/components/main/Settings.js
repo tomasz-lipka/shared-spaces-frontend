@@ -3,7 +3,7 @@ import { makeRequest } from "../../Helper"
 import Input from '../Input';
 import Config from '../../Config';
 
-function ChangePwd({ setMsg }) {
+function Settings({ setMsg }) {
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
@@ -31,4 +31,4 @@ function ChangePwd({ setMsg }) {
     );
 }
 
-export default ChangePwd;
+export default Settings;

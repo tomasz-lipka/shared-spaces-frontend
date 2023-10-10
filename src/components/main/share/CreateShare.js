@@ -61,7 +61,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
                 <br />
                 <span className='chosen-file'>{fileName}</span>
             </div>
-            <button onClick={createShare} >Share</button>
+            <button className='margin-top' onClick={createShare} >Share</button>
         </div>
     );
 }

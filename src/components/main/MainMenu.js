@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { makeRequest } from '../../Helper';
 import Config from '../../Config';
 import Spaces from './space/Spaces';
-import ChangePwd from './ChangePwd';
+import Settings from './Settings';
 import Space from './space/Space';
 import Members from './member/Members';
 import Images from './Images';
@@ -26,7 +26,7 @@ function MainMenu() {
       <nav className='main-menu-bar'>
         <Link to='/' className='logo-text margin-right'>Shared Spaces</Link>
         <Link to='/' className='link-item margin-right'>Home</Link>
-        <Link to='/edit-pwd' className='link-item margin-right'>Change password</Link>
+        <Link to='/edit-pwd' className='link-item margin-right'>Settings</Link>
         <Link to='/' className='link-item margin-right' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
       </nav>
       <div className='msg-bar'>
@@ -34,7 +34,7 @@ function MainMenu() {
       </div>
       <Routes>
         <Route path='/' element={<Spaces setMsg={setMsg} />}></Route>
-        <Route path='/edit-pwd' element={<ChangePwd setMsg={setMsg} />}></Route>
+        <Route path='/edit-pwd' element={<Settings setMsg={setMsg} />}></Route>
         <Route path='/spaces/:spaceId' element={<Space setMsg={setMsg} />}></Route>
         <Route path='/spaces/:spaceId/members' element={<Members setMsg={setMsg} />}></Route>
         <Route path='/spaces/:spaceId/images' element={<Images setMsg={setMsg} />}></Route>
