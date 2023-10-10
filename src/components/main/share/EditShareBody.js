@@ -56,7 +56,7 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares }) {
                 </label>
                 <span className='chosen-file-edit'> {fileName}</span>
             </div>
-            <div className='div-flex'>
+            <div className='share-button-container'>
                 <button onClick={updateShare} >Update</button>
                 <br />
                 <button onClick={closeEditor} >Cancel</button>

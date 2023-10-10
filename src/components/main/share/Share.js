@@ -1,20 +1,21 @@
 import { useState } from 'react';
-import { format } from "date-fns";
+import { format } from 'date-fns';
 import EditShareBody from './EditShareBody';
 import BasicShareBody from './BasicShareBody';
 
 function Share({ share, fetchShares, setMsg }) {
-    const formattedTimestamp = format(new Date(share.timestamp), "dd.MM HH:mm");
-    const [edit, setEdit] = useState(false)
-    const [classN, setClassN] = useState('share flex-container')
+    const formattedTimestamp = format(new Date(share.timestamp), 'dd/MM HH:mm');
+    const [edit, setEdit] = useState(false);
+    const [classN, setClassN] = useState('share-tile flex-container');
 
     return (
         <div className={classN} key={share.id}>
-            <div className="div-flex">
-                <p><b>{share.user.login}</b></p>
-                <p>{formattedTimestamp}</p>
+            <div className='share-title-container'>
+                <b>{share.user.login}</b>
+                <br />
+                <small>{formattedTimestamp}</small>
             </div>
-            <div className="share-content-container">
+            <div className='share-content-container'>
                 {edit ? (
                     <EditShareBody
                         setEdit={setEdit}
@@ -36,4 +37,4 @@ function Share({ share, fetchShares, setMsg }) {
     );
 }
 
-export default Share
+export default Share;

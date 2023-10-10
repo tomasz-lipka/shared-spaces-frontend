@@ -61,7 +61,7 @@ function Space({ setMsg }) {
     };
 
     function renderContent() {
-        shares.length === 0 ? renderNoShares() : renderShares();
+        return shares.length === 0 ? renderNoShares() : renderShares();
     };
 
     useEffect(() => {

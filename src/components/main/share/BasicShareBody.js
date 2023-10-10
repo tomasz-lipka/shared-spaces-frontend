@@ -1,38 +1,36 @@
-import { makeRequest } from "../../../Helper"
+import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 
 function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
-    const showButtons = sessionStorage.getItem("currentUser") === share.user.login;
+    const showButtons = sessionStorage.getItem('currentUser') === share.user.login;
 
     async function deleteShare(shareId) {
-        setMsg(Config.waitMsg)
-        let response = await makeRequest('/shares/' + shareId, 'DELETE', null)
+        setMsg(Config.waitMsg);
+        let response = await makeRequest('/shares/' + shareId, 'DELETE', null);
         if (response.ok) {
-            setClassN('share flex-container fade-out')
+            setClassN('share-tile flex-container fade-out');
             setTimeout(() => {
                 fetchShares();
             }, 500);
-        } else { setMsg(await response.text()) }
+        } else {
+            setMsg(await response.text())
+        }
     };
 
     return (
-        <div className="flex-container">
-            <div className="share-content-container">
-                <div className="share-content">
-                    {share.image_url && (
-                        <img src={share.image_url} alt='Attached to the share' className='share-image' />
-                    )}
-                </div>
-                <div className="share-content">
-                    <p>{share.text}</p>
-                </div>
+        <div className='flex-container'>
+            <div className='share-content-container'>
+                {share.image_url && (
+                    <img src={share.image_url} alt='Attached to the share' className='share-image' />
+                )}
+                {share.text}
             </div>
-            <div className="div-flex">{ }
+            <div className='share-button-container'>
                 {showButtons && (
                     <div>
-                        <button onClick={() => setEdit(true)}>Edit</button>
+                        <button id='share-button' onClick={() => setEdit(true)}>✎</button>
                         <br />
-                        <button onClick={() => deleteShare(share.id)}>Delete</button>
+                        <button id='share-button' onClick={() => deleteShare(share.id)}>✕</button>
                     </div>
                 )}
             </div>
@@ -40,4 +38,4 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
     );
 }
 
-export default BasicShareBody
+export default BasicShareBody;
