@@ -40,7 +40,7 @@ function Members({ setMsg }) {
     }, []);
 
     return (
-        <div className='div-flex-basic'>
+        <div className='flex-container'>
             <div className="sidebar">
                 <br />
                 <AddMember
@@ -55,8 +55,8 @@ function Members({ setMsg }) {
                     members={members}
                 />
             </div>
-            <div className="content-div">
-                <div className='breadcrumb-div'>
+            <div className="content-container">
+                <div className='breadcrumb-container'>
                     <Breadcrumb to={'/'} display={'spaces'} />
                     <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
                     <Breadcrumb to={''} display={'members'} reload={fetchMembers} />

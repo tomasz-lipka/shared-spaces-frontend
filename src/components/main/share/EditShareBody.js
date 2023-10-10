@@ -34,7 +34,7 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares }) {
     }
 
     return (
-        <div className='div-flex-basic'>
+        <div className='flex-container'>
             <div className='share-content-container'>
                 <textarea
                     className='text-align-left'

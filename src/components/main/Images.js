@@ -26,7 +26,7 @@ function Images({ setMsg }) {
 
     return (
         <div>
-            <div className='breadcrumb-div'>
+            <div className='breadcrumb-container'>
                 <Breadcrumb to={'/'} display={'spaces'} />
                 <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
                 <Breadcrumb to={''} display={'all photos'} reload={fetchImages} />

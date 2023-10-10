@@ -59,7 +59,7 @@ function Space({ setMsg }) {
     }, []);
 
     return (
-        <div className='div-flex-basic'>
+        <div className='flex-container'>
             <div className="sidebar">
                 <br />
                 <ImgAndMembersNav spaceId={spaceId} />
@@ -70,8 +70,8 @@ function Space({ setMsg }) {
                 <SidebarLine />
                 <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
             </div>
-            <div className="content-div">
-                <div className='breadcrumb-div'>
+            <div className="content-container">
+                <div className='breadcrumb-container'>
                     <Breadcrumb to={'/'} display={'spaces'} />
                     <Breadcrumb to={''} display={spaceName} reload={fetchShares} />
                 </div>

@@ -8,7 +8,7 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
         setMsg(Config.waitMsg)
         let response = await makeRequest('/shares/' + shareId, 'DELETE', null)
         if (response.ok) {
-            setClassN('share div-flex-basic fade-out')
+            setClassN('share flex-container fade-out')
             setTimeout(() => {
                 fetchShares();
             }, 500);
@@ -16,7 +16,7 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
     };
 
     return (
-        <div className="div-flex-basic">
+        <div className="flex-container">
             <div className="share-content-container">
                 <div className="share-content">
                     {share.image_url && (
