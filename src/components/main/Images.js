@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Config from '../../Config';
-import { makeRequest } from "../../Helper"
+import { makeRequest } from '../../Helper';
 import Breadcrumb from './Breadcrumb';
 
 function Images({ setMsg }) {
     const { spaceId } = useParams();
-    const [images, setImages] = useState([])
+    const [images, setImages] = useState([]);
 
     async function fetchImages() {
-        setMsg(Config.waitMsg)
-        let response = await makeRequest('/spaces/' + spaceId + '/images', 'GET', null)
+        setMsg(Config.waitMsg);
+        let response = await makeRequest('/spaces/' + spaceId + '/images', 'GET', null);
         if (response.ok) {
             setImages(await response.json());
-            setMsg(Config.blankSymbol)
+            setMsg(Config.blankSymbol);
         } else {
-            setMsg(await response.text())
+            setMsg(await response.text());
         }
-    }
+    };
 
     useEffect(() => {
-        fetchImages()
+        fetchImages();
         // eslint-disable-next-line
     }, []);
 
@@ -39,7 +39,7 @@ function Images({ setMsg }) {
                         <img
                             src={item.image_url}
                             alt='Attached to the share'
-                            className="all-photos-image"
+                            className='all-photos-image'
                             key={item.image_url}
                         />
                     ))}

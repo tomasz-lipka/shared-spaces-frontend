@@ -39,7 +39,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
                 </button>
             </div>
         </div>
-    )
+    );
 }
 
 export default Member;
