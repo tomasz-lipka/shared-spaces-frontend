@@ -3,6 +3,7 @@
   --light-blue: #4378A2;
   --burgundy: #AF4474;
   --yellow: #F4C434;
+  --green: #9ACC8F;
 }
 
 .App {
@@ -15,6 +16,15 @@
   justify-content: center;
   align-items: baseline;
   background: var(--dark-blue);
+}
+
+.msg-bar {
+  background-color: var(--dark-blue);
+  font-size: 1.5em;
+  font-family: monospace;
+  font-weight: bold;
+  color: var(--green);
+  padding: 0.5em;
 }
 
 .logo-text {
@@ -154,12 +164,6 @@ button:disabled {
   }
 }
 
-.msg-bar {
-  background-color: #2D4B65;
-  font-size: 1.5em;
-  color: #fff;
-}
-
 .space:hover {
   background-color: #F4C434;
   color: #fff;
@@ -207,15 +211,6 @@ textarea {
   border-radius: 5px;
   border-style: outset;
   border-width: 2px;
-}
-
-.msg {
-  font-family: monospace;
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #9ACC8F;
-  margin: 15px;
-  display: inline-block;
 }
 
 hr {
