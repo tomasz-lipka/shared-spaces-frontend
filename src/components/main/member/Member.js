@@ -1,34 +1,35 @@
-import { makeRequest } from "../../../Helper"
+import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 
 function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) {
 
     async function deleteMember(userId) {
         setMsg(Config.waitMsg);
-        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null)
+        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null);
         response.ok ? fetchMembers() : setMsg(await response.text());
     };
 
     async function changeAdminPermission(userId) {
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
-            "is-admin": !Boolean(member.is_admin)
+            'is-admin': !Boolean(member.is_admin)
         });
-        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'PUT', requestBody)
+        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'PUT', requestBody);
         if (response.ok) {
-            fetchMembers()
-            setIsAdmin(!Boolean(member.is_admin))
+            fetchMembers();
+            setIsAdmin(!Boolean(member.is_admin));
         } else {
             setMsg(await response.text());
         }
     };
 
     return (
-        <div className="member" key={member.user.id}>
-            <h4>{member.user.login}</h4>
-            <p>{member.is_admin ? 'admin' : Config.blankSymbol}</p>
+        <div className='member-tile' key={member.user.id}>
+            <b>{member.user.login}</b>
+            <br />
+            {member.is_admin ? 'admin' : Config.blankSymbol}
             <div>
-                <button onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
+                <button className='margin-top' onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
                     {member.is_admin ? 'Unmake admin' : 'Make admin'}
                 </button>
             </div>
@@ -41,4 +42,4 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
     )
 }
 
-export default Member
+export default Member;

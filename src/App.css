@@ -1,9 +1,16 @@
-:root {
+/* :root {
   --dark-blue: #2D4B65;
   --light-blue: #4378A2;
   --burgundy: #AF4474;
   --yellow: #F4C434;
   --green: #9ACC8F;
+} */
+:root {
+  --dark-blue: #40392F; 
+  --light-blue: #465248; 
+  --burgundy: #8E3952; 
+  --yellow: #ECE6DA; 
+  --green: #BCB096; 
 }
 
 .App {
@@ -66,8 +73,8 @@
 
 .content-container {
   flex: 2;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .breadcrumb-container {
@@ -182,7 +189,6 @@ img {
 }
 
 .share-tile {
-  flex-direction: row;
   margin-bottom: 1em;
   color: var(--dark-blue);
   animation: fadeIn 2s linear;
@@ -204,6 +210,15 @@ img {
 
 .margin-top {
   margin-top: 0.5em
+}
+
+.member-tile {
+  margin-bottom: 0.5em;
+  border: 2px solid var(--dark-blue);
+  padding: 0.5em;
+  border-radius: 5px;
+  animation: fadeIn 2s linear;
+  width: 100%;
 }
 
 
@@ -241,15 +256,6 @@ img {
 .space:hover {
   background-color: #F4C434;
   color: #fff;
-}
-
-.member {
-  margin: 10px;
-  border: 1px solid gray;
-  background-color: rgb(255, 255, 255);
-  padding: 10px;
-  border-radius: 10px;
-  animation: fadeIn 2s linear;
 }
 
 .members-container {

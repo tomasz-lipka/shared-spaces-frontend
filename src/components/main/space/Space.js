@@ -75,7 +75,7 @@ function Space({ setMsg }) {
         <div className='flex-container'>
             <div className='sidebar-container'>
                 <ImgAndMembersNav spaceId={spaceId} />
-                <br />
+                <hr />
                 <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
                 <hr />
                 <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpaceName} isAdmin={isAdmin} />

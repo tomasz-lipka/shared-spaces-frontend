@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Member from "./Member"
-import { makeRequest } from "../../../Helper"
+import Member from './Member';
+import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 import AddMember from './AddMember';
 import Breadcrumb from '../Breadcrumb';
@@ -14,9 +14,9 @@ function Members({ setMsg }) {
 
     async function fetchMembers() {
         setMsg(Config.waitMsg);
-        let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null)
+        let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null);
         if (response.ok) {
-            let members = await response.json()
+            let members = await response.json();
             setCurrentUserAdmin(members);
             setMembers(members);
             setMsg(Config.blankSymbol);
@@ -27,11 +27,11 @@ function Members({ setMsg }) {
 
     function setCurrentUserAdmin(members) {
         members.forEach((item) => {
-            if (item.is_admin && item.user.login === sessionStorage.getItem("currentUser")) {
+            if (item.is_admin && item.user.login === sessionStorage.getItem('currentUser')) {
                 setIsAdmin(true);
             }
         });
-    }
+    };
 
     useEffect(() => {
         fetchMembers();
@@ -40,7 +40,7 @@ function Members({ setMsg }) {
 
     return (
         <div className='flex-container'>
-            <div className="sidebar-container">
+            <div className='sidebar-container'>
                 <br />
                 <AddMember
                     setMsg={setMsg}
@@ -54,7 +54,7 @@ function Members({ setMsg }) {
                     members={members}
                 />
             </div>
-            <div className="content-container">
+            <div className='content-container'>
                 <div className='breadcrumb-container'>
                     <Breadcrumb to={'/'} display={'spaces'} />
                     <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
@@ -77,4 +77,4 @@ function Members({ setMsg }) {
     );
 }
 
-export default Members
+export default Members;
