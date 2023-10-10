@@ -1,6 +1,7 @@
 :root {
   --dark-blue: #2D4B65;
   --light-blue: #4378A2;
+  --burgundy: #AF4474;
   --yellow: #F4C434;
 }
 
@@ -39,21 +40,21 @@
   color: var(--yellow);
 }
 
-.sidebar-container {
-  flex: 1;
-  background-color: var(--light-blue);
-  padding-left: 0.3em;
-  padding-right: 0.5em;
-  padding-top: 1em;
-  min-height: 100vh;
-}
-
 .flex-container {
   display: flex;
 }
 
+.sidebar-container {
+  flex: 1;
+  background-color: var(--light-blue);
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  padding-top: 1em;
+  min-height: 100vh;
+}
+
 .content-container {
-  flex: 3;
+  flex: 2;
   margin-left: 1em;
   margin-right: 1em;
 }
@@ -85,7 +86,32 @@
   animation: fadeIn 2s linear;
 }
 
+input {
+  text-align: center;
+  width: 95%;
+  height: 2em;
+  border-radius: 5px;
+  border-style: outset;
+  border-width: 2px;
+}
 
+button {
+  margin-top: 0.5em;
+  background-color: var(--burgundy);
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: var(--yellow);
+}
+
+button:disabled {
+  background-color: gainsboro;
+}
 
 
 
@@ -172,34 +198,6 @@ img {
 .all-photos-image {
   max-height: 300px;
   margin: 10px;
-}
-
-button {
-  margin-top: 5px;
-  background-color: #AF4474;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  min-width: 10em;
-}
-
-button:hover {
-  background-color: #F4C434;
-}
-
-button:disabled {
-  background-color: gainsboro;
-}
-
-input {
-  text-align: center;
-  width: 80%;
-  height: 2em;
-  border-radius: 5px;
-  border-style: outset;
-  border-width: 2px;
 }
 
 textarea {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { makeRequest } from "../../../Helper"
+import { makeRequest } from '../../../Helper'
 import Config from '../../../Config';
 import CreateSpace from './CreateSpace';
 import Breadcrumb from '../Breadcrumb';
@@ -49,7 +49,7 @@ function Spaces({ setMsg }) {
             <div className='sidebar-container'>
                 <CreateSpace setMsg={setMsg} fetchSpaces={fetchSpaces} />
             </div>
-            <div className="content-container">
+            <div className='content-container'>
                 <div className='breadcrumb-container'>
                     <Breadcrumb to={''} display={'spaces'} reload={fetchSpaces} />
                 </div>

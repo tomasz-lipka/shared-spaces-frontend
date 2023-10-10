@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import { makeRequest } from "../../../Helper"
+import { makeRequest } from '../../../Helper'
 import Config from '../../../Config';
 
 function CreateSpace({ setMsg, fetchSpaces }) {
     const [spaceName, setSpaceName] = useState('');
 
     async function createSpace() {
-        setMsg(Config.waitMsg)
+        setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
-            "name": spaceName
+            'name': spaceName
         });
-        let response = await makeRequest('/spaces', 'POST', requestBody)
+        let response = await makeRequest('/spaces', 'POST', requestBody);
         if (response.ok) {
             fetchSpaces();
-            setSpaceName('')
+            setSpaceName('');
         } else {
             setMsg(await response.text());
         }
@@ -23,14 +23,14 @@ function CreateSpace({ setMsg, fetchSpaces }) {
         <div>
             <div>
                 <input
-                    placeholder="Name for a new space..."
-                    type="text"
+                    placeholder='New space name'
+                    type='text'
                     value={spaceName}
                     onChange={(e) => setSpaceName(e.target.value)}
                     name='create-space'
                 />
             </div>
-            <button onClick={createSpace} >Create a new space</button>
+            <button onClick={createSpace} >Create new space</button>
         </div>
     );
 }
