@@ -169,6 +169,13 @@ textarea {
   font-family: monospace;
 }
 
+img {
+  border-radius: 5px;
+  border: 1px solid #000;
+  max-height: 10em;
+  max-width: 100%;
+}
+
 .share-tile {
   flex-direction: row;
   margin-bottom: 0.5em;
@@ -177,7 +184,7 @@ textarea {
   color: var(--dark-blue);
   animation: fadeIn 2s linear;
   padding-left: 0.2em;
-  padding-bottom: 0.3em;
+  padding-bottom: 0.2em;
   padding-top: 0.2em;
 }
 
@@ -188,7 +195,7 @@ textarea {
 .share-content-container {
   flex: 5;
   text-align: left;
-  padding: 0em 0.2em 0.2em 0.2em;
+  padding: 0em 0.5em 0.2em 0.2em;
 }
 
 .share-button-container {
@@ -256,17 +263,6 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-img {
-  border-radius: 5px;
-  border: 1px solid #000;
-}
-
-.share-image {
-  max-height: 200px;
-  margin: 5px;
-  margin-right: 20px;
 }
 
 .all-photos-image {

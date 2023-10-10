@@ -20,10 +20,11 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
     return (
         <div className='flex-container'>
             <div className='share-content-container'>
-                {share.image_url && (
-                    <img src={share.image_url} alt='Attached to the share' className='share-image' />
-                )}
                 {share.text}
+                <br />
+                {share.image_url && (
+                    <img src={share.image_url} alt='Attached to the share' />
+                )}
             </div>
             <div className='share-button-container'>
                 {showButtons && (
