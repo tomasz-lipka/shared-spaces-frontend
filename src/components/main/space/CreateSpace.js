@@ -30,7 +30,7 @@ function CreateSpace({ setMsg, fetchSpaces }) {
                     name='create-space'
                 />
             </div>
-            <button onClick={createSpace} >Create new space</button>
+            <button className='margin-top' onClick={createSpace} >Create new space</button>
         </div>
     );
 }

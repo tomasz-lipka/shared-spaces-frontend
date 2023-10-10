@@ -31,20 +31,22 @@ function Images({ setMsg }) {
                 <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
                 <Breadcrumb to={''} display={'all photos'} reload={fetchImages} />
             </div>
-            {images.length === 0 ? (
-                <p>No photos</p>
-            ) : (
-                <div>
-                    {images.map((item) => (
-                        <img
-                            src={item.image_url}
-                            alt='Attached to the share'
-                            className='all-photos-image'
-                            key={item.image_url}
-                        />
-                    ))}
-                </div>
-            )}
+            <div className='content-container'>
+                {images.length === 0 ? (
+                    <p>No photos</p>
+                ) : (
+                    <div>
+                        {images.map((item) => (
+                            <img
+                                src={item.image_url}
+                                alt='Attached to the share'
+                                className='all-photos-image'
+                                key={item.image_url}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

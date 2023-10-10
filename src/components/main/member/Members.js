@@ -41,7 +41,6 @@ function Members({ setMsg }) {
     return (
         <div className='flex-container'>
             <div className='sidebar-container'>
-                <br />
                 <AddMember
                     setMsg={setMsg}
                     spaceId={spaceId}

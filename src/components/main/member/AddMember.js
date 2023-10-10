@@ -23,14 +23,14 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
         <div>
             <div>
                 <input
-                    placeholder="Login of new member..."
+                    placeholder="Login of member"
                     type="text"
                     value={login}
                     onChange={(e) => setLogin(e.target.value)}
                     name='add-member'
                 />
             </div>
-            <button onClick={addMember} disabled={!isAdmin}>Add member</button>
+            <button className='margin-top' onClick={addMember} disabled={!isAdmin}>Add member</button>
         </div>
     );
 }
