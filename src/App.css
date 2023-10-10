@@ -61,6 +61,7 @@
   padding-right: 0.3em;
   padding-top: 0.5em;
   min-height: 100vh;
+  border-right: 2px solid var(--dark-blue);
 }
 
 .content-container {
@@ -86,7 +87,7 @@
 .space-tile {
   margin-bottom: 0.5em;
   max-width: 90%;
-  border: 1px solid var(--dark-blue);
+  border: 2px solid var(--dark-blue);
   padding: 1em;
   border-radius: 5px;
   font-size: 1.2em;
@@ -170,43 +171,42 @@ textarea {
 }
 
 img {
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #000;
-  max-height: 10em;
+  max-height: 20em;
   max-width: 100%;
 }
 
 .share-tile {
   flex-direction: row;
-  margin-bottom: 0.5em;
-  border: 1px solid var(--dark-blue);
-  border-radius: 5px;
+  margin-bottom: 1em;
   color: var(--dark-blue);
   animation: fadeIn 2s linear;
-  padding-left: 0.2em;
-  padding-bottom: 0.2em;
-  padding-top: 0.2em;
+  padding: 0.2em;
+  background-color: var(--yellow);
 }
 
 .share-title-container {
-  flex: 1;
+  background-color: var(--green);
+  border-radius: 10px;
 }
 
-.share-content-container {
+/* .share-content-container {
   flex: 5;
   text-align: left;
   padding: 0em 0.5em 0.2em 0.2em;
-}
+} */
 
-.share-button-container {
+/* .share-button-container {
   text-align: right;
   padding-top: 0.2em;
-}
+} */
 
 #share-button {
   width: 2em;
   padding: 0;
-  margin: 0;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .margin-top {

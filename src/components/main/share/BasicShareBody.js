@@ -8,7 +8,7 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
         setMsg(Config.waitMsg);
         let response = await makeRequest('/shares/' + shareId, 'DELETE', null);
         if (response.ok) {
-            setClassN('share-tile flex-container fade-out');
+            setClassN('share-tile fade-out');
             setTimeout(() => {
                 fetchShares();
             }, 500);
@@ -18,23 +18,18 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
     };
 
     return (
-        <div className='flex-container'>
-            <div className='share-content-container'>
-                {share.text}
-                <br />
-                {share.image_url && (
-                    <img src={share.image_url} alt='Attached to the share' />
-                )}
-            </div>
-            <div className='share-button-container'>
-                {showButtons && (
-                    <div>
-                        <button id='share-button' onClick={() => setEdit(true)}>✎</button>
-                        <br />
-                        <button id='share-button' onClick={() => deleteShare(share.id)}>✕</button>
-                    </div>
-                )}
-            </div>
+        <div >
+            {share.text}
+            <br />
+            {share.image_url && (
+                <img src={share.image_url} alt='Attached to the share' />
+            )}
+            {showButtons && (
+                <div>
+                    <button id='share-button' onClick={() => setEdit(true)}>✎</button>
+                    <button id='share-button' onClick={() => deleteShare(share.id)}>🗑️</button>
+                </div>
+            )}
         </div>
     );
 }
