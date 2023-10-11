@@ -55,7 +55,7 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares }) {
                 className='default-file-input'
             />
             <label htmlFor='fileInputEdit' className='custom-file-input'>
-                New photo 📷
+                New image 📷
             </label>
             <br />
             <span className='chosen-file-edit'> {fileName}</span>

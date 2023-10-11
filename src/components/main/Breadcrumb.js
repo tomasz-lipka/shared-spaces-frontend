@@ -47,6 +47,7 @@ function Breadcrumb() {
             </span>
         );
     });
+
     return <div>{breadcrumbs}</div>;
 };
 

@@ -26,7 +26,7 @@ function Images({ setMsg }) {
     return (
         <div>
             {images.length === 0 ? (
-                <p>No photos</p>
+                <p>No images</p>
             ) : (
                 <div>
                     {images.map((item) => (
