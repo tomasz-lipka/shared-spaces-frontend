@@ -23,7 +23,6 @@
   right: 0;
   left: 0;
   bottom: 0;
-
 }
 
 .header {
@@ -85,7 +84,6 @@
   padding-left: 0.3em;
   padding-right: 0.3em;
   padding-top: 0.5em;
-  /* border-right: 1px solid var(--dark-blue); */
   width: 33%;
   position: fixed;
   float: left;
@@ -245,6 +243,16 @@ img {
   border-radius: 5px;
   animation: fadeIn 2s linear;
   width: 100%;
+}
+
+.breadcrumb-bar{
+  background-color: white;
+  text-align: left;
+  padding-left: 1em;
+  font-family: monospace;
+  font-size: 1.7em;
+  color: #2D4B65;
+  text-decoration: none;
 }
 
 
