@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Input from '../Input';
+import CustomInput from '../CustomInput';
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
 import { useNavigate } from "react-router-dom";
@@ -32,8 +32,8 @@ function Login({ setAuthenticated, setMsg }) {
 
     return (
         <div>
-            <Input setValue={setLogin} label={'Login'} type={'text'} />
-            <Input setValue={setPwd} label={'Password'} />
+            <CustomInput setValue={setLogin} label={'Login'} type={'text'} />
+            <CustomInput setValue={setPwd} label={'Password'} />
             <button onClick={handleLogin} disabled={loading}>
                 {loading ? 'Logging in...' : 'Login'}
             </button>

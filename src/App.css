@@ -264,6 +264,7 @@ img {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -277,6 +278,7 @@ img {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -287,12 +289,12 @@ img {
   flex-wrap: wrap;
 }
 
-
-
-
-.auth-input {
-  width: 20%;
+.custom-input {
+  width: 20em;
 }
+
+
+
 
 .auth-page {
   text-align: center;

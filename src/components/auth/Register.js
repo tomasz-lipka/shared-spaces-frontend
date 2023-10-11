@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Input from '../Input';
+import CustomInput from '../CustomInput';
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
 
@@ -31,9 +31,9 @@ function Register({ setMsg }) {
 
     return (
         <div>
-            <Input value={login} setValue={setLogin} label={'Login'} type={'text'} />
-            <Input value={pwd} setValue={setPwd} label={'Password'} />
-            <Input value={confirmPwd} setValue={setConfirmPwd} label={'Old password'} />
+            <CustomInput value={login} setValue={setLogin} label={'Login'} type={'text'} />
+            <CustomInput value={pwd} setValue={setPwd} label={'Password'} />
+            <CustomInput value={confirmPwd} setValue={setConfirmPwd} label={'Old password'} />
             <button onClick={handleRegister}>
                 {loading ? 'Pending...' : 'Register'}
             </button>

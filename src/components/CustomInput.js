@@ -1,11 +1,11 @@
-function Input({ value, setValue, label, type }) {
+function CustomInput({ value, setValue, label, type }) {
     type ? type = 'text' : type = 'password'
     return (
         <div>
             <label>{label}:
                 <br />
                 <input
-                    className='auth-input'
+                    className='custom-input'
                     value={value}
                     type={type}
                     onChange={(e) => setValue(e.target.value)}
@@ -16,4 +16,4 @@ function Input({ value, setValue, label, type }) {
     );
 }
 
-export default Input
+export default CustomInput

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { makeRequest } from "../../Helper"
-import Input from '../Input';
+import { makeRequest } from '../../Helper';
+import CustomInput from '../CustomInput';
 import Config from '../../Config';
 
 function Settings({ setMsg }) {
@@ -9,22 +9,22 @@ function Settings({ setMsg }) {
     const [confirmPwd, setConfirmPwd] = useState('');
 
     async function changePwd() {
-        setMsg(Config.waitMsg)
+        setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
-            "old-password": oldPwd,
-            "new-password": newPwd,
-            "confirm-password": confirmPwd
+            'old-password': oldPwd,
+            'new-password': newPwd,
+            'confirm-password': confirmPwd
         });
-        let response = await makeRequest('/change-password', 'PUT', requestBody)
-        setMsg(await response.text())
+        let response = await makeRequest('/change-password', 'PUT', requestBody);
+        setMsg(await response.text());
     };
 
     return (
-        <div >
+        <div>
             <h2>Change password</h2>
-            <Input setValue={setOldPwd} label={'Old password'} />
-            <Input setValue={setNewPwd} label={'New password'} />
-            <Input setValue={setConfirmPwd} label={'Confirm password'} />
+            <CustomInput setValue={setOldPwd} label={'Old password'} />
+            <CustomInput setValue={setNewPwd} label={'New password'} />
+            <CustomInput setValue={setConfirmPwd} label={'Confirm password'} />
             <br />
             <button onClick={changePwd} >Submit</button>
         </div>
