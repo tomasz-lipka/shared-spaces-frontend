@@ -1,14 +1,25 @@
+import { useState } from 'react';
 import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 
 function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) {
+    const [classN, setClassN] = useState('member-tile');
+
 
     async function deleteMember(userId) {
         const confirmed = window.confirm('Are you sure you want to delete this member?');
         if (confirmed) {
             setMsg(Config.waitMsg);
             let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null);
-            response.ok ? fetchMembers() : setMsg(await response.text());
+            if (response.ok) {
+                setClassN('member-tile fade-out')
+                setTimeout(() => {
+                    fetchMembers();
+                }, 500);
+            } else {
+                setMsg(await response.text())
+            }
+
         }
     };
 
@@ -27,7 +38,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
     };
 
     return (
-        <div className='member-tile' key={member.user.id}>
+        <div className={classN} key={member.user.id}>
             <b>{member.user.login}</b>
             <br />
             {member.is_admin ? 'admin' : Config.blankSymbol}
