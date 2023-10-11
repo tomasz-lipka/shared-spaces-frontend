@@ -17,9 +17,16 @@ function Breadcrumb() {
         }
     };
 
+    function lastSegmentClicked(index) {
+        const isLastSegment = index === pathSegments.length - 1;
+        if (isLastSegment) {
+            window.location.reload();
+        }
+    }
+
     const breadcrumbs = pathSegments.map((segment, index) => {
         if (segment === 'settings') {
-            return;
+            return null;
         }
         if (index === 1) {
             fetchSpace(segment);
@@ -29,7 +36,13 @@ function Breadcrumb() {
 
         return (
             <span key={path}>
-                <Link className='breadcrumb' to={path}>{label}</Link>
+                <Link
+                    className='breadcrumb'
+                    to={path}
+                    onClick={() => lastSegmentClicked(index)}
+                >
+                    {label}
+                </Link>
                 {' / '}
             </span>
         );

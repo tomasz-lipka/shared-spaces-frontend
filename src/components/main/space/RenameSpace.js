@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 
-function RenameSpace({ setMsg, spaceId, fetchSpace, isAdmin }) {
+function RenameSpace({ setMsg, spaceId, isAdmin }) {
     const [spaceNewName, setSpaceNewName] = useState('');
 
     async function renameSpace() {
@@ -12,8 +12,7 @@ function RenameSpace({ setMsg, spaceId, fetchSpace, isAdmin }) {
         });
         let response = await makeRequest('/spaces/' + spaceId, 'PUT', requestBody);
         if (response.ok) {
-            fetchSpace();
-            setSpaceNewName('');
+            window.location.reload();
         } else {
             setMsg(await response.text());
         }
