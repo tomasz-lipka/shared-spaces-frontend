@@ -2,11 +2,13 @@ import { useState } from 'react';
 import Input from '../Input';
 import { makeRequest } from "../../Helper"
 import Config from '../../Config';
+import { useNavigate } from "react-router-dom";
 
 function Login({ setAuthenticated, setMsg }) {
     const [loading, setLoading] = useState(false);
     const [login, setLogin] = useState('');
     const [pwd, setPwd] = useState('');
+    const navigate = useNavigate();
 
     async function handleLogin() {
         setMsg(Config.blankSymbol)
@@ -21,6 +23,7 @@ function Login({ setAuthenticated, setMsg }) {
             sessionStorage.setItem('access_token', data.access_token);
             sessionStorage.setItem('currentUser', login);
             setAuthenticated(true);
+            navigate('/spaces');
         } else {
             setMsg(await response.text())
         }
