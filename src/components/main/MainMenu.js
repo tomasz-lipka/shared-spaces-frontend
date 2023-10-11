@@ -26,8 +26,8 @@ function MainMenu() {
     <div className='App'>
       <div className='header'>
         <nav className='main-menu-bar'>
-          <Link to='/' className='logo-text'>Shared Spaces</Link>
-          <Link to='/' className='main-menu-link-item'>Home</Link>
+          <Link to='/spaces' className='logo-text'>Shared Spaces</Link>
+          <Link to='/spaces' className='main-menu-link-item'>Home</Link>
           <Link to='/edit-pwd' className='main-menu-link-item'>Settings</Link>
           <Link to='/' className='main-menu-link-item' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
         </nav>
@@ -40,7 +40,7 @@ function MainMenu() {
       </div>
       <div className='body'>
         <Routes>
-          <Route path='/' element={<Spaces setMsg={setMsg} />}></Route>
+          <Route path='/spaces' element={<Spaces setMsg={setMsg} />}></Route>
           <Route path='/edit-pwd' element={<Settings setMsg={setMsg} />}></Route>
           <Route path='/spaces/:spaceId' element={<Space setMsg={setMsg} />}></Route>
           <Route path='/spaces/:spaceId/members' element={<Members setMsg={setMsg} />}></Route>
