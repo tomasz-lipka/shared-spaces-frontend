@@ -16,4 +16,4 @@ function CustomInput({ value, setValue, label, type }) {
     );
 }
 
-export default CustomInput
+export default CustomInput;

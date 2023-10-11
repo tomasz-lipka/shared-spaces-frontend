@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { makeRequest } from "../../../Helper"
+import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 
 function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
@@ -8,12 +8,12 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
     async function addMember() {
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
-            "login": login
+            'login': login
         });
-        let response = await makeRequest('/spaces/' + spaceId + '/members', 'POST', requestBody)
+        let response = await makeRequest('/spaces/' + spaceId + '/members', 'POST', requestBody);
         if (response.ok) {
             fetchMembers();
-            setLogin('')
+            setLogin('');
         } else {
             setMsg(await response.text());
         }
@@ -23,8 +23,8 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
         <div className='sidebar-box'>
             <div>
                 <input
-                    placeholder="Login of member"
-                    type="text"
+                    placeholder='Login of member'
+                    type='text'
                     value={login}
                     onChange={(e) => setLogin(e.target.value)}
                     name='add-member'
@@ -35,4 +35,4 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
     );
 }
 
-export default AddMember
+export default AddMember;
