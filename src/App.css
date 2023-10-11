@@ -197,6 +197,11 @@ img {
   max-width: 100%;
 }
 
+.images-page {
+  max-width: 80%;
+  margin: 0.5em;
+}
+
 .share-tile {
   margin: 0.5em;
   color: var(--dark-blue);
@@ -288,11 +293,6 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.all-photos-image {
-  max-height: 300px;
-  margin: 10px;
 }
 
 .auth-input {

@@ -18,6 +18,24 @@ function Images({ setMsg }) {
         }
     };
 
+    function renderNoImages() {
+        return <p>No images</p>
+    }
+
+    function renderImages() {
+        return (<div>
+            {images.map((item) => (
+                <img
+                    src={item.image_url}
+                    alt='Attached to the share'
+                    className='images-page'
+                    key={item.image_url}
+                />
+            ))}
+        </div>);
+    }
+
+
     useEffect(() => {
         fetchImages();
         // eslint-disable-next-line
@@ -25,20 +43,7 @@ function Images({ setMsg }) {
 
     return (
         <div>
-            {images.length === 0 ? (
-                <p>No images</p>
-            ) : (
-                <div>
-                    {images.map((item) => (
-                        <img
-                            src={item.image_url}
-                            alt='Attached to the share'
-                            className='all-photos-image'
-                            key={item.image_url}
-                        />
-                    ))}
-                </div>
-            )}
+            {images.length === 0 ? renderNoImages() : renderImages()}
         </div>
     );
 }

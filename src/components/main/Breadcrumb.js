@@ -43,7 +43,7 @@ function Breadcrumb() {
                 >
                     {label}
                 </Link>
-                {' / '}
+                <span className='breadcrumb'> / </span>
             </span>
         );
     });
