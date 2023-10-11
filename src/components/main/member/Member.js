@@ -4,9 +4,12 @@ import Config from '../../../Config';
 function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) {
 
     async function deleteMember(userId) {
-        setMsg(Config.waitMsg);
-        let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null);
-        response.ok ? fetchMembers() : setMsg(await response.text());
+        const confirmed = window.confirm('Are you sure you want to delete this member?');
+        if (confirmed) {
+            setMsg(Config.waitMsg);
+            let response = await makeRequest('/spaces/' + spaceId + '/members/' + userId, 'DELETE', null);
+            response.ok ? fetchMembers() : setMsg(await response.text());
+        }
     };
 
     async function changeAdminPermission(userId) {

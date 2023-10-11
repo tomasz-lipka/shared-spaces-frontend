@@ -5,15 +5,18 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
     const showButtons = sessionStorage.getItem('currentUser') === share.user.login;
 
     async function deleteShare(shareId) {
-        setMsg(Config.waitMsg);
-        let response = await makeRequest('/shares/' + shareId, 'DELETE', null);
-        if (response.ok) {
-            setClassN('share-tile fade-out');
-            setTimeout(() => {
-                fetchShares();
-            }, 500);
-        } else {
-            setMsg(await response.text())
+        const confirmed = window.confirm('Are you sure you want to delete this share?');
+        if (confirmed) {
+            setMsg(Config.waitMsg);
+            let response = await makeRequest('/shares/' + shareId, 'DELETE', null);
+            if (response.ok) {
+                setClassN('share-tile fade-out');
+                setTimeout(() => {
+                    fetchShares();
+                }, 500);
+            } else {
+                setMsg(await response.text())
+            }
         }
     };
 
