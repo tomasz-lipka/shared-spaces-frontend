@@ -8,6 +8,7 @@ import Space from './space/Space';
 import Members from './member/Members';
 import Images from './Images';
 import WrongUrl from './WrongUrl';
+import Breadcrumb2 from './Breadcrumb2';
 
 function MainMenu() {
   const [msg, setMsg] = useState('');
@@ -32,6 +33,9 @@ function MainMenu() {
         </nav>
         <div className='msg-bar'>
           {msg}
+        </div>
+        <div className='breadcrumb-bar'>
+          <Breadcrumb2 />
         </div>
       </div>
       <div className='body'>
