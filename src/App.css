@@ -7,14 +7,6 @@
   --light-gray: #F3F3F3;
 }
 
-/* :root {
-  --dark-blue: #40392F;
-   --light-blue: #465248; 
-  --burgundy: #8E3952;
-  --yellow: #ECE6DA;
-  --green: #BCB096;
-} */
-
 .App {
   text-align: center;
   display: flex;
@@ -204,7 +196,8 @@ img {
 .share-tile {
   margin: 0.5em;
   color: var(--dark-blue);
-  border-bottom: 1px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+  border-radius: 5px;
   animation: fadeIn 2s linear;
   padding: 0.5em;
 }
@@ -212,10 +205,6 @@ img {
 .space-tile:hover {
   background-color: #F4C434;
   color: white;
-}
-
-.share-title-container {
-  background-color: var(--light-gray)
 }
 
 #share-button {
@@ -240,7 +229,6 @@ img {
 
 .breadcrumb-bar {
   background-color: white;
-  text-align: left;
   padding-left: 1.3em;
 }
 
@@ -248,6 +236,7 @@ img {
   font-size: 1.4em;
   color: var(--dark-blue);
   text-decoration: none;
+  font-weight: bold;
 }
 
 .breadcrumb:hover {

@@ -18,6 +18,9 @@ function Breadcrumb() {
     };
 
     const breadcrumbs = pathSegments.map((segment, index) => {
+        if (segment === 'settings') {
+            return;
+        }
         if (index === 1) {
             fetchSpace(segment);
         };
@@ -27,7 +30,7 @@ function Breadcrumb() {
         return (
             <span key={path}>
                 <Link className='breadcrumb' to={path}>{label}</Link>
-                {index < pathSegments.length - 1 && ' / '}
+                {' / '}
             </span>
         );
     });

@@ -10,11 +10,11 @@ function Share({ share, fetchShares, setMsg }) {
 
     return (
         <div className={classN} key={share.id}>
-            <div className='share-title-container'>
-            <b>{share.user.login}</b>
-            <br />
-            <small>{formattedTimestamp}</small>
-            <br />
+            <div>
+                <b>{share.user.login}</b>
+                <br />
+                <small>{formattedTimestamp}</small>
+                <br />
             </div>
             {edit ? (
                 <EditShareBody
