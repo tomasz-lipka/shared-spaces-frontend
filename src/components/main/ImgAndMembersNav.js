@@ -12,6 +12,7 @@ function ImgAndMembersNav({ spaceId }) {
             <a href='#/' onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/images`); }} className='link-item'>
                 All images
             </a>
+            <br /><br />
         </div>
     );
 }
