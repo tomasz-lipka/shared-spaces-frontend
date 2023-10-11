@@ -26,6 +26,7 @@ function RenameSpace({ setMsg, spaceId, isAdmin }) {
                 value={spaceNewName}
                 onChange={(e) => setSpaceNewName(e.target.value)}
                 name='rename-space'
+                className='text-align-left'
             />
             <button className='margin-top' onClick={renameSpace} disabled={!isAdmin}>Rename space</button>
         </div>
