@@ -31,7 +31,7 @@ function Images({ setMsg }) {
                 <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
                 <Breadcrumb to={''} display={'all photos'} reload={fetchImages} />
             </div>
-            <div className='content-container'>
+            <div>
                 {images.length === 0 ? (
                     <p>No photos</p>
                 ) : (

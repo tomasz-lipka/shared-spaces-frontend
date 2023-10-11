@@ -25,10 +25,10 @@ function MainMenu() {
     <div className='App'>
       <div className='header'>
         <nav className='main-menu-bar'>
-          <Link to='/' className='logo-text margin-right'>Shared Spaces</Link>
-          <Link to='/' className='link-item margin-right'>Home</Link>
-          <Link to='/edit-pwd' className='link-item margin-right'>Settings</Link>
-          <Link to='/' className='link-item margin-right' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
+          <Link to='/' className='logo-text'>Shared Spaces</Link>
+          <Link to='/' className='main-menu-link-item'>Home</Link>
+          <Link to='/edit-pwd' className='main-menu-link-item'>Settings</Link>
+          <Link to='/' className='main-menu-link-item' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
         </nav>
         <div className='msg-bar'>
           {msg}

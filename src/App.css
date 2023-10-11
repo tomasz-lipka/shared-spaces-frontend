@@ -1,17 +1,18 @@
-/* :root {
+:root {
   --dark-blue: #2D4B65;
   --light-blue: #4378A2;
   --burgundy: #AF4474;
   --yellow: #F4C434;
   --green: #9ACC8F;
-} */
-:root {
+}
+
+/* :root {
   --dark-blue: #40392F;
-  --light-blue: #465248;
+   --light-blue: #465248; 
   --burgundy: #8E3952;
   --yellow: #ECE6DA;
   --green: #BCB096;
-}
+} */
 
 .App {
   text-align: center;
@@ -54,14 +55,23 @@
   font-size: 2em;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  margin-right: 1em;
 }
 
 .logo-text:hover {
   color: white
 }
 
-.link-item {
+.main-menu-link-item {
   color: white;
+  text-decoration: none;
+  font-size: 1.4em;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  margin-right: 1em;
+}
+
+.link-item {
+  color: var(--dark-blue);
   text-decoration: none;
   font-size: 1.4em;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
@@ -72,11 +82,10 @@
 }
 
 .sidebar-container {
-  background-color: var(--light-blue);
   padding-left: 0.3em;
   padding-right: 0.3em;
   padding-top: 0.5em;
-  border-right: 2px solid var(--dark-blue);
+  /* border-right: 1px solid var(--dark-blue); */
   width: 33%;
   position: fixed;
   float: left;
@@ -102,10 +111,6 @@
   margin-left: 0.5em;
 }
 
-.margin-right {
-  margin-right: 1em;
-}
-
 .space-link {
   text-decoration: none;
 }
@@ -113,7 +118,7 @@
 .space-tile {
   margin: 0.5em;
   max-width: 90%;
-  border: 2px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   padding: 1em;
   border-radius: 5px;
   font-size: 1.2em;
@@ -134,10 +139,11 @@ input {
 }
 
 button {
-  background-color: var(--burgundy);
+  background-color: var(--light-blue);
   color: white;
   padding: 0.5em 1em;
   border-radius: 5px;
+  border-color: var(--light-blue);
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
   width: 9em;
@@ -152,9 +158,7 @@ button:disabled {
 }
 
 hr {
-  border-style: solid;
-  border-width: 2px;
-  border-color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   width: 50%;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -174,17 +178,15 @@ textarea {
 
 .custom-file-input {
   display: inline-block;
-  background-color: var(--burgundy);
+  background-color: var(--light-blue);
   color: white;
   padding: 0.5em 1em;
   cursor: pointer;
   border-radius: 5px;
-  border-style: outset;
-  border-width: 2px;
-  border-color: black;
+  border: 2px outset var(--light-blue);
   font-size: 0.8em;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  width: 7em;
+  width: 7.2em;
 }
 
 .custom-file-input:hover {
@@ -210,14 +212,19 @@ img {
 .share-tile {
   margin: 0.5em;
   color: var(--dark-blue);
+  border-bottom: 1px solid var(--dark-blue);
   animation: fadeIn 2s linear;
-  padding: 0.2em;
-  background-color: var(--yellow);
+  padding: 0.5em;
+}
+
+.space-tile:hover {
+  background-color: #F4C434;
+  color: white;
 }
 
 .share-title-container {
-  background-color: var(--green);
-  border-radius: 10px;
+  background-color: rgb(243, 243, 243);
+
 }
 
 #share-button {
@@ -233,7 +240,7 @@ img {
 
 .member-tile {
   margin: 0.5em;
-  border: 2px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   padding: 0.5em;
   border-radius: 5px;
   animation: fadeIn 2s linear;
@@ -272,11 +279,6 @@ img {
   }
 }
 
-.space:hover {
-  background-color: #F4C434;
-  color: #fff;
-}
-
 .members-container {
   display: flex;
   flex-wrap: wrap;
@@ -291,7 +293,6 @@ img {
 .breadcrumb {
   font-family: monospace;
   font-size: 1.7em;
-  font-weight: bold;
   color: #2D4B65;
   text-decoration: none;
 }
