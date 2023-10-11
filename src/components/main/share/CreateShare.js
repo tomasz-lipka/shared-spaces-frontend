@@ -38,7 +38,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
     };
 
     return (
-        <div>
+        <div className='sidebar-box'>
             <div>
                 <textarea
                     type='text'

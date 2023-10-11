@@ -11,7 +11,7 @@ function Auth({ setAuthenticated }) {
       <span className='auth-logo-text'>Shared Spaces</span>
       <p className='auth-page-msg'>{msg}</p>
       <Login setAuthenticated={setAuthenticated} setMsg={setMsg} />
-      <br /><hr /><br />
+      <br />{/* <hr /> */}<br /><br /><br />
       <Register setMsg={setMsg} />
       <br />
       <p className='disclaimer'>

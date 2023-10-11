@@ -20,7 +20,7 @@ function CreateSpace({ setMsg, fetchSpaces }) {
     };
 
     return (
-        <div>
+        <div className='sidebar-box'>
             <div>
                 <input
                     placeholder='New space name'

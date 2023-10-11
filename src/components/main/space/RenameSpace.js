@@ -20,7 +20,7 @@ function RenameSpace({ setMsg, spaceId, fetchSpace, isAdmin }) {
     };
 
     return (
-        <div>
+        <div className='sidebar-box'>
             <input
                 placeholder='Space new name'
                 type='text'

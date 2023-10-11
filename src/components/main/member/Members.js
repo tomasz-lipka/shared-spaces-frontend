@@ -45,7 +45,6 @@ function Members({ setMsg }) {
                     spaceId={spaceId}
                     fetchMembers={fetchMembers}
                     isAdmin={isAdmin} />
-                <hr />
                 <LeaveSpace
                     setMsg={setMsg}
                     spaceId={spaceId}

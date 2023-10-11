@@ -75,11 +75,8 @@ function Space({ setMsg }) {
             <div className='sidebar-container'>
                 <div className='min-height'>
                     <ImgAndMembersNav spaceId={spaceId} />
-                    <hr />
                     <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
-                    <hr />
                     <RenameSpace setMsg={setMsg} spaceId={spaceId} fetchSpace={fetchSpaceName} isAdmin={isAdmin} />
-                    <hr />
                     <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
                 </div>
             </div>

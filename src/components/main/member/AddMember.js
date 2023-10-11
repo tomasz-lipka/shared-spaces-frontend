@@ -20,7 +20,7 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
     };
 
     return (
-        <div>
+        <div className='sidebar-box'>
             <div>
                 <input
                     placeholder="Login of member"

@@ -26,7 +26,9 @@ function LeaveSpace({ setMsg, spaceId, members }) {
     };
 
     return (
-        <button onClick={leaveSpace} >Leave space</button>
+        <div className='sidebar-box'>
+            <button onClick={leaveSpace} >Leave space</button>
+        </div>
     );
 }
 
