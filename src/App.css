@@ -102,13 +102,6 @@
   float: right;
 }
 
-.breadcrumb-container {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 0.5em;
-  margin-left: 0.5em;
-}
-
 .space-link {
   text-decoration: none;
 }
@@ -248,14 +241,19 @@ img {
 .breadcrumb-bar {
   background-color: white;
   text-align: left;
-  padding-left: 1em;
-  font-family: monospace;
-  font-size: 1.7em;
-  color: #2D4B65;
+  padding-left: 1.3em;
+}
+
+.breadcrumb {
+  font-size: 1.4em;
+  color: var(--dark-blue);
   text-decoration: none;
 }
 
-
+.breadcrumb:hover {
+  color: #F4C434;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
 
 
 
@@ -296,18 +294,6 @@ img {
 .all-photos-image {
   max-height: 300px;
   margin: 10px;
-}
-
-.breadcrumb {
-  font-family: monospace;
-  font-size: 1.7em;
-  color: #2D4B65;
-  text-decoration: none;
-}
-
-.breadcrumb:hover {
-  color: #F4C434;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .auth-input {

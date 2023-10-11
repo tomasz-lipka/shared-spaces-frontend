@@ -1,47 +1,37 @@
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
-import Config from '../../Config';
-import { makeRequest } from "../../Helper"
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { makeRequest } from '../../Helper'
 
+function Breadcrumb() {
+    const location = useLocation();
+    const pathSegments = location.pathname.split('/').filter(segment => segment !== '');
+    const [spaceName, setSpaceName] = useState('');
 
-function Breadcrumb({ to, display, reload, setMsg, spaceId }) {
-    const [spaceName, setSpaceName] = useState('...');
-
-    const handleClick = () => {
-        if (to === '') {
-            reload();
-        }
-    };
-
-    async function fetchSpace() {
+    async function fetchSpace(spaceId) {
         if (spaceId) {
-            setMsg(Config.waitMsg);
             let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
             if (response.ok) {
                 let data = await response.json();
                 setSpaceName(data.name);
-                setMsg(Config.blankSymbol);
-            } else {
-                setMsg(await response.text());
             }
         }
     };
 
-    useEffect(() => {
-        fetchSpace()
-        // eslint-disable-next-line
-    }, []);
+    const breadcrumbs = pathSegments.map((segment, index) => {
+        if (index === 1) {
+            fetchSpace(segment);
+        };
+        const path = `/${pathSegments.slice(0, index + 1).join('/')}`;
+        const label = index === 1 ? spaceName : segment;
 
-    return (
-        <div>
-            <Link to={to} className='breadcrumb' onClick={handleClick}>
-                {Config.titleSymbol}
-                {Config.blankSymbol}
-                {spaceId ? spaceName : display}
-                {Config.blankSymbol}
-            </Link>
-        </div>
-    );
-}
+        return (
+            <span key={path}>
+                <Link className='breadcrumb' to={path}>{label}</Link>
+                {index < pathSegments.length - 1 && ' / '}
+            </span>
+        );
+    });
+    return <div>{breadcrumbs}</div>;
+};
 
-export default Breadcrumb
+export default Breadcrumb;

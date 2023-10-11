@@ -7,7 +7,6 @@ import CreateShare from '../share/CreateShare';
 import ImgAndMembersNav from '../ImgAndMembersNav';
 import RenameSpace from './RenameSpace';
 import DeleteSpace from './DeleteSpace';
-import Breadcrumb from '../Breadcrumb';
 
 function Space({ setMsg }) {
     const { spaceId } = useParams();
@@ -85,10 +84,6 @@ function Space({ setMsg }) {
                 </div>
             </div>
             <div className='content-container'>
-                <div className='breadcrumb-container'>
-                    <Breadcrumb to={'/'} display={'spaces'} />
-                    <Breadcrumb to={''} display={spaceName} reload={fetchShares} />
-                </div>
                 {renderContent()}
             </div>
         </div>

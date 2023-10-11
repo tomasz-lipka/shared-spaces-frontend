@@ -4,7 +4,6 @@ import Member from './Member';
 import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 import AddMember from './AddMember';
-import Breadcrumb from '../Breadcrumb';
 import LeaveSpace from '../LeaveSpace';
 
 function Members({ setMsg }) {
@@ -54,11 +53,6 @@ function Members({ setMsg }) {
                 />
             </div>
             <div className='content-container'>
-                <div className='breadcrumb-container'>
-                    <Breadcrumb to={'/'} display={'spaces'} />
-                    <Breadcrumb to={'/spaces/' + spaceId} setMsg={setMsg} spaceId={spaceId} />
-                    <Breadcrumb to={''} display={'members'} reload={fetchMembers} />
-                </div>
                 <div className='members-container'>
                     {members.map((item) => {
                         return <Member
