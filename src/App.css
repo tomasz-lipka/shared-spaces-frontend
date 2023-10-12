@@ -192,7 +192,7 @@ textarea {
 
 img {
   border-radius: 10px;
-  border: 1px solid #000;
+  border: 1px solid var(--dark-blue);
   max-height: 20em;
   max-width: 100%;
 }
@@ -212,7 +212,7 @@ img {
 }
 
 .space-tile:hover {
-  background-color: #F4C434;
+  background-color: var(--yellow);
   color: white;
 }
 
@@ -249,7 +249,7 @@ img {
 }
 
 .breadcrumb:hover {
-  color: #F4C434;
+  color: var(--yellow);
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
@@ -293,31 +293,29 @@ img {
   width: 20em;
 }
 
-
-
+.disclaimer {
+  color: var(--yellow);
+  border: 2px dotted white;
+  padding: 10px;
+  display: inline-block;
+  margin: 0.7em;
+}
 
 .auth-page {
   text-align: center;
-  background-color: #2D4B65;
+  background-color: var(--dark-blue);
   color: white;
   min-height: 100vh;
 }
 
 .auth-logo-text {
   font-weight: bold;
-  color: #F4C434;
+  color:var(--yellow);
   font-size: 3em;
-}
-
-.disclaimer {
-  color: #F4C434;
-  border: 2px dotted white;
-  padding: 10px;
-  display: inline-block;
 }
 
 .auth-page-msg {
   font-family: monospace;
-  font-size: 2em;
-  color: #9ACC8F;
+  font-size: 1.4em;
+  color:var(--green);
 }

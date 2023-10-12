@@ -7,13 +7,12 @@ function Auth({ setAuthenticated }) {
   const [msg, setMsg] = useState(Config.blankSymbol);
 
   return (
-    <div className="auth-page">
+    <div className='auth-page'>
       <span className='auth-logo-text'>Shared Spaces</span>
       <p className='auth-page-msg'>{msg}</p>
       <Login setAuthenticated={setAuthenticated} setMsg={setMsg} />
-      <br />{/* <hr /> */}<br /><br /><br />
+      <br/> <br/>
       <Register setMsg={setMsg} />
-      <br />
       <p className='disclaimer'>
         This is an educational project. Please don't put any confidential data in.<br />
         Especially passwords that you already use somewhere else, personal information,<br />

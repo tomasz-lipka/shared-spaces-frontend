@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import CustomInput from '../CustomInput';
-import { makeRequest } from "../../Helper"
+import { makeRequest } from '../../Helper';
 import Config from '../../Config';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Login({ setAuthenticated, setMsg }) {
     const [loading, setLoading] = useState(false);
@@ -11,11 +11,11 @@ function Login({ setAuthenticated, setMsg }) {
     const navigate = useNavigate();
 
     async function handleLogin() {
-        setMsg(Config.blankSymbol)
+        setMsg(Config.blankSymbol);
         setLoading(true);
         let requestBody = JSON.stringify({
-            "login": login,
-            "password": pwd
+            'login': login,
+            'password': pwd
         });
         let response = await makeRequest('/login', 'POST', requestBody);
         if (response.ok) {
@@ -25,20 +25,20 @@ function Login({ setAuthenticated, setMsg }) {
             setAuthenticated(true);
             navigate('/spaces');
         } else {
-            setMsg(await response.text())
+            setMsg(await response.text());
         }
-        setLoading(false)
+        setLoading(false);
     };
 
     return (
         <div>
             <CustomInput setValue={setLogin} label={'Login'} type={'text'} />
             <CustomInput setValue={setPwd} label={'Password'} />
-            <button onClick={handleLogin} disabled={loading}>
+            <button className='margin-top' onClick={handleLogin} disabled={loading}>
                 {loading ? 'Logging in...' : 'Login'}
             </button>
         </div>
     );
 }
 
-export default Login
+export default Login;
