@@ -25,7 +25,6 @@ function Spaces({ setMsg }) {
         return spaces.map((item) => (
             <a href='#/'
                 onClick={(e) => { e.preventDefault(); navigate(`/spaces/${item.space.id}`); }}
-                className='space-link'
                 key={item.space.id}>
                 <div className='space-tile'>
                     {item.space.name}
@@ -45,9 +44,9 @@ function Spaces({ setMsg }) {
 
     return (
         <div>
-            <div className='sidebar-container'>
+            <aside>
                 <CreateSpace setMsg={setMsg} fetchSpaces={fetchSpaces} />
-            </div>
+            </aside>
             <div className='content-container'>
                 {renderContent()}
             </div>

@@ -21,7 +21,7 @@ function RenameSpace({ setMsg, spaceId, isAdmin }) {
     return (
         <div className='sidebar-box'>
             <input
-                placeholder='Space new name'
+                placeholder='New space name'
                 type='text'
                 value={spaceNewName}
                 onChange={(e) => setSpaceNewName(e.target.value)}

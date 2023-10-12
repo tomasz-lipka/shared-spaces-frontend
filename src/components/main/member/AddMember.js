@@ -23,7 +23,7 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
         <div className='sidebar-box'>
             <div>
                 <input
-                    placeholder='Login of member'
+                    placeholder='Member login'
                     type='text'
                     value={login}
                     onChange={(e) => setLogin(e.target.value)}

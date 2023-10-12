@@ -21,7 +21,7 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
     };
 
     return (
-        <div >
+        <div>
             {share.text}
             <br />
             {share.image_url && (

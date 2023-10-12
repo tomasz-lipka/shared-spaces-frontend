@@ -58,14 +58,14 @@ function Space({ setMsg }) {
 
     return (
         <div>
-            <div className='sidebar-container'>
+            <aside>
                 <div className='min-height'>
                     <ImgAndMembersNav spaceId={spaceId} />
                     <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
                     <RenameSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
                     <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
                 </div>
-            </div>
+            </aside>
             <div className='content-container'>
                 {renderContent()}
             </div>

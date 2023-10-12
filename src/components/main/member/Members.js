@@ -39,7 +39,7 @@ function Members({ setMsg }) {
 
     return (
         <div>
-            <div className='sidebar-container'>
+            <aside>
                 <AddMember
                     setMsg={setMsg}
                     spaceId={spaceId}
@@ -50,7 +50,7 @@ function Members({ setMsg }) {
                     spaceId={spaceId}
                     members={members}
                 />
-            </div>
+            </aside>
             <div className='content-container'>
                 <div className='members-container'>
                     {members.map((item) => {

@@ -47,7 +47,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
                 </button>
             </div>
             <div>
-                <button onClick={() => deleteMember(member.user.id)} disabled={!isAdmin}>
+                <button className='margin-top' onClick={() => deleteMember(member.user.id)} disabled={!isAdmin}>
                     Delete
                 </button>
             </div>

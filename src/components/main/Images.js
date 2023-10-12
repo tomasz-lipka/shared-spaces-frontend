@@ -28,7 +28,7 @@ function Images({ setMsg }) {
                 <img
                     src={item.image_url}
                     alt='Attached to the share'
-                    className='images-page'
+                    className='img-on-all-images-page'
                     key={item.image_url}
                 />
             ))}

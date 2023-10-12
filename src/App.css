@@ -7,7 +7,7 @@
   --light-gray: #F3F3F3;
 }
 
-.App {
+.app {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,11 +18,27 @@
   bottom: 0;
 }
 
-.header {
+header {
   background: var(--dark-blue);
 }
 
-.body {
+aside {
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  padding-top: 0.5em;
+  width: 33%;
+  position: fixed;
+  float: left;
+  overflow: auto;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.main-content {
   overflow: auto;
 }
 
@@ -34,19 +50,15 @@
 }
 
 .msg-bar {
-  font-size: 1.5em;
-  font-family: monospace;
-  font-weight: bold;
+  font: bold 1.5em monospace;
   color: var(--green);
   padding: 0.5em;
 }
 
 .logo-text {
   font-weight: bold;
-  color: var(--yellow);
   font-size: 2em;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  color: var(--yellow);
   margin-right: 1em;
 }
 
@@ -54,34 +66,31 @@
   color: white
 }
 
-.main-menu-link-item {
-  color: white;
-  text-decoration: none;
-  font-size: 1.4em;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  margin-right: 1em;
-}
-
-.link-item {
-  color: var(--dark-blue);
-  text-decoration: none;
-  font-size: 1.4em;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-.link-item:hover {
+.sidebar-link:hover,
+.main-menu-link:hover,
+.breadcrumb:hover {
   color: var(--yellow);
 }
 
-.sidebar-container {
-  padding-left: 0.3em;
-  padding-right: 0.3em;
-  padding-top: 0.5em;
-  width: 33%;
-  position: fixed;
-  float: left;
-  overflow: auto;
-  height: 100vh;
+@media (hover: hover) {
+
+  .space-tile:hover,
+  .custom-file-input:hover,
+  button:hover {
+    background-color: var(--yellow);
+    color: white;
+  }
+}
+
+.main-menu-link {
+  font-size: 1.4em;
+  color: white;
+  margin-right: 1em;
+}
+
+.sidebar-link {
+  font-size: 1.4em;
+  color: var(--dark-blue);
 }
 
 @media (max-height: 650px) {
@@ -93,10 +102,6 @@
 .content-container {
   width: 64%;
   float: right;
-}
-
-.space-link {
-  text-decoration: none;
 }
 
 .space-tile {
@@ -118,8 +123,7 @@ input {
   width: 95%;
   height: 2em;
   border-radius: 5px;
-  border-style: outset;
-  border-width: 2px;
+  border: 2px outset gray;
 }
 
 .text-align-left {
@@ -137,27 +141,15 @@ button {
   width: 8em;
 }
 
-button:hover {
-  background-color: var(--yellow);
-}
-
 button:disabled {
   background-color: gainsboro;
-}
-
-hr {
-  border: 1px solid var(--dark-blue);
-  width: 50%;
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 textarea {
   width: 95%;
   height: 8em;
   border-radius: 5px;
-  border-style: outset;
-  border-width: 2px;
+  border: 2px outset gray;
 }
 
 .default-file-input {
@@ -177,10 +169,6 @@ textarea {
   width: 6.2em;
 }
 
-.custom-file-input:hover {
-  background-color: var(--yellow);
-}
-
 .chosen-file {
   color: black;
   font-family: monospace;
@@ -197,7 +185,7 @@ img {
   max-width: 100%;
 }
 
-.images-page {
+.img-on-all-images-page {
   max-width: 80%;
   margin: 0.5em;
 }
@@ -209,11 +197,7 @@ img {
   border-radius: 5px;
   animation: fadeIn 2s linear;
   padding: 0.5em;
-}
-
-.space-tile:hover {
-  background-color: var(--yellow);
-  color: white;
+  word-wrap: break-word;
 }
 
 #share-button {
@@ -246,13 +230,7 @@ img {
 .breadcrumb {
   font-size: 1.4em;
   color: var(--dark-blue);
-  text-decoration: none;
   font-weight: bold;
-}
-
-.breadcrumb:hover {
-  color: var(--yellow);
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .sidebar-box {
@@ -312,12 +290,12 @@ img {
 
 .auth-logo-text {
   font-weight: bold;
-  color:var(--yellow);
+  color: var(--yellow);
   font-size: 3em;
 }
 
 .auth-page-msg {
   font-family: monospace;
   font-size: 1.4em;
-  color:var(--green);
+  color: var(--green);
 }

@@ -36,22 +36,22 @@ function MainMenu() {
   }, [currentPageURL]);
 
   return (
-    <div className='App'>
-      <div className='header'>
+    <div className='app'>
+      <header>
         <nav className='main-menu-bar'>
           <Link to='/spaces' className='logo-text reload-link'>Shared Spaces</Link>
-          <Link to='/spaces' className='main-menu-link-item reload-link'>Home</Link>
-          <Link to='/settings' className='main-menu-link-item'>Settings</Link>
-          <Link className='main-menu-link-item' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
+          <Link to='/spaces' className='main-menu-link reload-link'>Home</Link>
+          <Link to='/settings' className='main-menu-link'>Settings</Link>
+          <Link className='main-menu-link' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
         </nav>
         <div className='msg-bar'>
           {msg}
         </div>
-        <div className='breadcrumb-bar'>
+        <nav className='breadcrumb-bar'>
           <Breadcrumb />
-        </div>
-      </div>
-      <div className='body'>
+        </nav>
+      </header>
+      <div className='main-content'>
         <Routes>
           <Route path='/spaces' element={<Spaces setMsg={setMsg} />}></Route>
           <Route path='/settings' element={<Settings setMsg={setMsg} />}></Route>

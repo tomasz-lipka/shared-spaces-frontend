@@ -23,7 +23,7 @@ function CreateSpace({ setMsg, fetchSpaces }) {
         <div className='sidebar-box'>
             <div>
                 <input
-                    placeholder='New space name'
+                    placeholder='Space name'
                     type='text'
                     value={spaceName}
                     onChange={(e) => setSpaceName(e.target.value)}
