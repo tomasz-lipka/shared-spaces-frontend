@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { makeRequest } from '../../Helper';
 import Config from '../../Config';
@@ -8,7 +8,7 @@ import Space from './space/Space';
 import Members from './member/Members';
 import Images from './Images';
 import WrongUrl from './WrongUrl';
-import Breadcrumb from './Breadcrumb';
+import Breadcrumbs from './breadcrumb/Breadcrumbs';
 
 function MainMenu() {
   const [msg, setMsg] = useState(Config.blankSymbol);
@@ -23,24 +23,18 @@ function MainMenu() {
     }
   };
 
-  useEffect(() => {
-    const links = document.querySelectorAll('.reload-link');
-    links.forEach((link) => {
-      link.addEventListener('click', (event) => {
-        const clickedURL = event.target.getAttribute('href');
-        if (clickedURL === currentPageURL) {
-          window.location.reload();
-        }
-      });
-    });
-  }, [currentPageURL]);
+  function clickHome() {
+    if ('/spaces' === currentPageURL) {
+      window.location.reload();
+    }
+  }
 
   return (
     <div className='app'>
       <header>
         <nav className='main-menu-bar'>
-          <Link to='/spaces' className='logo-text reload-link'>Shared Spaces</Link>
-          <Link to='/spaces' className='main-menu-link reload-link'>Home</Link>
+          <Link to='/spaces' className='logo-text' onClick={clickHome}>Shared Spaces</Link>
+          <Link to='/spaces' className='main-menu-link' onClick={clickHome}>Home</Link>
           <Link to='/settings' className='main-menu-link'>Settings</Link>
           <Link className='main-menu-link' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
         </nav>
@@ -48,7 +42,7 @@ function MainMenu() {
           {msg}
         </div>
         <nav className='breadcrumb-bar'>
-          <Breadcrumb />
+          <Breadcrumbs />
         </nav>
       </header>
       <div className='main-content'>

@@ -1,16 +1,14 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { makeRequest } from '../../Helper'
-import Config from '../../Config';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { makeRequest } from '../../../Helper'
+import Config from '../../../Config';
 
-function Breadcrumb() {
-    const location = useLocation();
-    const pathSegments = location.pathname.split('/').filter(segment => segment !== '');
-    const [spaceName, setSpaceName] = useState('');
+function Breadcrumb({ segment, index, pathSegments }) {
+    const [spaceName, setSpaceName] = useState('...');
 
     async function fetchSpace(spaceId) {
         if (spaceId) {
-            let response = await makeRequest('/spaces/' + spaceId, 'GET', null)
+            let response = await makeRequest('/spaces/' + spaceId, 'GET', null, 'Breadcrumb')
             if (response.ok) {
                 let data = await response.json();
                 setSpaceName(data.name);
@@ -25,11 +23,7 @@ function Breadcrumb() {
         }
     };
 
-    useEffect(() => {
-        setSpaceName('...');
-    }, [location]);
-
-    const breadcrumbs = pathSegments.map((segment, index) => {
+    function renderBreadcrumb() {
         if (segment === 'settings') {
             return Config.blankSymbol;
         }
@@ -40,7 +34,7 @@ function Breadcrumb() {
         const label = index === 1 ? spaceName : segment;
 
         return (
-            <span key={path}>
+            <div>
                 <Link
                     className='breadcrumb'
                     to={path}
@@ -48,12 +42,12 @@ function Breadcrumb() {
                 >
                     {label}
                 </Link>
-                <span className='breadcrumb'> / </span>
-            </span>
+                <span className='breadcrumb'> /{Config.blankSymbol}</span>
+            </div>
         );
-    });
+    }
 
-    return <div>{breadcrumbs}</div>;
-};
+    return (renderBreadcrumb())
+}
 
 export default Breadcrumb;
