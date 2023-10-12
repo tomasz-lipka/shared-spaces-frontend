@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { makeRequest } from '../../Helper'
+import Config from '../../Config';
 
 function Breadcrumb() {
     const location = useLocation();
@@ -22,11 +23,15 @@ function Breadcrumb() {
         if (isLastSegment) {
             window.location.reload();
         }
-    }
+    };
+
+    useEffect(() => {
+        setSpaceName('...');
+    }, [location]);
 
     const breadcrumbs = pathSegments.map((segment, index) => {
         if (segment === 'settings') {
-            return null;
+            return Config.blankSymbol;
         }
         if (index === 1) {
             fetchSpace(segment);

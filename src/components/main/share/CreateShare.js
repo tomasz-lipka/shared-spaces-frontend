@@ -22,11 +22,6 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
             bodyContent.append('file', file);
         }
         let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent);
-        // start TODO
-        console.log('*START*')
-        console.log(await response.json())
-        console.log('*END*')
-        // end TODO
         if (response.ok) {
             fetchShares();
             setFile(null);
