@@ -5,7 +5,6 @@ import Config from '../../../Config';
 function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) {
     const [classN, setClassN] = useState('member-tile');
 
-
     async function deleteMember(userId) {
         const confirmed = window.confirm('Are you sure you want to delete this member?');
         if (confirmed) {

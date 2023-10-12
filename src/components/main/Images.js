@@ -20,7 +20,7 @@ function Images({ setMsg }) {
 
     function renderNoImages() {
         return <p>No images</p>
-    }
+    };
 
     function renderImages() {
         return (<div>
@@ -33,8 +33,7 @@ function Images({ setMsg }) {
                 />
             ))}
         </div>);
-    }
-
+    };
 
     useEffect(() => {
         fetchImages();

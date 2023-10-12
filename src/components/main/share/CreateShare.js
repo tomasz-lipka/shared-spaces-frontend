@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { makeShareRequest } from '../../../Helper'
+import { makeShareRequest } from '../../../Helper';
 import Config from '../../../Config';
 
 function CreateShare({ setMsg, spaceId, fetchShares }) {
@@ -19,7 +19,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
         let bodyContent = new FormData();
         bodyContent.append('text', text);
         if (file) {
-            bodyContent.append('file', file)
+            bodyContent.append('file', file);
         }
         let response = await makeShareRequest('/spaces/' + spaceId + '/shares', 'POST', bodyContent);
         // start TODO
