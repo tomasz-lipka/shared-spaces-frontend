@@ -24,7 +24,7 @@ function Breadcrumb({ segment, index, pathSegments }) {
     };
 
     function renderBreadcrumb() {
-        if (segment === 'settings') {
+        if (segment === Config.settingsPath) {
             return Config.blankSymbol;
         }
         if (index === 1) {
