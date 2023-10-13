@@ -1,5 +1,5 @@
 const Config = {
-    apiUrl: 'http://34.201.101.218:8000',
+    apiUrl: 'http://3.95.243.130:8000',
     waitMsg: 'Loading...',
     blankSymbol: '\u00A0',
     settingsPath: 'settings'
