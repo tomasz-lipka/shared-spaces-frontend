@@ -143,6 +143,7 @@ button {
 
 button:disabled {
   background-color: gainsboro;
+  border-color: gainsboro;
 }
 
 textarea {
