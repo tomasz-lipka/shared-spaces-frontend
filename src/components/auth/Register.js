@@ -34,7 +34,7 @@ function Register({ setMsg }) {
             <CustomInput value={login} setValue={setLogin} label={'Login'} type={'text'} />
             <CustomInput value={pwd} setValue={setPwd} label={'Password'} />
             <CustomInput value={confirmPwd} setValue={setConfirmPwd} label={'Confirm password'} />
-            <button className='auth-button' onClick={handleRegister}>
+            <button className='auth-button' onClick={handleRegister} disabled={loading}>
                 {loading ? 'Pending...' : 'Register'}
             </button>
         </div>
