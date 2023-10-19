@@ -207,9 +207,10 @@ img {
 
 #share-button {
   width: 2em;
-  padding: 0;
+  padding: 0px;
   margin-left: 2px;
   margin-right: 2px;
+  font-size: 1.2em;
 }
 
 .auth-button {

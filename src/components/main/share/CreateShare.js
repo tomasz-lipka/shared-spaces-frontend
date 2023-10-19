@@ -38,7 +38,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
                 <textarea
                     type='text'
                     value={text}
-                    placeholder='What do you want to share with your space?'
+                    placeholder='What do you want to share?'
                     rows='5'
                     onChange={(e) => setText(e.target.value)}
                     name='create-share'

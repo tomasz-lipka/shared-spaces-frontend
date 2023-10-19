@@ -31,7 +31,7 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
             {showButtons && (
                 <div>
                     <button id='share-button' onClick={() => setEdit(true)}>✎</button>
-                    <button id='share-button' onClick={() => deleteShare(share.id)}>🗑️</button>
+                    <button id='share-button' onClick={() => deleteShare(share.id)}>🗑</button>
                 </div>
             )}
         </div>

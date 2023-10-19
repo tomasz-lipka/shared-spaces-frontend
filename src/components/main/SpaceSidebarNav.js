@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function ImgAndMembersNav({ spaceId }) {
+function SpaceSidebarNav({ spaceId }) {
     const navigate = useNavigate();
 
     return (
@@ -14,8 +14,12 @@ function ImgAndMembersNav({ spaceId }) {
                 All images
             </a>
             <br /><br />
+            <a href='#/' onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/config`); }} className='sidebar-link'>
+                Configuration
+            </a>
+            <br /><br />
         </nav>
     );
 }
 
-export default ImgAndMembersNav;
+export default SpaceSidebarNav;

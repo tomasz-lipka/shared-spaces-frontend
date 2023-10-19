@@ -9,6 +9,7 @@ import Members from './member/Members';
 import Images from './Images';
 import WrongUrl from './WrongUrl';
 import Breadcrumbs from './breadcrumb/Breadcrumbs';
+import SpaceConfig from './space/SpaceConfig'
 
 function MainMenu() {
   const [msg, setMsg] = useState(Config.blankSymbol);
@@ -52,6 +53,7 @@ function MainMenu() {
           <Route path='/spaces/:spaceId' element={<Space setMsg={setMsg} />}></Route>
           <Route path='/spaces/:spaceId/members' element={<Members setMsg={setMsg} />}></Route>
           <Route path='/spaces/:spaceId/images' element={<Images setMsg={setMsg} />}></Route>
+          <Route path='/spaces/:spaceId/config' element={<SpaceConfig setMsg={setMsg} />}></Route>
           <Route path='*' element={<WrongUrl />}></Route>
         </Routes>
       </div>

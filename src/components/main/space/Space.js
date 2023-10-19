@@ -4,14 +4,11 @@ import Share from '../share/Share';
 import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 import CreateShare from '../share/CreateShare';
-import ImgAndMembersNav from '../ImgAndMembersNav';
-import RenameSpace from './RenameSpace';
-import DeleteSpace from './DeleteSpace';
+import SpaceSidebarNav from '../SpaceSidebarNav';
 
 function Space({ setMsg }) {
     const { spaceId } = useParams();
     const [shares, setShares] = useState([]);
-    const [isAdmin, setIsAdmin] = useState(false);
 
     async function fetchShares() {
         setMsg(Config.waitMsg);
@@ -21,18 +18,6 @@ function Space({ setMsg }) {
             setMsg(Config.blankSymbol);
         } else {
             setMsg(await response.text());
-        }
-    };
-
-    async function setCurrentUserAdmin() {
-        let response = await makeRequest('/spaces/' + spaceId + '/members', 'GET', null);
-        if (response.ok) {
-            let members = await response.json();
-            members.forEach((item) => {
-                if (item.is_admin && item.user.login === sessionStorage.getItem('currentUser')) {
-                    setIsAdmin(true);
-                }
-            });
         }
     };
 
@@ -52,7 +37,6 @@ function Space({ setMsg }) {
 
     useEffect(() => {
         fetchShares();
-        setCurrentUserAdmin();
         // eslint-disable-next-line
     }, []);
 
@@ -60,10 +44,8 @@ function Space({ setMsg }) {
         <div>
             <aside>
                 <div className='min-height'>
-                    <ImgAndMembersNav spaceId={spaceId} />
+                    <SpaceSidebarNav spaceId={spaceId} />
                     <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
-                    <RenameSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
-                    <DeleteSpace setMsg={setMsg} spaceId={spaceId} isAdmin={isAdmin} />
                 </div>
             </aside>
             <div className='content-container'>
