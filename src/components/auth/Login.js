@@ -35,7 +35,7 @@ function Login({ setAuthenticated, setMsg }) {
             <CustomInput setValue={setLogin} label={'Login'} type={'text'} />
             <CustomInput setValue={setPwd} label={'Password'} />
             <button className='margin-top' onClick={handleLogin} disabled={loading}>
-                {loading ? 'Logging in...' : 'Login'}
+                {loading ? 'Signing in...' : 'Sign in'}
             </button>
         </div>
     );
