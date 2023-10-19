@@ -93,9 +93,9 @@ a {
   color: var(--dark-blue);
 }
 
-@media (max-height: 650px) {
+@media (max-height: 550px) {
   .min-height {
-    min-height: 650px;
+    min-height: 550px;
   }
 }
 
@@ -120,7 +120,7 @@ a {
 
 input {
   text-align: center;
-  max-width: 95%;
+  width: 80%;
   height: 2em;
   border-radius: 5px;
   border: 2px outset gray;
@@ -150,7 +150,7 @@ button:disabled {
 }
 
 textarea {
-  width: 95%;
+  width: 80%;
   height: 8em;
   border-radius: 5px;
   border: 2px outset gray;
