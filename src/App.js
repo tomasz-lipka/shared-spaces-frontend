@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Auth from './components/auth/Auth';
 import MainMenu from './components/main/MainMenu';
