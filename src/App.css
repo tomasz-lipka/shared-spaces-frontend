@@ -211,6 +211,11 @@ img {
   margin-right: 2px;
 }
 
+.auth-button {
+  margin-top: 0.5em;
+  width: 8em;
+}
+
 .margin-top {
   margin-top: 0.5em
 }

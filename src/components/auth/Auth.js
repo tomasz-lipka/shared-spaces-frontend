@@ -8,6 +8,7 @@ function Auth({ setAuthenticated }) {
 
   return (
     <div className='auth-page'>
+      <br />
       <span className='auth-logo-text'>Shared Spaces</span>
       <p className='auth-page-msg'>{msg}</p>
       <Login setAuthenticated={setAuthenticated} setMsg={setMsg} />
