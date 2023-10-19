@@ -120,10 +120,11 @@ a {
 
 input {
   text-align: center;
-  width: 95%;
+  max-width: 95%;
   height: 2em;
   border-radius: 5px;
   border: 2px outset gray;
+  font-size: 1em;
 }
 
 .text-align-left {
@@ -138,7 +139,8 @@ button {
   border-color: var(--light-blue);
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  width: 8em;
+  width: 6em;
+  font-size: 1em;
 }
 
 button:disabled {
@@ -151,6 +153,7 @@ textarea {
   height: 8em;
   border-radius: 5px;
   border: 2px outset gray;
+  font-size: 1.3em;
 }
 
 .default-file-input {
@@ -165,9 +168,9 @@ textarea {
   cursor: pointer;
   border-radius: 5px;
   border: 2px outset var(--light-blue);
-  font-size: 0.8em;
+  font-size: 1em;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  width: 6.2em;
+  width: 3.8em;
 }
 
 .chosen-file {
