@@ -15,7 +15,7 @@ function SpaceSidebarNav({ spaceId }) {
             </a>
             <br /><br />
             <a href='#/' onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/config`); }} className='sidebar-link'>
-                Configuration
+                Configure
             </a>
             <br /><br />
         </nav>
