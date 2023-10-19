@@ -1,3 +1,5 @@
+import React from 'react';
+
 function CustomInput({ value, setValue, label, type }) {
     type ? type = 'text' : type = 'password'
     return (
