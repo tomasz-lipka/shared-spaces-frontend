@@ -93,9 +93,9 @@ a {
   color: var(--dark-blue);
 }
 
-@media (max-height: 550px) {
+@media (max-height: 500px) {
   .min-height {
-    min-height: 550px;
+    min-height: 500px;
   }
 }
 
@@ -154,7 +154,7 @@ textarea {
   height: 8em;
   border-radius: 5px;
   border: 2px outset gray;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 .default-file-input {
