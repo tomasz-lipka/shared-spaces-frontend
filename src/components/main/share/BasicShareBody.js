@@ -1,3 +1,4 @@
+import React from 'react';
 import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
 

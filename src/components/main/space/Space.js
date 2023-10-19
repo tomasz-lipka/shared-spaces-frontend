@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import Share from '../share/Share';
 import { makeRequest } from '../../../Helper';
 import Config from '../../../Config';
