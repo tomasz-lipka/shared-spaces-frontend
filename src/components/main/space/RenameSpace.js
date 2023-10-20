@@ -4,8 +4,10 @@ import Config from '../../../Config';
 
 function RenameSpace({ setMsg, spaceId, isAdmin }) {
     const [spaceNewName, setSpaceNewName] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function renameSpace() {
+        setLoading(true);
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
             'new-name': spaceNewName
@@ -16,6 +18,7 @@ function RenameSpace({ setMsg, spaceId, isAdmin }) {
         } else {
             setMsg(await response.text());
         }
+        setLoading(false);
     };
 
     return (
@@ -29,7 +32,7 @@ function RenameSpace({ setMsg, spaceId, isAdmin }) {
                     name='rename-space'
                 />
             </div>
-            <button className='margin-top' onClick={renameSpace} disabled={!isAdmin}>Rename space</button>
+            <button className='margin-top' onClick={renameSpace} disabled={!isAdmin || loading}>Rename space</button>
         </div>
     );
 }

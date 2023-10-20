@@ -7,8 +7,10 @@ function Settings({ setMsg }) {
     const [oldPwd, setOldPwd] = useState('');
     const [newPwd, setNewPwd] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function changePwd() {
+        setLoading(true);
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
             'old-password': oldPwd,
@@ -17,6 +19,7 @@ function Settings({ setMsg }) {
         });
         let response = await makeRequest('/change-password', 'PUT', requestBody);
         setMsg(await response.text());
+        setLoading(false);
     };
 
     return (
@@ -26,7 +29,7 @@ function Settings({ setMsg }) {
             <CustomInput setValue={setNewPwd} label={'New password'} />
             <CustomInput setValue={setConfirmPwd} label={'Confirm password'} />
             <br />
-            <button onClick={changePwd} >Submit</button>
+            <button onClick={changePwd} disabled={loading}>Submit</button>
         </div>
     );
 }

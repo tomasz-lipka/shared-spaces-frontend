@@ -6,6 +6,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
     const [text, setText] = useState('');
     const [file, setFile] = useState(null);
     const [fileName, setFileName] = useState('');
+    const [loading, setLoading] = useState(false);
 
     function handleFileChange(event) {
         setFile(event.target.files[0]);
@@ -15,6 +16,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
     };
 
     async function createShare() {
+        setLoading(true);
         setMsg(Config.waitMsg);
         let bodyContent = new FormData();
         bodyContent.append('text', text);
@@ -30,6 +32,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
         } else {
             setMsg(await response.text());
         }
+        setLoading(false);
     };
 
     return (
@@ -56,7 +59,7 @@ function CreateShare({ setMsg, spaceId, fetchShares }) {
                 <br />
                 <span className='chosen-file'>{fileName}</span>
             </div>
-            <button className='margin-top' onClick={createShare} >Share</button>
+            <button className='margin-top' onClick={createShare} disabled={loading}>Share</button>
         </div>
     );
 }

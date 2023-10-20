@@ -4,9 +4,11 @@ import Config from '../../../Config';
 
 function CreateSpace({ setMsg, fetchSpaces }) {
     const [spaceName, setSpaceName] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function createSpace() {
         setMsg(Config.waitMsg);
+        setLoading(true);
         let requestBody = JSON.stringify({
             'name': spaceName
         });
@@ -17,6 +19,7 @@ function CreateSpace({ setMsg, fetchSpaces }) {
         } else {
             setMsg(await response.text());
         }
+        setLoading(false);
     };
 
     return (
@@ -30,7 +33,7 @@ function CreateSpace({ setMsg, fetchSpaces }) {
                     name='create-space'
                 />
             </div>
-            <button className='margin-top' onClick={createSpace} >Create space</button>
+            <button className='margin-top' onClick={createSpace} disabled={loading}>Create space</button>
         </div>
     );
 }

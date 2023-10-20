@@ -4,8 +4,10 @@ import Config from '../../../Config';
 
 function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
     const [login, setLogin] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function addMember() {
+        setLoading(true);
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
             'login': login
@@ -17,6 +19,7 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
         } else {
             setMsg(await response.text());
         }
+        setLoading(false)
     };
 
     return (
@@ -30,7 +33,7 @@ function AddMember({ setMsg, spaceId, fetchMembers, isAdmin }) {
                     name='add-member'
                 />
             </div>
-            <button className='margin-top' onClick={addMember} disabled={!isAdmin}>Add member</button>
+            <button className='margin-top' onClick={addMember} disabled={!isAdmin || loading}>Add member</button>
         </div>
     );
 }

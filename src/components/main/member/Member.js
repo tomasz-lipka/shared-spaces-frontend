@@ -4,8 +4,11 @@ import Config from '../../../Config';
 
 function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) {
     const [classN, setClassN] = useState('member-tile');
+    const [deleteLoading, setDeleteLoading] = useState(false);
+    const [changeAdminLoading, setChangeAdminLoading] = useState(false);
 
     async function deleteMember(userId) {
+        setDeleteLoading(true);
         const confirmed = window.confirm('Are you sure you want to delete this member?');
         if (confirmed) {
             setMsg(Config.waitMsg);
@@ -18,11 +21,12 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
             } else {
                 setMsg(await response.text())
             }
-
         }
+        setDeleteLoading(false);
     };
 
     async function changeAdminPermission(userId) {
+        setChangeAdminLoading(true);
         setMsg(Config.waitMsg);
         let requestBody = JSON.stringify({
             'is-admin': !Boolean(member.is_admin)
@@ -34,6 +38,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
         } else {
             setMsg(await response.text());
         }
+        setChangeAdminLoading(false);
     };
 
     return (
@@ -42,12 +47,12 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
             <br />
             {member.is_admin ? 'admin' : Config.blankSymbol}
             <div>
-                <button className='margin-top' onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin}>
+                <button className='margin-top' onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin || changeAdminLoading}>
                     {member.is_admin ? 'Unmake admin' : 'Make admin'}
                 </button>
             </div>
             <div>
-                <button className='margin-top' onClick={() => deleteMember(member.user.id)} disabled={!isAdmin}>
+                <button className='margin-top' onClick={() => deleteMember(member.user.id)} disabled={!isAdmin || deleteLoading}>
                     Delete
                 </button>
             </div>
