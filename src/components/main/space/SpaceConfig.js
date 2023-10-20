@@ -22,6 +22,10 @@ function SpaceConfig({ setMsg }) {
     };
 
     useEffect(() => {
+        if (isNaN(spaceId)) {
+            setMsg('Wrong URL')
+            return;
+        }
         setCurrentUserAdmin();
         // eslint-disable-next-line
     }, []);

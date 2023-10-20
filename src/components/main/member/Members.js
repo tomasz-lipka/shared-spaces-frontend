@@ -33,6 +33,10 @@ function Members({ setMsg }) {
     };
 
     useEffect(() => {
+        if (isNaN(spaceId)) {
+            setMsg('Wrong URL')
+            return;
+        }
         fetchMembers();
         // eslint-disable-next-line
     }, []);

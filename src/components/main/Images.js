@@ -36,6 +36,10 @@ function Images({ setMsg }) {
     };
 
     useEffect(() => {
+        if (isNaN(spaceId)) {
+            setMsg('Wrong URL')
+            return;
+        }
         fetchImages();
         // eslint-disable-next-line
     }, []);

@@ -7,7 +7,7 @@ function Breadcrumb({ segment, index, pathSegments }) {
     const [spaceName, setSpaceName] = useState('...');
 
     async function fetchSpace(spaceId) {
-        if (spaceId) {
+        if (spaceId && !isNaN(spaceId)) {
             let response = await makeRequest('/spaces/' + spaceId, 'GET', null, 'Breadcrumb')
             if (response.ok) {
                 let data = await response.json();
