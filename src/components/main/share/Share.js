@@ -4,7 +4,10 @@ import EditShareBody from './EditShareBody';
 import BasicShareBody from './BasicShareBody';
 
 function Share({ share, fetchShares, setMsg }) {
-    const formattedTimestamp = format(new Date(share.timestamp), 'dd/MM HH:mm');
+    const date = new Date(share.timestamp);
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    const formattedTimestamp = format(date, 'dd/MM HH:mm');
+
     const [edit, setEdit] = useState(false);
     const [classN, setClassN] = useState('share-tile');
 
