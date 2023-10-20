@@ -16,22 +16,24 @@ function Share({ share, fetchShares, setMsg }) {
                 <small>{formattedTimestamp}</small>
                 <br />
             </div>
-            {edit ? (
-                <EditShareBody
-                    setEdit={setEdit}
-                    setMsg={setMsg}
-                    share={share}
-                    fetchShares={fetchShares}
-                />
-            ) : (
-                <BasicShareBody
-                    setMsg={setMsg}
-                    share={share}
-                    setClassN={setClassN}
-                    fetchShares={fetchShares}
-                    setEdit={setEdit}
-                />
-            )}
+            <div className='margin-top'>
+                {edit ? (
+                    <EditShareBody
+                        setEdit={setEdit}
+                        setMsg={setMsg}
+                        share={share}
+                        fetchShares={fetchShares}
+                    />
+                ) : (
+                    <BasicShareBody
+                        setMsg={setMsg}
+                        share={share}
+                        setClassN={setClassN}
+                        fetchShares={fetchShares}
+                        setEdit={setEdit}
+                    />
+                )}
+            </div>
         </div>
     );
 }

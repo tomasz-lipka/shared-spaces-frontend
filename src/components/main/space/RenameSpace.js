@@ -19,7 +19,7 @@ function RenameSpace({ setMsg, spaceId, isAdmin }) {
     };
 
     return (
-        <div className='sidebar-box'>
+        <div className='config-box'>
             <div>
                 <input
                     placeholder='New space name'
@@ -27,7 +27,6 @@ function RenameSpace({ setMsg, spaceId, isAdmin }) {
                     value={spaceNewName}
                     onChange={(e) => setSpaceNewName(e.target.value)}
                     name='rename-space'
-                    className='text-align-left'
                 />
             </div>
             <button className='margin-top' onClick={renameSpace} disabled={!isAdmin}>Rename space</button>

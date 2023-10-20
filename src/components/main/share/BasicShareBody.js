@@ -28,12 +28,14 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
             {share.image_url && (
                 <img src={share.image_url} alt='Attached to the share' />
             )}
-            {showButtons && (
-                <div>
-                    <button id='share-button' onClick={() => setEdit(true)}>✎</button>
-                    <button id='share-button' onClick={() => deleteShare(share.id)}>⌫</button>
-                </div>
-            )}
+            <div className='margin-top'>
+                {showButtons && (
+                    <div>
+                        <button id='share-button' onClick={() => setEdit(true)}>✎</button>
+                        <button id='share-button' onClick={() => deleteShare(share.id)}>⌫</button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

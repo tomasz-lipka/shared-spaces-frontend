@@ -5,7 +5,7 @@ function SpaceSidebarNav({ spaceId }) {
     const navigate = useNavigate();
 
     return (
-        <nav>
+        <nav className='sidebar-box'>
             <a href='#/' onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/members`); }} className='sidebar-link'>
                 Members
             </a>
@@ -17,7 +17,6 @@ function SpaceSidebarNav({ spaceId }) {
             <a href='#/' onClick={(e) => { e.preventDefault(); navigate(`/spaces/${spaceId}/config`); }} className='sidebar-link'>
                 Configure
             </a>
-            <br /><br />
         </nav>
     );
 }

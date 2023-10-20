@@ -127,10 +127,6 @@ input {
   font-size: 1em;
 }
 
-.text-align-left {
-  text-align: left;
-}
-
 button {
   background-color: var(--light-blue);
   color: white;
@@ -249,6 +245,16 @@ img {
   border-radius: 5px;
   padding: 0.5em;
   margin-bottom: 0.7em;
+}
+
+.config-box {
+  background-color: var(--light-gray);
+  border-radius: 5px;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 @keyframes fadeOut {

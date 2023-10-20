@@ -16,7 +16,9 @@ function DeleteSpace({ setMsg, spaceId, isAdmin }) {
     };
 
     return (
-        <button onClick={deleteSpace} disabled={!isAdmin} >Delete space</button>
+        <div className='config-box'>
+            <button onClick={deleteSpace} disabled={!isAdmin} >Delete space</button>
+        </div>
     );
 }
 
