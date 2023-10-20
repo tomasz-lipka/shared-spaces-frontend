@@ -223,6 +223,7 @@ img {
   border-radius: 5px;
   animation: fadeIn 2s linear;
   width: 100%;
+  color: var(--dark-blue);
 }
 
 .breadcrumb-bar {

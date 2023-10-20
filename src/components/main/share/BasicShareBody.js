@@ -31,8 +31,12 @@ function BasicShareBody({ setMsg, share, setClassN, fetchShares, setEdit }) {
             <div className='margin-top'>
                 {showButtons && (
                     <div>
-                        <button id='share-button' onClick={() => setEdit(true)}>✎</button>
-                        <button id='share-button' onClick={() => deleteShare(share.id)}>⌫</button>
+                        <button id='share-button' onClick={() => setEdit(true)}>
+                            <span role='img' aria-label='Edit'>✎</span>
+                        </button>
+                        <button id='share-button' onClick={() => deleteShare(share.id)}>
+                            <span role='img' aria-label='Delete'>⌫</span>
+                        </button>
                     </div>
                 )}
             </div>

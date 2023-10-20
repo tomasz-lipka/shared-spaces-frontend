@@ -60,8 +60,12 @@ function EditShareBody({ setEdit, setMsg, share, fetchShares }) {
             <br />
             <span className='chosen-file-edit'> {fileName}</span>
             <br />
-            <button id='share-button' onClick={updateShare} >✓</button>
-            <button id='share-button' onClick={closeEditor} >✕</button>
+            <button id='share-button' onClick={updateShare} >
+                <span role='img' aria-label='Ok'>✓</span>
+            </button>
+            <button id='share-button' onClick={closeEditor} >
+                <span role='img' aria-label='Cancel'>✕</span>
+            </button>
         </div>
     );
 }
