@@ -85,7 +85,8 @@ a {
 .main-menu-link {
   font-size: 1.4em;
   color: white;
-  margin-right: 1em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .sidebar-link {
