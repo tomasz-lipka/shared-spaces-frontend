@@ -18,6 +18,11 @@ function Settings({ setMsg }) {
             'confirm-password': confirmPwd
         });
         let response = await makeRequest('/change-password', 'PUT', requestBody);
+        if (response.ok) {
+            setOldPwd('');
+            setNewPwd('');
+            setConfirmPwd('');
+        }
         setMsg(await response.text());
         setLoading(false);
     };
@@ -25,9 +30,9 @@ function Settings({ setMsg }) {
     return (
         <div>
             <h2>Change password</h2>
-            <CustomInput setValue={setOldPwd} label={'Old password'} />
-            <CustomInput setValue={setNewPwd} label={'New password'} />
-            <CustomInput setValue={setConfirmPwd} label={'Confirm password'} />
+            <CustomInput value={oldPwd} setValue={setOldPwd} label={'Old password'} />
+            <CustomInput value={newPwd} setValue={setNewPwd} label={'New password'} />
+            <CustomInput value={confirmPwd} setValue={setConfirmPwd} label={'Confirm password'} />
             <br />
             <button onClick={changePwd} disabled={loading}>Submit</button>
         </div>
