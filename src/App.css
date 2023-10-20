@@ -93,10 +93,8 @@ a {
   color: var(--dark-blue);
 }
 
-@media (max-height: 600px) {
-  .min-height {
-    min-height: 550px;
-  }
+.sidebar-min-height {
+  min-height: 600px;
 }
 
 .content-container {

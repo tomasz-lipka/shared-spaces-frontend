@@ -47,7 +47,7 @@ function Space({ setMsg }) {
     return (
         <div>
             <aside>
-                <div className='min-height'>
+                <div className='sidebar-min-height'>
                     <SpaceSidebarNav spaceId={spaceId} />
                     <CreateShare setMsg={setMsg} spaceId={spaceId} fetchShares={fetchShares} />
                 </div>
