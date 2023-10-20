@@ -16,7 +16,7 @@ function Share({ share, fetchShares, setMsg }) {
             <div>
                 <b>{share.user.login}</b>
                 <br />
-                <small>{formattedTimestamp}</small>
+                <small><b>{formattedTimestamp}</b></small>
                 <br />
             </div>
             <div className='margin-top'>
