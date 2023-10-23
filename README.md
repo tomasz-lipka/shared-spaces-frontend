@@ -22,12 +22,12 @@ Live demo: [Click here](http://ec2-54-146-229-245.compute-1.amazonaws.com/)
 
 ## Screenshots
 <!-- <div style="border: 1px solid #ccc; padding: 10px;"> -->
-    ![screenshot](./screenshots/screenshot_1.jpg)
-    ![screenshot](./screenshots/screenshot_2.jpg)
-    ![screenshot](./screenshots/screenshot_3.jpg)
-    ![screenshot](./screenshots/screenshot_4.jpg)
-    ![screenshot](./screenshots/screenshot_5.jpg)
-    ![screenshot](./screenshots/screenshot_6.jpg)
-    ![screenshot](./screenshots/screenshot_7.jpg)
+![screenshot](./screenshots/screenshot_1.jpg)
+![screenshot](./screenshots/screenshot_2.jpg)
+![screenshot](./screenshots/screenshot_3.jpg)
+![screenshot](./screenshots/screenshot_4.jpg)
+![screenshot](./screenshots/screenshot_5.jpg)
+![screenshot](./screenshots/screenshot_6.jpg)
+![screenshot](./screenshots/screenshot_7.jpg)
 <!-- </div> -->
 
