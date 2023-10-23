@@ -21,12 +21,6 @@ Live demo: [Click here](http://ec2-54-146-229-245.compute-1.amazonaws.com/)
 
 
 ## Screenshots
-<p float="left">
-  <img src="./screenshots/screenshot_1.jpg" alt="screenshot" width="300"/>
-  <img src="./screenshots/screenshot_2.jpg" alt="screenshot" width="300"/>
-  <img src="./screenshots/screenshot_3.jpg" alt="screenshot" width="300"/>
-  <img src="./screenshots/screenshot_4.jpg" alt="screenshot" width="300"/>
-  <img src="./screenshots/screenshot_5.jpg" alt="screenshot" width="300"/>
-  <img src="./screenshots/screenshot_6.jpg" alt="screenshot" width="300"/>
-  <img src="./screenshots/screenshot_7.jpg" alt="screenshot" width="300"/>
-</p>
+<img src="./screenshots/screenshot_1.jpg" alt="screenshot" width="300"/>
+<img src="./screenshots/screenshot_2.jpg" alt="screenshot" width="300"/>
+<img src="./screenshots/screenshot_3.jpg" alt="screenshot" width="300"/>
