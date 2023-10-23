@@ -13,7 +13,6 @@ import SpaceConfig from './space/SpaceConfig'
 
 function MainMenu() {
   const [msg, setMsg] = useState(Config.blankSymbol);
-  const currentPageURL = window.location.pathname;
 
   async function handleLogout() {
     setMsg(Config.waitMsg);
@@ -24,18 +23,12 @@ function MainMenu() {
     }
   };
 
-  function clickHome() {
-    if ('/spaces' === currentPageURL) {
-      window.location.reload();
-    }
-  }
-
   return (
     <div className='app'>
       <header>
         <nav className='main-menu-bar'>
-          <Link to='/spaces' className='logo-text' onClick={clickHome}>Shared Spaces</Link>
-          <Link to='/spaces' className='main-menu-link' onClick={clickHome}>Home</Link>
+          <Link to='/spaces' className='logo-text'>Shared Spaces</Link>
+          <Link to='/spaces' className='main-menu-link'>Home</Link>
           <Link to={'/' + Config.settingsPath} className='main-menu-link'>Settings</Link>
           <Link className='main-menu-link' onClick={handleLogout}>{'Logout (' + sessionStorage.getItem('currentUser') + ')'}</Link>
         </nav>
