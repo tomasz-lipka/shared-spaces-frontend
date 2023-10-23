@@ -21,7 +21,7 @@ Live demo: [Click here](http://ec2-54-146-229-245.compute-1.amazonaws.com/)
 
 
 ## Screenshots
-<img src="./screenshots/screenshot_1.jpg" alt="screenshot" width="200"/>
+<img src="./screenshots/screenshot_1.jpg" alt="screenshot" width="300" style="border: 1px solid #000; padding: 10px;"/>
 ![screenshot](./screenshots/screenshot_2.jpg)
 ![screenshot](./screenshots/screenshot_3.jpg)
 ![screenshot](./screenshots/screenshot_4.jpg)
