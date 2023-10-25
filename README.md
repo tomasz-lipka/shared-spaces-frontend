@@ -1,5 +1,5 @@
 # Shared Spaces - frontend
-This is the front-end for the Shared Spaces application, created using React.
+This is the front-end for the Shared Spaces application.
 <br/>
 
 
@@ -30,18 +30,21 @@ A couple of screenshots illustrating some of the application features
 ## Features
 A reference of all features provided by the application 
 
-|Feature        |Description |
-| ------------- | ---------- |
-|Register       |Create a new user account. Provide: login (3-15 characters), password (min 3 characters) and confirm the password. The login must be unique across all logins. |
-|Sign in        |Sign in using an existing user account. |
-|Home view      |A list of all spaces in which the user is a member sorted in an alphabetical order. |
-|Create space   |Create a new space. Provide: space name (3-15 characters). The space name doesn't have to be unique. The user who created a space, becomes its admin. |
-|Space view     |A list of all shares within a space sorted by creation date.|
-|Share tile     |View of a single share. Contains: creator name, creation date, body with descriptions and optionally an image. If the logged in user is the creator of the share, he can edit and deleted it. | 
-|Share editor   |A place where the description of the share can be updated and a new image can be uploaded. To drop the changes a cancel button is available.|
-|Create share   |Share thoughts with your space. Provide a share description (3-200 characters) and optionally upload an image. |
-|Members view   |A list of all members of the space. |
-|Member tile    |View of a single member. Contains: <br/>- member name<br/>- label 'admin' if he has administrative privileges within the space<br/>- Unmake admin button<br/>- Delete button | 
+|Feature                   |Description |
+| ------------------------ | ---------- |
+|Register                  |Create a new user account. Provide: login (3-15 characters), password (min 3 characters) and confirm the password. The login must be unique across all logins. |
+|Sign in                   |Sign in using an existing user account. |
+|Home view                 |A list of all spaces in which the user is a member sorted in an alphabetical order. |
+|Create space              |Create a new space. Provide: space name (3-15 characters). The space name doesn't have to be unique. The user who created a space, becomes its admin. |
+|Space view                |A list of all shares within a space sorted by creation date.|
+|Share tile                |View of a single share. Contains: creator name, creation date, body with descriptions and optionally an image. If the logged in user is the creator of the share, he can edit and deleted it. | 
+|Share editor              |A place where the description of the share can be updated and a new image can be uploaded. To drop the changes a cancel button is available.|
+|Create share              |Share thoughts with your space. Provide a share description (3-200 characters) and optionally upload an image. |
+|Members view              |A list of all members of the space. |
+|Member tile               |View of a single member. Contains: <br/>- member name<br/>- label 'admin' if he has administrative privileges within the space<br/>- Grant/Revoke admin button<br/>- Delete button |
+|Grant/Revoke admin button |Enabled only for admins. Allows to grant or revoke someone's administrative privileges. The admin can revoke his own admin privileges if there is at least on other admin present within this space. |
+|Delete (member) button    |Enabled only for admins. Allows to delete a member of the space. Also, an admin member can be deleted. You can't delete yourself. Before performing the action, a confirmation window appears. |
+|Leave space button        |Allows to leave the space. The space will no longer be listed under all your spaces. You can't leave a space when you're and admin. |
 
 status bar
 breadcrumb
