@@ -31,10 +31,12 @@ A couple of screenshots illustrating some of the application features
 A reference of all features provided by the application 
 
 |Feature        |Description |
-|---------------|------------|
-|Register       |Create a new user account. Provide: login (3-15 characters), password (min 3 characters) and confirm the password. The login must be unique across all logins.|
-|Sign in        |Sign in using an existing user account.|
-|Home view      |A list of all spaces in which the user is a member sorted in an alphabetical order.|
-|Create space   |Create a new space. Provide: space name (3-15 characters). The space name doesn't have to be unique. The user who created a space, becomes its admin.|
-
+| ------------- | ---------- |
+|Register       |Create a new user account. Provide: login (3-15 characters), password (min 3 characters) and confirm the password. The login must be unique across all logins. |
+|Sign in        |Sign in using an existing user account. |
+|Home view      |A list of all spaces in which the user is a member sorted in an alphabetical order. |
+|Create space   |Create a new space. Provide: space name (3-15 characters). The space name doesn't have to be unique. The user who created a space, becomes its admin. |
+|Space view     |A list of all shares within a space sorted by creation date.|
+|Share tile     |View of a single share. Contains: creator name, creation date, body with descriptions and optionally an image. If the logged in user is the creator of the share, he can edit and deleted it. | 
+|Share editor   |A place where the description of the share can be updated and a new image can be uploaded. |
 
