@@ -38,5 +38,11 @@ A reference of all features provided by the application
 |Create space   |Create a new space. Provide: space name (3-15 characters). The space name doesn't have to be unique. The user who created a space, becomes its admin. |
 |Space view     |A list of all shares within a space sorted by creation date.|
 |Share tile     |View of a single share. Contains: creator name, creation date, body with descriptions and optionally an image. If the logged in user is the creator of the share, he can edit and deleted it. | 
-|Share editor   |A place where the description of the share can be updated and a new image can be uploaded. |
+|Share editor   |A place where the description of the share can be updated and a new image can be uploaded. To drop the changes a cancel button is available.|
+|Create share   |Share thoughts with your space. Provide a share description (3-200 characters) and optionally upload an image. |
+|Members view   |A list of all members of the space. |
+|Member tile    |View of a single member. Contains: <br/>- member name<br/>- label 'admin' if he has administrative privileges within the space<br/>- Unmake admin button<br/>- Delete button | 
+
+status bar
+breadcrumb
 
