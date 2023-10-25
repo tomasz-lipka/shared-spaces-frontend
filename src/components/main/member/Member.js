@@ -48,7 +48,7 @@ function Member({ member, fetchMembers, spaceId, setMsg, isAdmin, setIsAdmin }) 
             {member.is_admin ? 'admin' : Config.blankSymbol}
             <div>
                 <button className='margin-top' onClick={() => changeAdminPermission(member.user.id)} disabled={!isAdmin || changeAdminLoading}>
-                    {member.is_admin ? 'Unmake admin' : 'Make admin'}
+                    {member.is_admin ? 'Revoke admin' : 'Grant admin'}
                 </button>
             </div>
             <div>
