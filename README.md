@@ -1,5 +1,5 @@
 # Shared Spaces - frontend
-Front-end for the Shared Spaces application created using React
+This is the front-end for the Shared Spaces application, created using React.
 <br/>
 
 
@@ -12,7 +12,7 @@ Front-end for the Shared Spaces application created using React
 ## General Information
 This project utilizes React to create a front-end for the REST API interface of the Shared Spaces application.
 All functionalities provided by the back-end are utilized. The UI is responsive and mobile friendly.<br/>
-The app is hosted on an AWS EC2 Ubuntu instance by a Nginx server.<br/><br/>
+The app is deployed on an AWS EC2 Ubuntu instance and hosted by a Nginx server.<br/><br/>
 Live demo: [Click here](http://ec2-54-146-229-245.compute-1.amazonaws.com/)
 
 
@@ -21,6 +21,8 @@ Live demo: [Click here](http://ec2-54-146-229-245.compute-1.amazonaws.com/)
 
 
 ## Screenshots
-![screenshot](./screenshots/screenshot.jpg)
+A couple of screenshots illustrating some of the application features
+<br/>
+![screenshot](./screenshots/screenshots.jpg)
 
 
