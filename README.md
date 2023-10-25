@@ -27,6 +27,14 @@ A couple of screenshots illustrating some of the application features
 ![screenshot](./screenshots/screenshots.jpg)
 
 
-## features
+## Features
 A reference of all features provided by the application 
+
+|Feature        |Description |
+|---------------|------------|
+|Register       |Create a new user account. Provide: login (3-15 characters), password (min 3 characters) and confirm the password. The login must be unique across all logins.|
+|Sign in        |Sign in using an existing user account.|
+|Home view      |A list of all spaces in which the user is a member sorted in an alphabetical order.|
+|Create space   |Create a new space. Provide: space name (3-15 characters). The space name doesn't have to be unique. The user who created a space, becomes its admin.|
+
 
