@@ -9,7 +9,7 @@ export function makeRequest(endpoint, method, body) {
             authorization: `Bearer ${sessionStorage.getItem("access_token")}`
         },
     });
-    return response
+    return response;
 };
 
 export function makeShareRequest(endpoint, method, body) {
@@ -20,5 +20,5 @@ export function makeShareRequest(endpoint, method, body) {
             authorization: `Bearer ${sessionStorage.getItem("access_token")}`
         },
     });
-    return response
+    return response;
 };
