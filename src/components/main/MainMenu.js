@@ -53,7 +53,6 @@ function MainMenu({ setAuthenticated }) {
           <Route path='/spaces/:spaceId/images' element={<Images setMsg={setMsg} />}></Route>
           <Route path='/spaces/:spaceId/config' element={<SpaceConfig setMsg={setMsg} />}></Route>
           <Route path='*' element={<WrongUrl />}></Route>
-          {/* <Route path='/auth' element={<Logout />}></Route> */}
         </Routes>
       </div>
     </div>
