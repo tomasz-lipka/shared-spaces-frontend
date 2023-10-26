@@ -25,6 +25,8 @@ function MainMenu() {
       sessionStorage.removeItem('access_token');
       navigate('/auth');
       window.location.reload(false);
+    } else {
+      setMsg(await response.text());
     }
   };
 

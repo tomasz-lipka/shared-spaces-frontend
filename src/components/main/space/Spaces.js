@@ -14,6 +14,8 @@ function Spaces({ setMsg }) {
         if (response.ok) {
             setSpaces(await response.json());
             setMsg(Config.blankSymbol);
+        } else {
+            setMsg(await response.text());
         }
     };
 
