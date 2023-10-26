@@ -10,7 +10,7 @@ function App() {
   if (!sessionStorage.getItem('access_token')) {
     return <Auth setAuthenticated={setAuthenticated} />
   }
-  return <MainMenu />
+  return <MainMenu setAuthenticated={setAuthenticated} />
 }
 
 export default App;
