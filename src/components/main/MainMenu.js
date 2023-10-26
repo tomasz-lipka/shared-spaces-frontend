@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { makeRequest } from '../../Helper';
+import { useNavigate } from 'react-router-dom';
 import Config from '../../Config';
 import Spaces from './space/Spaces';
 import Settings from './Settings';
@@ -10,15 +11,19 @@ import Images from './Images';
 import WrongUrl from './WrongUrl';
 import Breadcrumbs from './breadcrumb/Breadcrumbs';
 import SpaceConfig from './space/SpaceConfig'
+import App from '../../App';
+
 
 function MainMenu() {
   const [msg, setMsg] = useState(Config.blankSymbol);
+  const navigate = useNavigate();
 
   async function handleLogout() {
     setMsg(Config.waitMsg);
     let response = await makeRequest('/logout', 'DELETE', null);
     if (response.ok) {
       sessionStorage.removeItem('access_token');
+      navigate('/auth');
       window.location.reload(false);
     }
   };
@@ -48,6 +53,7 @@ function MainMenu() {
           <Route path='/spaces/:spaceId/images' element={<Images setMsg={setMsg} />}></Route>
           <Route path='/spaces/:spaceId/config' element={<SpaceConfig setMsg={setMsg} />}></Route>
           <Route path='*' element={<WrongUrl />}></Route>
+          <Route path='/auth' element={<App />}></Route>
         </Routes>
       </div>
     </div>
