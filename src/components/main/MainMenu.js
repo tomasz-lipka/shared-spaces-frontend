@@ -21,8 +21,8 @@ function MainMenu({ setAuthenticated }) {
     let response = await makeRequest('/logout', 'DELETE', null);
     if (response.ok) {
       sessionStorage.removeItem('access_token');
-      navigate('/');
       setAuthenticated(false);
+      navigate('/');
     } else {
       setMsg(await response.text());
     }
